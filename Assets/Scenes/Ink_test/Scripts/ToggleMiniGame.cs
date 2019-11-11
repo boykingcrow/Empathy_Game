@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ToggleMiniGame : MonoBehaviour {
@@ -12,8 +9,9 @@ public class ToggleMiniGame : MonoBehaviour {
 	public GameObject background;
 void OnMouseDown(){
 
-	if (!EventSystem.current.IsPointerOverGameObject())
-	{
+		if (EventSystem.current.IsPointerOverGameObject())
+			return;
+		
 		if(canvas != null)
 			{
 				GameObject.Find("SceneController").GetComponent<InkWrapper>().SetCanvas(canvas);
@@ -30,5 +28,4 @@ void OnMouseDown(){
 	}
 
 	//Destroy(gameObject);
-}
 }

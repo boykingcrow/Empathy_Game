@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
+using UnityEngine.EventSystems;
 
 public class InkWrapper : MonoBehaviour {
 
 	void Awake () {
+
+		if (EventSystem.current.IsPointerOverGameObject())
+			return;
 		// Remove the default message
 		RemoveChildren();
 		StartStory(DefaultStory);
@@ -146,6 +150,10 @@ public class InkWrapper : MonoBehaviour {
 
 		// Display all the choices, if there are any!
 		if(story.currentChoices.Count > 0) {
+
+			//if (EventSystem.current.IsPointerOverGameObject())
+			//return;
+
 			for (int i = 0; i < story.currentChoices.Count; i++) {
 				Choice choice = story.currentChoices [i];
 				Button button = CreateChoiceView (choice.text.Trim ());
@@ -157,6 +165,10 @@ public class InkWrapper : MonoBehaviour {
 		}
 		// If we've read all the content and there's no choices, the story is finished!
 		else {
+
+			//if (EventSystem.current.IsPointerOverGameObject())
+			//return;
+
 			Button choice = CreateChoiceView("End.");
 			choice.onClick.AddListener(delegate{
 				StartStory(DefaultStory);

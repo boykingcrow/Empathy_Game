@@ -50,7 +50,7 @@ A creature floats before you. Its body illuminates with a smatter of shifting co
 
 +[Trade with the creature.] -> trade
 
-{has Item Color Gun}+[Communicate.] -> communicate
+//{has Item Color Gun}+[Communicate.] -> communicate
 
 
 = poke
