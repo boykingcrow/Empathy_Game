@@ -1,0 +1,146 @@
+EXTERNAL get(var)
+EXTERNAL set(var, arg1)
+
+->CHUNK
+
+VAR hands = 2
+
+===CHUNK===
+
+{CHUNK == 1:Trouncing through, and over, glowing fungus with all the grace of a (very obese) elk — you walk for what seems like many miles (a few yards). You find a few big-ish chunks of your chip along the way.  Husks of their former selves, all burnt up or still smoldering.}
+
+    *Finally[...]
+
+    -<> after mucking about in fungus for some time — you spot a promising candidate for the some-useful-stuff-might-be-in-here award. A hulking mass at least three times the size of the last ship chunk you ransacked. Oddly undamaged.
+
+    *[YOU’VE DISCOVERED SHIP CHUNK 2]->chunk1
+
+==chunk1
+
+In the short time of its existence on this planet, this section of ship has become covered in what looks like. . . thick spider-webs? Oh no — you’re probably saying to yourself — there better not be spiders. And from the looks of those webs, giant spiders.
+
+    *[Investigate webs.]
+
+    The webs are as thick as your wrist and a rather pleasant hue of pastel purple. A nice color for hair, maybe an outfit, but somehow deeply unsettling as a thick viscose web.
+
+        **[Clear webs from hulking mass of a ship chunk.]
+
+        You reach out to the web, slowly, and poke it. And suddenly! — nothing happens. It sticks a bit to your hand, and releases with a twangy vibration. The vibration echoes through the webs.
+
+            ***Well[...]
+
+            -<>, no giant spiders. For now at least.
+
+            You gently cut at the web with your previously, ingeniously, crafted hand axe — and pull back the bits surrounding the small maintenance hatch located on the chunk’s hull.->puzzle
+
+==puzzle
+
+{puzzle > 1:
+
+The chunk is just as you left it. Partially covered with thick pastel purple webs. {hatch > 0:One locked hatch.} {climb > 0:One hole you can’t fit through.}
+}
+
+
+    +[Open hatch.]->hatch
+
+    +[Look around.]->look
+
+    +[Climb the chunk.]->climb
+
+    +[Leave.]->leave
+
+=hatch
+
+You try the handle to the hatch, but it doesn’t budge.->puzzle
+
+=look
+
+You walk around the web covered husk, looking for anything even a tad useful. You see a small hole towards the top of the structure.->puzzle
+
+=climb
+
+//{pickup_item(rock)}
+
+{puzzle > 1: You climb the chunk again.}
+
+{puzzle == 1:With several attempts, and several tumbles, you manage to get enough of a foothold to climb the structure.} 
+
+<>{look == 0: You spot a small hole not too far from your feet.} 
+
+    +[Walk over to the hole.]
+
+    That's a hole alright.
+
+        //**{Items has fish}[Toss fish in hole.]
+
+        You throw the small fish-like beast into the hole. You hear it land with a wet thud and, faintly, some angry gnawing. Other than that, nothing happens.
+
+        //**{Items has rock}[Toss glowing rock in hole.]
+
+        You toss the glowing rock into the hole. You see a faint glow now radiating from the hole. Nothing else happens.
+
+        ++[Drop through the hole.]
+        
+        You stuff one leg, and a little less than half a pelvis into the hole before it dawns on you that this is more of a hobbit hole than a human-hole. Oh well. 
+
+//{leave > 0:
+
+//{POOL > 0: "Why am I trying this again?" you ask yourself. Good question.}
+
+//{hands == 1: Did you actually think you could all the sudden fit through this tiny hole because you’re now minus one hand?}
+
+//}
+
+            +++  [Climb down.] 
+                ->climbdown
+
+        ++ [Climb down.] 
+            ->climbdown
+
+    + [Climb down.] 
+        ->climbdown
+
+
+- (loop)
+{->puzzle | -> puzzle | }
+-(done)
+With a roll and  thud, you “climb” off the chunk of ship.
+
++[Continue.]->puzzle
+
+=climbdown
+
+With a roll and  thud, you “climb” off the chunk of ship.->puzzle
+
+=leave
+
+->before_pool
+
+==before_pool
+
+{before_pool == 1:Well, that was a bust.} What now?
+
++[Go back.]->puzzle
+*[Take a nap.]->nap
+*[Eat some TASTY-GOO brand food-like substance.]->eat
+*[Explore the area.]->explore
+
+==nap
+
+You take a nap. Difficult in even a slim space suit, but not impossible. When you wake up a bit of fungus has grown over you, like a blanket. This terrifies you.->before_pool
+==eat
+
+You eat some TASTY-GOO brand food-like substance. Whether it’s warm notalgia or pure cynical corporate driven sense-priming, a jingle fills your head like bubble gas.
+
+*I poop! 
+**<> You poop!
+***<> We all poop for TASTY-GOO...P!->before_pool
+
+==explore
+
+You explore the area around the chunk. On your second, slightly wider, circle around the chunk...
+
+* You come across a steaming pool.
+#CLEAR
+->END
+
