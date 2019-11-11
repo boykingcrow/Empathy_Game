@@ -153,12 +153,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 16784037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c0c2650249f7840a95be16afd9262e, type: 3}
+  m_Script: {fileID: 11500000, guid: 61823d52e722afb45bc46d1b9fad613c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 1556175952}
-  story: {fileID: 0}
-  background: {fileID: 0}
+  objectToDestroy: {fileID: 16784037}
 --- !u!64 &16784042
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -515,7 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 2003454349}
-  story: {fileID: 4900000, guid: 2aa53c03be48ae24e8f5c102ce2d0ee6, type: 3}
+  story: {fileID: 4900000, guid: a215bbfdf38631c488da963967afdb8f, type: 3}
   background: {fileID: 1754693556}
 --- !u!195 &205267195
 NavMeshAgent:
@@ -2385,7 +2383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1556175953
 MonoBehaviour:
   m_ObjectHideFlags: 0
