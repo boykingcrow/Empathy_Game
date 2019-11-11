@@ -7,8 +7,6 @@ public class InkWrapper : MonoBehaviour {
 
 	void Awake () {
 
-		if (EventSystem.current.IsPointerOverGameObject())
-			return;
 		// Remove the default message
 		RemoveChildren();
 		StartStory(DefaultStory);

@@ -222,8 +222,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 16784037}
   m_LocalRotation: {x: 0.22467774, y: 0.3470411, z: -0.08601786, w: 0.9064675}
-  m_LocalPosition: {x: -123.07, y: 87.276, z: -127.57}
-  m_LocalScale: {x: 56.511417, y: 33.322937, z: 1}
+  m_LocalPosition: {x: -117.6, y: 83, z: -121.5}
+  m_LocalScale: {x: 127.09983, y: 74.94662, z: 2.2491}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 23
@@ -352,18 +352,17 @@ GameObject:
   - component: {fileID: 197757105}
   - component: {fileID: 197757104}
   - component: {fileID: 197757103}
-  - component: {fileID: 197757102}
   - component: {fileID: 197757101}
+  - component: {fileID: 197757099}
   - component: {fileID: 197757100}
   - component: {fileID: 197757098}
-  - component: {fileID: 197757099}
   m_Layer: 0
   m_Name: Chapter 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &197757097
 RectTransform:
   m_ObjectHideFlags: 0
@@ -402,10 +401,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 197757096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61823d52e722afb45bc46d1b9fad613c, type: 3}
+  m_Script: {fileID: 11500000, guid: 92c0c2650249f7840a95be16afd9262e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToDestroy: {fileID: 197757096}
+  canvas: {fileID: 1556175952}
+  story: {fileID: 4900000, guid: 3eeb79e8637af6948a1f94eed54b2c0e, type: 3}
+  background: {fileID: 0}
 --- !u!114 &197757100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,20 +426,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 197757096}
   m_CullTransparentMesh: 0
---- !u!114 &197757102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 197757096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1176d66fd5565c4da249a88d643b29a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 1556175952}
-  story: {fileID: 4900000, guid: f5aa6b67e69fa9d4bb9dbed8fccfb643, type: 3}
-  background: {fileID: 0}
 --- !u!64 &197757103
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2398,7 +2385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1556175953
 MonoBehaviour:
   m_ObjectHideFlags: 0
