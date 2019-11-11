@@ -215,17 +215,4 @@ public class InkWrapper : MonoBehaviour {
 	private Text textPrefab;
 	[SerializeField]
 	private Button buttonPrefab;
-
-    public int hands
-    {
-        get
-        {
-            return hands;
-        }
-
-        set
-        {
-            hands = value;
-        }
-    }
 }
