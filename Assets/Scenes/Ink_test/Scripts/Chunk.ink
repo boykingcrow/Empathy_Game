@@ -1,9 +1,11 @@
 EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 
-->CHUNK
+{set("hands", 0)}
+{set("fish", 1)}
+{set("crystalBLUE", 1)}
 
-VAR hands = 2
+->puzzle
 
 ===CHUNK===
 
@@ -38,6 +40,9 @@ In the short time of its existence on this planet, this section of ship has beco
 {puzzle > 1:
 
 The chunk is just as you left it. Partially covered with thick pastel purple webs. {hatch > 0:One locked hatch.} {climb > 0:One hole you can’t fit through.}
+
+-else:What will you do?
+
 }
 
 
@@ -51,62 +56,69 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
 =hatch
 
-You try the handle to the hatch, but it doesn’t budge.->puzzle
+    You try the handle to the hatch, but it doesn’t budge.->puzzle
 
 =look
 
-You walk around the web covered husk, looking for anything even a tad useful. You see a small hole towards the top of the structure.->puzzle
+    You walk around the web covered husk, looking for anything even a tad useful. You see a small hole towards the top of the structure.->puzzle
 
 =climb
 
-//{pickup_item(rock)}
+{climb}
 
-{puzzle > 1: You climb the chunk again.}
+{climb > 1: You climb the chunk again.}
 
-{puzzle == 1:With several attempts, and several tumbles, you manage to get enough of a foothold to climb the structure.} 
+{climb == 1:With several attempts, and several tumbles, you manage to get enough of a foothold to climb the structure.} 
 
-<>{look == 0: You spot a small hole not too far from your feet.} 
+<>{look == 1: You spot a small hole not too far from your feet.} 
 
     +[Walk over to the hole.]
 
-    That's a hole alright.
+        That's a hole alright.
 
-        //**{Items has fish}[Toss fish in hole.]
-
-        You throw the small fish-like beast into the hole. You hear it land with a wet thud and, faintly, some angry gnawing. Other than that, nothing happens.
-
-        //**{Items has rock}[Toss glowing rock in hole.]
-
-        You toss the glowing rock into the hole. You see a faint glow now radiating from the hole. Nothing else happens.
-
-        ++[Drop through the hole.]
+        {get("fish") == "1":
         
-        You stuff one leg, and a little less than half a pelvis into the hole before it dawns on you that this is more of a hobbit hole than a human-hole. Oh well. 
+        ->new_options
 
-//{leave > 0:
+        -else:
+        
+        +[Drop through the hole.]
+        
+        You stuff one leg, and a little less than half a pelvis into the hole before it dawns on you that this is more of a hobbit hole than a human-hole. Oh well.
 
-//{POOL > 0: "Why am I trying this again?" you ask yourself. Good question.}
+{get("hands") == "1": Did you actually think you could all the sudden fit through this tiny hole because you’re now minus one hand?}
 
-//{hands == 1: Did you actually think you could all the sudden fit through this tiny hole because you’re now minus one hand?}
-
-//}
-
-            +++  [Climb down.] 
+            ++ [Climb down.] 
                 ->climbdown
 
-        ++ [Climb down.] 
-            ->climbdown
+}
 
-    + [Climb down.] 
-        ->climbdown
+=new_options
 
+ +[Drop through the hole.]
+        
+{get("hands") == "0":
 
-- (loop)
-{->puzzle | -> puzzle | }
--(done)
-With a roll and  thud, you “climb” off the chunk of ship.
+You stuff one leg, and a little less than half a pelvis into the hole before it dawns on you that this is more of a hobbit hole than a human-hole. Oh well.
 
-+[Continue.]->puzzle
+ -else:Did you actually think you could all the sudden fit through this tiny hole because you’re now minus one hand?
+ 
+ }
+
+->new_options
+
++[Toss fish-like beast down the hole.]
+You throw the small fish-like beast into the hole. You hear it land with a wet thud and, faintly, some angry gnawing. Other than that, nothing happens.
+
+++[Climb down.]->climbdown
+
++[Toss the crystal down the hole.]
+You toss the glowing rock into the hole. You see a faint glow now radiating from the hole. Nothing else happens.
+
+++[Climb down.]->climbdown
+
++[Climb down.]->climbdown
+
 
 =climbdown
 

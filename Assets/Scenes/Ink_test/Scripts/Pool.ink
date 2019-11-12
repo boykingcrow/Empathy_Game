@@ -1,14 +1,9 @@
-VAR hands = 2
-VAR fish = "0"
+EXTERNAL get(var)
+EXTERNAL set(var, arg1)
 
 ->POOL
 
 ===POOL===
-EXTERNAL get(var)
-EXTERNAL set(var, arg1)
-
-{set("goo", "1")}
-{get("goo") == "1":your mother sucks cocks in hell}
 
     *The creature floats into view.
 
@@ -23,9 +18,17 @@ After the creature’s appendage dips below the surface, there is motion. The cr
 
     -*[You hear a loud pop.]
     
-        **[Something goes flying.] 
+        **[Something goes flying.]->pool_interact
             
--If there was something attached to the creature — it is gone now. The creature returns to its usual incomprehensible smattering of colors and drifts away into the fungal overgrowth.
+=pool_interact
+
+{pool_interact == 1:
+
+If there was something attached to the creature — it is gone now. The creature returns to its usual incomprehensible smattering of colors and drifts away into the fungal overgrowth.
+
+-else: What will you do?
+
+}
     
     +[Go back.]-> go_back
     *[Look around.]->look
@@ -33,7 +36,7 @@ After the creature’s appendage dips below the surface, there is motion. The cr
     
 =look
 
-    You look around the pool. You find nothing interesting. No movement. Nothing around but rocks and the occasional mushroom.->pool
+    You look around the pool. You find nothing interesting. No movement. Nothing around but rocks and the occasional mushroom.->pool_interact
     
 =investigate
 
@@ -43,20 +46,27 @@ After the creature’s appendage dips below the surface, there is motion. The cr
 
 {investigate > 1:
 
-//~alter(hands, -1)
+{set("hands", 1)}
+{set("fish", 1)}
+{set("crystalBLUE", 1)}
+
 ->conclusion
         
 -else: You, like most (if not all) humans have had hollow mountains chock full of profoundly idiotic ideas. But this, might be the biggest of them all.
 
             ***[Chicken out and leave.] ->go_back
             ***[Do it anyway.]
-            //~alter(hands, -1)
+            {set("hands", 1)}
+            {set("fish", 1)}
+            {set("crystalBLUE", 1)}
             ->conclusion
 
     Okay. O. K. sure, why not? What the worst that can happen? A melted or maimed arm? Maybe your suit literally fused with your arm? Deadly toxins? Flesh eating, suit eating microorganisms? Or most likely, assuredly even, some beasty — just waiting — to take a big ol’ bite!?
 
                 ****[Yep, still going to do it]
-                //~alter(hands, -1)
+                {set("hands", 1)}
+                {set("fish", 1)}
+                {set("crystalBLUE", 1)}
                 ->conclusion
                 ****[Chicken out and leave.]->go_back
                 
@@ -74,7 +84,9 @@ After the creature’s appendage dips below the surface, there is motion. The cr
 
 The crash obviously damaged you more than you thought. The front bits of your neocortex probably favor cheese of some sort. Swiss. Maybe cottage. Anyway, without a hint of reluctance, you plunge your hand into the mystery liquid. It goes about as well as expected.
 
-{hands < 2:+ Hand removed from body.}
+{get("crystalBLUE") == "1":+ BLUE Crystal added to inventory.}
+{get("fish") == "1":+ Small fish-like beast added to inventory.}
+{get("hands") == "1":+ Hand removed from body.}
 
 Your suit’s automatic ‘don’t die’ systems manage to seal the wound and  stem the massive bleeding, but you pass out anyway.
 
