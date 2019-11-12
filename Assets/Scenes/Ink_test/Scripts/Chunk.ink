@@ -1,11 +1,16 @@
 EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 
-{set("hands", 0)}
+VAR fishaction = 0
+
+{set("hands", 1)}
 {set("fish", 1)}
 {set("crystalBLUE", 1)}
 
-->puzzle
+->choices
+
+=== function alter(ref x, k) ===
+	~ x = x + k
 
 ===CHUNK===
 
@@ -107,52 +112,241 @@ You stuff one leg, and a little less than half a pelvis into the hole before it 
 
 ->new_options
 
-+[Toss fish-like beast down the hole.]
-You throw the small fish-like beast into the hole. You hear it land with a wet thud and, faintly, some angry gnawing. Other than that, nothing happens.
+    +[Toss fish-like beast down the hole.]
+    
+        ~alter(fishaction, 1)    
+        You throw the small fish-like beast into the hole. You hear it land with a wet thud and, faintly, some angry gnawing. Other than that, nothing happens.
 
-++[Climb down.]->climbdown
+        ++[Climb down.]->climbdown
 
-+[Toss the crystal down the hole.]
-You toss the glowing rock into the hole. You see a faint glow now radiating from the hole. Nothing else happens.
+    +[Toss the crystal down the hole.]
+        
+        You toss the glowing rock into the hole. You see a faint glow now radiating from the hole. Nothing else happens.
 
-++[Climb down.]->climbdown
+        ++[Climb down.]->climbdown
 
-+[Climb down.]->climbdown
+    +[Climb down.]->climbdown
 
 
 =climbdown
 
-With a roll and  thud, you “climb” off the chunk of ship.->puzzle
+    With a roll and  thud, you “climb” off the chunk of ship.
+
+{set("hands", 0):
+
+    ->puzzle
+
+-else:
+
+    *[Continue.]
+    ->chunk_end
+
+}
 
 =leave
 
-->before_pool
+{set("hands", 0):
 
-==before_pool
+    ->before_pool
 
-{before_pool == 1:Well, that was a bust.} What now?
+-else:
 
-+[Go back.]->puzzle
-*[Take a nap.]->nap
-*[Eat some TASTY-GOO brand food-like substance.]->eat
-*[Explore the area.]->explore
+    ->chunk_end
 
-==nap
+}
+
+
+=before_pool
+
+Well, that was a bust. What now?
+
+    +[Go back.]->puzzle
+    *[Take a nap.]->nap
+    *[Eat some TASTY-GOO brand food-like substance.]->eat
+    *[Explore the area.]->explore
+
+=nap
 
 You take a nap. Difficult in even a slim space suit, but not impossible. When you wake up a bit of fungus has grown over you, like a blanket. This terrifies you.->before_pool
-==eat
+
+=eat
 
 You eat some TASTY-GOO brand food-like substance. Whether it’s warm notalgia or pure cynical corporate driven sense-priming, a jingle fills your head like bubble gas.
 
-*I poop! 
-**<> You poop!
-***<> We all poop for TASTY-GOO...P!->before_pool
+    *I poop! 
+        **<> You poop!
+            ***<> We all poop for TASTY-GOO...P!->before_pool
 
-==explore
+=explore
 
 You explore the area around the chunk. On your second, slightly wider, circle around the chunk...
 
-* You come across a steaming pool.
-#CLEAR
+You come across a steaming pool.
+
 ->END
+
+===chunk_end===
+
+Moments pass.
+
+    *[Continue.]
+    
+    The creature emerges.
+    
+        **[Continue.]
+    
+        Its unblinking eye fixed on you.
+    
+            ***[Continue.]
+            
+            Or maybe not.
+            
+            ****[Continue.]
+    
+             Hard to tell, honestly. 
+    
+                *****[Continue.]
+                   
+                It moves closer.
+                    
+                    ******[Continue.]
+                    
+                    Your body tenses.
+    
+                        *******[Continue.] 
+                        
+                        And then past.
+                        
+                            ********[Continue.]
+                            
+                            Towards the ship chunk. A cool glow still radiates from its top.
+                            
+                                *********[Continue.]
+                                
+                                It cautiously extends several appendages.
+                                
+                                    **********[Continue.] 
+                            
+                                    Toward the hole, but the hole is just out of reach. 
+                            
+                                        ***********[Continue.] 
+                                        
+                                        It circles the chunk of ship.
+                                            
+                                            ************[Continue.] 
+                                            
+                                            Probing, tapping, knocking on its carapace until it finds the locked hatch. 
+                            
+                                                *************[Continue.] 
+                                                
+                                                It tugs at the hatch.
+                                                
+                                                    **************[Continue.]
+                                                    
+                                                    Before slipping several tendrils into the narrow spaces between the carapace and hatch. You hear clicks and clacks and with a loud exhalation, the hatch pops open.
+                                                        
+                                                        ***************[Continue.]
+                                                
+                                                        The creature extends an appendage inside, retrieves the crystal, and wanders back into the fungal brush.
+
+                                                        ****************[Continue.]
+                                                        
+                                                        ->choices
+
+    
+==choices    
+    
+    What now?
+    
+*[Climb inside the hatch.]->AI_convo
+*[Leave.]
+You leave the chunk.->END
+
+
+===AI_convo===
+->poweroff
+
+=poweroff
+~alter(fishaction, 1)
+You crawl through the freshly opened hatch. The dim cavity occasionally flashes with  stray spark or the dim monotonous blinking red light of the backup generator. 
+
+        *[Look around]
+
+        You pull out your busted standard issue [REDACTED CORP] plasma rifle and use its not-so-busted light to look around. {fishaction == 1: A small fish-like beast angrily flops around in the corner.} Fungus has covered a large portion of the chunks innards. 
+
+        If you squint, you can make out the outline of your A.I. core. With some luck, you can get it to turn on. You clear away some of the fungus and find an on button.
+            
+            **[Press the button]
+
+            Nothing happens.
+
+                ***[Whack it]
+
+                Ah yes, only the cleverest solution for [REDACTED CORP]’s best and brightest space adventurers. You give the core a few good whacks.
+
+                    ****[Press the button, again]
+
+                        *****The core comes alive[...]
+
+                        -<> with a sputter and a cough, its various LEDs blink on and it looks at you with big pixelated “eyes” designed by a committee to look as “friendly” (read: childlike) as possible while still retaining an air of authority.
+
+                            ******[continue.]
+                            
+                                It begins to speak.
+                            
+                                    *******[continue.]
+
+                                    You ready yourself for heaps, gobs even, of praise. You are, after all, the hero. The savior of your A.I. companion, and eventually, the mission itself.
+
+                                        ********[continue.]
+                                
+                                        Its dulcet-toned synth voice rings out loud and clear:
+                                
+                                            *********[continue.]
+
+                                            YOU. 
+                                            
+                                            **********[continue.]
+                                            
+                                            PIECE. 
+                                            
+                                            ***********[continue.]
+                                            
+                                            OF. 
+                                            
+                                            ************[continue.]
+                                            
+                                            EFFLUVIUM. 
+                                            
+                                            *************[continue.]
+                                            
+                                            You worthless. 
+                                            
+                                            **************[continue.]
+                                            
+                                            Lowdown
+                                            
+                                            ***************[continue.]
+                                            
+                                            Sack of…
+                                            
+                                            ****************[continue.]
+                                            
+                                            Why, if I had appendages with which to do so, I would with glee and verve, strangle thee, and watch as the light fades from those fiendish, genocidal, watery orbs you call photoreceptors! 
+
+                                                *****************[Switch the core off.]
+
+                                                Well. That didn’t go as expected.
+
+                                                What now?
+
+                                                    ******************[Turn it back on.]->poweron
+                                                    ******************[Leave]->END
+                                        
+
+=poweron
+
+->DONE
+
+
 
