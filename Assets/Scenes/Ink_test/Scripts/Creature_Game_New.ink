@@ -1,23 +1,7 @@
-VAR bond = 50
 
 
 ->CREATURE_GAME
 
-
-=== function alter(ref x, k) ===
-	~ x = x + k
-
-=== function describe_bond(x) ===
-{ 
-- x == 100:
-	~ return "GREEN"
-- x > 75:
-	~ return "MANY COLORS"
-- x > 45:
-	~ return "BLUE"
-- else:
-	~ return "RED"
-}
 
 === CREATURE_GAME ===
 EXTERNAL get(var)
@@ -38,13 +22,13 @@ A creature floats before you. Its body illuminates with a smatter of shifting co
 
 - It is sleeping, or at least you think it's sleeping. It at least isn't moving.
 
-- //{has Item brush:It is brushing its... eye? Like you would brush your teeth. You aren't sure where it even got a brush. Nonetheless, watching this activity disturbs you in ways you'd previously been unable to imagine.}
+- //{has Item toothbrush:It is brushing its... eye? Like you would brush your teeth. You aren't sure where it even got a brush. Nonetheless, watching this activity disturbs you in ways you'd previously been unable to imagine.}
 
 - It picks up a pile of a dozen-or-so rocks and begins to juggle them, using appendages you are pretty sure weren't even visible before.
 
 }
 
-[Creature mood: {describe_bond(bond)}]
+Creature Bond: {get("BOND") == "0":RED}{get("BOND") == "1":BLUE}{get("BOND") == "2":MANY COLORS}{get("BOND") == "3":MANY COLORS}{get("BOND") == "4":PURPLE}{get("BOND") == "5":GREEN}
 
 +[Poke the creature.] -> poke
 
@@ -54,7 +38,7 @@ A creature floats before you. Its body illuminates with a smatter of shifting co
 
 +[Interact.]->INTERACT
 
-+[Leave.]->END
++[Leave.]->DONE
 
 
 
@@ -75,22 +59,22 @@ You reach out and poke the creature.
 You attempt to talk to the creature.
     + [Hey there little... er, cutie?] 
         It stares at you, unblinking.
-        ~ alter(bond, 0)
+        //~ alter(bond, 0)
         ->CREATURE_GAME
         
     + [Can you speak?]
         It stares at you, mute and unblinking. It probably can't speak.
-        ~ alter(bond, 0)
+        //~ alter(bond, 0)
         ->CREATURE_GAME
         
     + [I hate you. I hate this entire stupid planet.]
         It stares at you, unblinking. You feel bad for your outburst.
-        ~ alter(bond, 0)
+        //~ alter(bond, 0)
         ->CREATURE_GAME
         
     + [GRAHHHRGH!]
         The creature smacks you.
-        ~ alter(bond, -10)
+        //~ alter(bond, -10)
         ->CREATURE_GAME
 
 
@@ -99,11 +83,11 @@ You attempt to talk to the creature.
 === TRADE ===
 What will you trade?
 
-    +[TASTY GOO]-> goo
-    +[Image of creature’s family]-> image
-    +[Toothbrush]->toothbrush
-    +[Small fish-like beast]->fish
-    +Extra [REDACTED] Corp standard issue Space Helmet->helmet
+    +[TASTY GOO brand food-like substance.]-> goo
+    +[An image of creature’s family]-> image
+    +[A toothbrush]->toothbrush
+    +[The small fish-like beast]->fish
+    +[A REDACTED Corp standard issue Space Helmet.]->helmet
 
 
 
@@ -190,70 +174,63 @@ The creature gives you another crystal. This one faintly glows GREEN.->CREATURE_
 
 ->pool_interact
 
-=pool_interact
-{pool_interact}
+==pool_interact
+
 You find the creature floating at the edge of one of the planet’s totally not dangerous pools.
 
 {pool_interact == 1:
 
-*AI:[...]<>Obligatory snarky comment.
+*AI:[...]
+<>Obligatory snarky comment.
+**[continue]->pool_interact
 
-**[Walk over.]->walkover
-    
--else:
+}
 
-+[Look into the pool.]
+*[Look into the pool.]
 
-	You peer into the pool. Its composition is the same as the pool that took your hand. Roiling, steaming, chock full of fish-like beasts. Its bottom is littered with faintly glowing crystals.->INTERACT
+	You peer into the pool. Its composition is the same as the pool that took your hand. Roiling, steaming, chock full of fish-like beasts. Its bottom is littered with faintly glowing crystals.
+	**[continue]->pool_interact
 	
 +[Look at the creature.]
 
     The creature is staring blankly into the pool. Its ethereal body gives nothing away. The colors that splash across its surface, however, tell another story. ->color_puzzle1
 
-}
-
-=walkover
-
-You walk over to the creature.
-
-    *[Look into the pool.]
-
-	You peer into the pool. Its composition is the same as the pool that took your hand. Roiling, steaming, chock full of fish-like beasts. Its bottom is littered with faintly glowing crystals.
-	#CLEAR
-	->pool_interact
-
-	*[Look at the creature.]
-
-    The creature is staring blankly into the pool. Its ethereal body gives nothing away. The colors that splash across its surface, however, tell another story. ->color_puzzle1
 
 
-=color_puzzle1
-The creature’s body illuminates a bright red.
+==color_puzzle1
+
+The creature’s body illuminates a bright RED.
 
 What color will you emit from the ColorGun?
-++RED->wrong
-++GREEN->wrong
-++BLUE->wrong
-++PURPLE->color_puzzle1_2
-++YELLOW->wrong
+
+    +[RED]->wrong
+    +[GREEN]->wrong
+    +[BLUE]->wrong
+    +[PURPLE]->color_puzzle1_2
+    +[YELLOW]->wrong
 
 =wrong
-Nothing happens.
-->color_puzzle1
+
+    Nothing happens.
+
+    ->color_puzzle1
 
 = color_puzzle1_2
-Its body washes with a deep blue.
-++Emit YELLOW ->wrong
-++Emit PURPLE ->wrong
-++Emit BLUE->wrong
-++Emit RED->wrong
-++Emit GREEN->color_puzzle1_end
+
+Its body washes with a deep BLUE.
+    +[Emit YELLOW] ->wrong
+    +[Emit PURPLE] ->wrong
+    +[Emit BLUE]->wrong
+    +[Emit RED]->wrong
+    +[Emit GREEN]->color_puzzle1_end
 
 =color_puzzle1_end
+{set("BOND", "1")}
 You emit a bright GREEN glow with your Color-gun. The creature returns to a shifting kaleidoscope of colors and drifts away.
+ 
+ {get("BOND") == "1":+ BOND INCREASED}
 
- BOND INCREASED
-->END
+*[continue.]->CREATURE_GAME
 
 =storm_interact
 A storm--at first over the horizon--suddenly falls upon you. You seek shelter in a nearby cave. 
@@ -298,9 +275,10 @@ The red dims and is replaced by a neutral mix of shifting colors. -> color_puzzl
 =color_puzzle2_end
 
 The creature floats closer to you. The two of you wait out the storm, together.
+{set("BOND", "2")}
+{get("BOND") == "1":+ BOND INCREASED}
 
-BOND INCREASED
-->END
+*[continue.]->CREATURE_GAME
 
 =food_interact
 
@@ -371,11 +349,13 @@ The creature continues to stare at you with unblinking eyes.
 * AI:[...]<>This is agony! (insert clever thing) Just do something!
 
 	++[Smash the grotesque non-food against your visor.]
+		
 		You smash the grotesque non-food against your visor. The AI and, seemingly, even the creature find it hilarious.
 
-BOND INCREASED
+    {set("BOND", "3")}
+    {get("BOND") == "1":+ BOND INCREASED}
 
-->END
+        ***[continue.]->CREATURE_GAME
     
 	*[Rub your stomach]
 		Nothing happens. ->color_puzzle3_end
@@ -425,23 +405,24 @@ You Color-gun washes the area in a deep BLUE glow. The creature turns to face yo
 
 The creature returns to its neutral state of many shifting colors. You can’t help but notice, there are now many more shades of blue and yellow amongst the creature’s usual emulsions.
 
-+[Leave.]->END
-+[Bury the body.]
+    +[Leave.]->END
+    +[Bury the body.]
 
-You have mostly your hands (your previously crafted janky shrapnel handaxe proves remarkably ineffective at digging, sadly) — but eventually you create a small hole. The creature notices what you’re doing and begins to help, lifting clod after clod of earth with both tentacle and strange gaseous telekinesis.
+    You have mostly your hands (your previously crafted janky shrapnel handaxe proves remarkably ineffective at digging, sadly) — but eventually you create a small hole. The creature notices what you’re doing and begins to help, lifting clod after clod of earth with both tentacle and strange gaseous telekinesis.
 
-Soon you have a sizable hole. You and the creature lift the object formerly known as a brave explorer, gently carry it over to the hole, and place it inside.
+    Soon you have a sizable hole. You and the creature lift the object formerly known as a brave explorer, gently carry it over to the hole, and place it inside.
 
-The creature fills the hole back with soil in one fell telekinetic swoop.
+    The creature fills the hole back with soil in one fell telekinetic swoop.
 
-You place the cracked space helm onto the grave, the only marker it will ever have.
+    You place the cracked space helm onto the grave, the only marker it will ever have.
 
-**[Leave.]
-You leave, the creature lingers for a few fleeting moments and then follows.
+        **[Leave.]
+        You leave, the creature lingers for a few fleeting moments and then follows.
 
-BOND INCREASED
+{set("BOND", "4")}
+{get("BOND") == "1":+ BOND INCREASED}
 
-->END
+            ***[continue.]->CREATURE_GAME
 
 =image_interact
 
@@ -510,8 +491,9 @@ As it stares at you, unblinking, a dull YELLOW spreads over its form.
 
 Your Color-gun emits a dull PURPLE. In response the yellow fades from the creature’s form and is replaced by a similar purple. And after a few moments, its neutral swirling mixture of color returns.
 
-BOND FULLY INCREASED
+{set("BOND", "5")}
+{get("BOND") == "1":+ BOND FULLY INCREASED}
 
-->END
+*[continue.]->CREATURE_GAME
 
 

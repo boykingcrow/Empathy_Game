@@ -71,6 +71,10 @@ public class InkWrapper : MonoBehaviour {
 			{
 				return GameObject.Find("Player").GetComponent<Inventory>().ColorGun;
 			}
+			if (var == "BOND")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().BOND;
+			}
 			return "null";
 		});
 
@@ -124,6 +128,14 @@ public class InkWrapper : MonoBehaviour {
 			{
 				GameObject.Find("Player").GetComponent<Inventory>().ColorGun = setTo;
 			}
+			if (var == "ColorGun") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().ColorGun = setTo;
+			}
+			if (var == "BOND") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().BOND = setTo;
+			}
 		});
 		
 		RefreshView();
@@ -171,6 +183,7 @@ public class InkWrapper : MonoBehaviour {
 			choice.onClick.AddListener(delegate{
 				StartStory(DefaultStory);
 				GameObject.Find("Canvas").SetActive(false);
+				GameObject.Find("Background").SetActive(false);
 			});
 		}
 	}
@@ -219,6 +232,9 @@ public class InkWrapper : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject canvas;
+
+	[SerializeField]
+	public GameObject background;
 
 	// UI Prefabs
 	[SerializeField]

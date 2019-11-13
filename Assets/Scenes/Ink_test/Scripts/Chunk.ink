@@ -3,11 +3,11 @@ EXTERNAL set(var, arg1)
 
 VAR fishaction = 0
 
-{set("hands", 1)}
-{set("fish", 1)}
-{set("crystalBLUE", 1)}
+{set("hands", 0)}
+{set("fish", 0)}
+{set("crystalBLUE", 0)}
 
-->choices
+->CHUNK
 
 === function alter(ref x, k) ===
 	~ x = x + k
