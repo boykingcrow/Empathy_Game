@@ -334,6 +334,7 @@ You crawl through the freshly opened hatch. The dim cavity occasionally flashes 
                                             
                                             Why, if I had appendages with which to do so, I would with glee and verve, strangle thee, and watch as the light fades from those fiendish, genocidal, watery orbs you call photoreceptors! 
 
+                                                
                                                 *****************[Switch the core off.]
 
                                                 Well. That didn’t go as expected.
