@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
-using UnityEngine.EventSystems;
-
 public class InkWrapper : MonoBehaviour {
 
 	void Awake () {
@@ -176,14 +174,10 @@ public class InkWrapper : MonoBehaviour {
 		// If we've read all the content and there's no choices, the story is finished!
 		else {
 
-			//if (EventSystem.current.IsPointerOverGameObject())
-			//return;
-
 			Button choice = CreateChoiceView("End.");
 			choice.onClick.AddListener(delegate{
 				StartStory(DefaultStory);
 				GameObject.Find("Canvas").SetActive(false);
-				GameObject.Find("Background").SetActive(false);
 			});
 		}
 	}
@@ -231,10 +225,7 @@ public class InkWrapper : MonoBehaviour {
 	public Story story;
 
 	[SerializeField]
-	private GameObject canvas;
-
-	[SerializeField]
-	public GameObject background;
+	public GameObject canvas;
 
 	// UI Prefabs
 	[SerializeField]
