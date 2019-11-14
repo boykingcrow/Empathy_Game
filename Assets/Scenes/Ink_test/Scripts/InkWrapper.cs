@@ -230,6 +230,7 @@ public class InkWrapper : MonoBehaviour {
 	// UI Prefabs
 	[SerializeField]
 	private Text textPrefab;
+
 	[SerializeField]
 	private Button buttonPrefab;
 }
