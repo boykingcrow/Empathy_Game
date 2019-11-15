@@ -22,16 +22,15 @@ public class InkWrapper : MonoBehaviour {
 		/*
 		story.BindExternalFunction ("build_colorGun", () => {
 			
-            if ()
-			{
-				GameObject.Find("Player").GetComponent<Inventory>().crystalRED = "1";
-				GameObject.Find("Player").GetComponent<Inventory>().crystalGREEN = "1";
-				GameObject.Find("Player").GetComponent<Inventory>().crystalPURPLE = "1";
-				GameObject.Find("Player").GetComponent<Inventory>().crystalYELLOW = "1";
-				GameObject.Find("Player").GetComponent<Inventory>().crystalBLUE = "1";
-			}
-				return GameObject.Find("Player").GetComponent<Inventory>().ColorGun = "1";
-	});
+            if (
+                 GameObject.Find("Player").GetComponent<Inventory>().crystalRED == "1"&& 
+                 GameObject.Find("Player").GetComponent<Inventory>().crystalGREEN == "1"&&
+	         GameObject.Find("Player").GetComponent<Inventory>().crystalPURPLE == "1"&&
+		 GameObject.Find("Player").GetComponent<Inventory>().crystalYELLOW == "1"&&
+	         GameObject.Find("Player").GetComponent<Inventory>().crystalBLUE == "1"
+                )
+			{return GameObject.Find("Player").GetComponent<Inventory>().ColorGun = "1"}
+		});
 
 	*/
 		
