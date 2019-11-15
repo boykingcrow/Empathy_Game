@@ -73,6 +73,14 @@ public class InkWrapper : MonoBehaviour {
 			{
 				return GameObject.Find("Player").GetComponent<Inventory>().BOND;
 			}
+			if (var == "hasLeft")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().hasLeft;
+			}
+			if (var == "interact")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().interact;
+			}
 			return "null";
 		});
 
@@ -133,6 +141,14 @@ public class InkWrapper : MonoBehaviour {
 			if (var == "BOND") 
 			{
 				GameObject.Find("Player").GetComponent<Inventory>().BOND = setTo;
+			}
+			if (var == "hasLeft") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().hasLeft = setTo;
+			}
+			if (var == "interact") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().interact = setTo;
 			}
 		});
 		

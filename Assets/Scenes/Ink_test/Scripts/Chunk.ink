@@ -1,4 +1,4 @@
-EXTERNAL get(var)
+﻿EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 
 VAR fishaction = 0
@@ -6,6 +6,7 @@ VAR fishaction = 0
 {set("hands", 0)}
 {set("fish", 0)}
 {set("crystalBLUE", 0)}
+{set("hasLeft", 0)}
 
 ->CHUNK
 
@@ -13,6 +14,7 @@ VAR fishaction = 0
 	~ x = x + k
 
 ===CHUNK===
+{get("hasLeft") == "1":->puzzle}
 
 {CHUNK == 1:Trouncing through, and over, glowing fungus with all the grace of a (very obese) elk — you walk for what seems like many miles (a few yards). You find a few big-ish chunks of your chip along the way.  Husks of their former selves, all burnt up or still smoldering.}
 
@@ -95,6 +97,9 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
             ++ [Climb down.] 
                 ->climbdown
+	
+	+ [Climb down.] 
+                ->climbdown
 
 }
 
@@ -132,7 +137,7 @@ You stuff one leg, and a little less than half a pelvis into the hole before it 
 
     With a roll and  thud, you “climb” off the chunk of ship.
 
-{set("hands", 0):
+{get("hands") == "0":
 
     ->puzzle
 
@@ -145,7 +150,9 @@ You stuff one leg, and a little less than half a pelvis into the hole before it 
 
 =leave
 
-{set("hands", 0):
+{set ("hasLeft", 1)}
+
+{get("hands") == "0":
 
     ->before_pool
 
@@ -158,7 +165,7 @@ You stuff one leg, and a little less than half a pelvis into the hole before it 
 
 =before_pool
 
-Well, that was a bust. What now?
+{before_pool == 1:Well, that was a bust. What now?}
 
     +[Go back.]->puzzle
     *[Take a nap.]->nap
@@ -175,7 +182,7 @@ You eat some TASTY-GOO brand food-like substance. Whether it’s warm notalgia o
 
     *I poop! 
         **<> You poop!
-            ***<> We all poop for TASTY-GOO...P!->before_pool
+            ***<> We all poop for TASTY-GOO...P! ->before_pool
 
 =explore
 

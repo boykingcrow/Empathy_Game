@@ -19,5 +19,7 @@ public class Inventory : MonoBehaviour
     public string crystalBLUE = "0";
     public string ColorGun = "0";
     public string BOND = "0";
+    public string hasLeft = "0";
+    public string interact ="0";
 
 }
