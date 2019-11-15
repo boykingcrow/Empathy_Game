@@ -1,13 +1,9 @@
-
-
-->CREATURE_GAME
-
-
-=== CREATURE_GAME ===
-
 EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 
+->CREATURE_GAME
+
+=== CREATURE_GAME ===
 
     A creature floats before you. Its body illuminates with a smatter of shifting colors.
 
@@ -23,7 +19,7 @@ EXTERNAL set(var, arg1)
 
     - It is sleeping, or at least you think it's sleeping. It at least isn't moving.
 
-    - //{has Item toothbrush:It is brushing its... eye? Like you would brush your teeth. You aren't sure where it even got a brush. Nonetheless, watching this activity disturbs you in ways you'd previously been unable to imagine.}
+    - {get("toothbrush") == "1":It is brushing its... eye? Like you would brush your teeth. You aren't sure where it even got a brush. Nonetheless, watching this activity disturbs you in ways you'd previously been unable to imagine.}
 
     - It picks up a pile of a dozen-or-so rocks and begins to juggle them, using appendages you are pretty sure weren't even visible before.
 
@@ -84,23 +80,25 @@ You attempt to talk to the creature.
 
 === TRADE ===
 
+{get("ColorGun") == "0":
+
 What will you trade?
 
-    +[TASTY GOO brand food-like substance.]-> goo
-    +[An image of creature’s family]-> image
-    +[A toothbrush]->toothbrush
-    +[The small fish-like beast]->fish
-    +[A REDACTED Corp standard issue Space Helmet.]->helmet
+    *[TASTY GOO brand food-like substance.]-> goo
+    *[An image of creature’s family]-> image
+    *[A toothbrush]->toothbrush
+    *[The small fish-like beast]->fish
+    *[A REDACTED Corp standard issue Space Helmet.]->helmet
+    
+-else:->AI_colorGun_convo
 
-
+}
 
 
 
 =goo
 
     You offer the creature TASTY GOO. it stares at you blankly.
-
-        * [Give up.]->CREATURE_GAME
         * [Show creature item’s use.]
             
             You crack open the TASTY GOO and attach its seal to your food-delivery nozzle. With a loud slurp, the goo flows through the food tube into your mouthparts.
@@ -187,6 +185,16 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
     {set("crystalGREEN", 1)}
     {get("crystalGREEN") == "1":+ Green crystal added to inventory.}
     ->CREATURE_GAME
+    
+=AI_colorGun_convo
+
+*AI:[...]
+<> Congrats, murderer. You've traded the creature for all the crystals. We can modify your busted muder tool into a decidedly-un-murderous tool for communicating with the creature.
+
+        **Modify [REDACTED] Corp. plasma rifle into Color-gun.
+        {set("colorGun", 1)}
+        {get("colorGun") == "1":+ Color-gun added to inventory.}
+            ->CREATURE_GAME
 
 
 === INTERACT ===
