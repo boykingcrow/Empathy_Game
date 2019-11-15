@@ -111,13 +111,19 @@ What will you trade?
 
     -It looks at it for a few moments before ripping it open and smearing the goo all over its body.
 
-After said smearing, the creature, seemingly satisfied with the trade, hands you a small crystal that glows YELLOW.->CREATURE_GAME
+After said smearing, the creature, seemingly satisfied with the trade, hands you a small crystal that glows YELLOW.
+    {set("crystalYELLOW", 1)}
+    {get("crystalYELLOW") == "1":+ Yellow crystal added to inventory.}
+    +[Continue.]->CREATURE_GAME
 
 = image
 
     You offer the creature the image you took from the alien ship. It gently wraps its tentacles around the object and pills it close, turning a procession of colors — each flowing into the next as food dye flows into water.
 
-    The creature hands you a small crystal that glows a dull BLUE and wanders away.->CREATURE_GAME
+    The creature hands you a small crystal that glows a dull BLUE and wanders away.
+    {set("crystalBLUE", 1)}
+    {get("crystalBLUE") == "1":+ Blue crystal added to inventory.}
+    +[Continue.]->CREATURE_GAME
 
 = toothbrush
     You offer the creature a toothbrush. 
@@ -137,7 +143,10 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
 
     Following its flash of brilliance, the creature proceeds to vigorously brush its large globular eye with the dental utensil.
 
-    -Satisfied with the trade, the creature gives you another small crystal. This one emits a faint PURPLE glow.->CREATURE_GAME
+    -Satisfied with the trade, the creature gives you another small crystal. This one emits a faint PURPLE glow.
+    {set("crystalPURPLE", 1)}
+    {get("crystalPURPLE") == "1":+ Purple crystal added to inventory.}
+    +[Continue.]->CREATURE_GAME
 
     =fish
     Holding the vile thing by the tippiest tip of its tail, you present the small fish-like beast to the creature.
@@ -148,7 +157,11 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
 
     The creature tentatively takes the vile little monster from your hand and stares at it. It turns the fish-like beast this way and that. Viewing the thing from nearly every angle. Once satisfied, the creature wallops the vicious little beast at least half a dozen times on a rock — an act which seems to only further enrage the angry little thing. Mandibles snapping. Eyes full of bloodlust. The creature flushes red. And the tiny little beast explodes with a loud pop.
 
-    As you wipe viscera from your [REDACTED] Corp issued space helmet visor — the creature hands you a crystal that emits a faint RED glow.->CREATURE_GAME
+    As you wipe viscera from your [REDACTED] Corp issued space helmet visor — the creature hands you a crystal that emits a faint RED glow.
+    {set("crystalRED", 1)}
+    {get("crystalRED") == "1":+ Red crystal added to inventory.}
+    
+    ++[Continue.]->CREATURE_GAME
 
 = helmet
 
@@ -170,18 +183,39 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
 
     -The creature takes the helmet from you and carefully sits it on top of its own “head.” The helmet does not fit at all.
 
-    The creature gives you another crystal. This one faintly glows GREEN.->CREATURE_GAME
+    The creature gives you another crystal. This one faintly glows GREEN.
+    {set("crystalGREEN", 1)}
+    {get("crystalGREEN") == "1":+ Green crystal added to inventory.}
+    ->CREATURE_GAME
 
 
 === INTERACT ===
+
 ->food_interact
 
-//{get("interact") == "0":->pool_interact}
-//{get("interact") == "1":->storm_interact}
-//{get("interact") == "2":->food_interact}
-//{get("interact") == "3":->DeadCritter_interact}
-//{get("interact") == "4":->image_interact}
-//{get("interact") == "5":->CREATURE_GAME}
+/*
+
+{get("ColorGun") == "1":
+
+->pool_interact
+
+-else:->pre_colorGun_text
+
+}
+
+{get("interact") == "1":->storm_interact}
+{get("interact") == "2":->food_interact}
+{get("interact") == "3":->DeadCritter_interact}
+{get("interact") == "4":->image_interact}
+{get("interact") == "5":->CREATURE_GAME}
+
+*/
+
+== pre_colorGun_text
+
+You have no way to communicate with the creature.
+
++[Continue.]->CREATURE_GAME
 
 ==pool_interact
 
