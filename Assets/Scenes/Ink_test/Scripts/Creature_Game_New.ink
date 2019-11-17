@@ -1,5 +1,7 @@
 EXTERNAL get(var)
 EXTERNAL set(var, arg1)
+EXTERNAL build_colorGun()
+
 
 ->CREATURE_GAME
 
@@ -57,22 +59,18 @@ You attempt to talk to the creature.
 
     * [Hey there little... er, cutie?] 
         It stares at you, unblinking.
-        //~ alter(bond, 0)
         ->CREATURE_GAME
         
     * [Can you speak?]
         It stares at you, mute and unblinking. It probably can't speak.
-        //~ alter(bond, 0)
         ->CREATURE_GAME
         
     * [I hate you. I hate this entire stupid planet.]
         It stares at you, unblinking. You feel bad for your outburst.
-        //~ alter(bond, 0)
         ->CREATURE_GAME
         
     * [GRAHHHRGH!]
         The creature smacks you.
-        //~ alter(bond, -10)
         ->CREATURE_GAME
 
 
@@ -80,6 +78,7 @@ You attempt to talk to the creature.
 
 === TRADE ===
 
+{build_colorGun()}
 {get("ColorGun") == "0":
 
 What will you trade?
@@ -189,19 +188,19 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
 =AI_colorGun_convo
 
 *AI:[...]
-<> Congrats, murderer. You've traded the creature for all the crystals. We can modify your busted muder tool into a decidedly-un-murderous tool for communicating with the creature.
+<> Congrats, murderer. You've traded the creature for all the crystals. We can jerry-rig your busted murder tool into a decidedly-un-murderous tool for communicating with the creature.
 
-        **Modify [REDACTED] Corp. plasma rifle into Color-gun.
-        {set("colorGun", 1)}
-        {get("colorGun") == "1":+ Color-gun added to inventory.}
-            ->CREATURE_GAME
+        **[Modify plasma rifle into Color-gun.]
+        You've modified the [REDACTED] Corp. Standard issue plasma rifle into the Color-gun.
+        
+        {get("ColorGun") == "1":+ Color-gun added to inventory.}
+            
+            ***[Continue.]->CREATURE_GAME
 
 
 === INTERACT ===
 
 ->food_interact
-
-/*
 
 {get("ColorGun") == "1":
 
@@ -216,8 +215,6 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
 {get("interact") == "3":->DeadCritter_interact}
 {get("interact") == "4":->image_interact}
 {get("interact") == "5":->CREATURE_GAME}
-
-*/
 
 == pre_colorGun_text
 
