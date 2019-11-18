@@ -6,6 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour 
 {
+    void Update()
+    {
+        if (BOND == "1" && BONDtoggle)
+        {
+            BONDtoggle = false;
+            GameObject.Find("Creature").GetComponent<Wander>().enabled = false;
+            GameObject.Find("Creature").GetComponent<Follow>().enabled = true;
+        }
+    }
+
     public string hands = "0";
     public string fish = "0";
     public string goo = "0";
@@ -21,5 +31,7 @@ public class Inventory : MonoBehaviour
     public string BOND = "0";
     public string hasLeft = "0";
     public string interact ="0";
+
+    private bool BONDtoggle = true;
 
 }

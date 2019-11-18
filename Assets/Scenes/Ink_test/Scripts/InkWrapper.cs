@@ -21,11 +21,11 @@ public class InkWrapper : MonoBehaviour {
 
 		story.BindExternalFunction ("build_colorGun", () => {
 		
-                string var1 = GameObject.Find("Player").GetComponent<Inventory>().crystalRED == "1";
-                string var2 = GameObject.Find("Player").GetComponent<Inventory>().crystalGREEN == "1";
-	        string var3 = GameObject.Find("Player").GetComponent<Inventory>().crystalPURPLE == "1";
-		string var4 = GameObject.Find("Player").GetComponent<Inventory>().crystalYELLOW == "1";
-	        string var5 = GameObject.Find("Player").GetComponent<Inventory>().crystalBLUE == "1";
+        bool var1 = GameObject.Find("Player").GetComponent<Inventory>().crystalRED == "1";
+        bool var2 = GameObject.Find("Player").GetComponent<Inventory>().crystalGREEN == "1";
+	    bool var3 = GameObject.Find("Player").GetComponent<Inventory>().crystalPURPLE == "1";
+		bool var4 = GameObject.Find("Player").GetComponent<Inventory>().crystalYELLOW == "1";
+		bool var5 = GameObject.Find("Player").GetComponent<Inventory>().crystalBLUE == "1";
 	        
             if (var1 && var2 && var3 &&  var4 && var5)
 			{
@@ -207,7 +207,8 @@ public class InkWrapper : MonoBehaviour {
 			Button choice = CreateChoiceView("End.");
 			choice.onClick.AddListener(delegate{
 				StartStory(DefaultStory);
-				GameObject.Find("Canvas").SetActive(false);
+				gameObject.GetComponent<InkWrapper>().canvas.SetActive(false);
+				GameObject.Find("Creature_Minigame_Background").SetActive(false);
 			});
 		}
 	}

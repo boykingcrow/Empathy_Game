@@ -6,6 +6,6 @@ public class Follow : MonoBehaviour
     void Update()
     {
         transform.LookAt(Player.transform);
-        transform.position += transform.forward * movementSpeed * Time.deltaTime;
+        transform.position += transform.forward * movementSpeed * 1.45f * Time.deltaTime;
     }
 }
