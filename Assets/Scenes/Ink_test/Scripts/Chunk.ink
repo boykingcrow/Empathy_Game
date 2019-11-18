@@ -1,12 +1,8 @@
-﻿EXTERNAL get(var)
+EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 
 VAR fishaction = 0
-
-{set("hands", 0)}
-{set("fish", 0)}
-{set("crystalBLUE", 0)}
-{set("hasLeft", 0)}
+VAR rockaction = 0
 
 ->CHUNK
 
@@ -14,7 +10,9 @@ VAR fishaction = 0
 	~ x = x + k
 
 ===CHUNK===
-{get("hasLeft") == "1":->puzzle}
+{get("hasLeft") == "1":
+->puzzle
+}
 
 {CHUNK == 1:Trouncing through, and over, glowing fungus with all the grace of a (very obese) elk — you walk for what seems like many miles (a few yards). You find a few big-ish chunks of your chip along the way.  Husks of their former selves, all burnt up or still smoldering.}
 
@@ -71,8 +69,6 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
 =climb
 
-{climb}
-
 {climb > 1: You climb the chunk again.}
 
 {climb == 1:With several attempts, and several tumbles, you manage to get enough of a foothold to climb the structure.} 
@@ -93,8 +89,6 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
         
         You stuff one leg, and a little less than half a pelvis into the hole before it dawns on you that this is more of a hobbit hole than a human-hole. Oh well.
 
-{get("hands") == "1": Did you actually think you could all the sudden fit through this tiny hole because you’re now minus one hand?}
-
             ++ [Climb down.] 
                 ->climbdown
 	
@@ -105,17 +99,17 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
 =new_options
 
- +[Drop through the hole.]
+     +[Drop through the hole.]
+            
+        {get("hands") == "0":
         
-{get("hands") == "0":
+        You stuff one leg, and a little less than half a pelvis into the hole before it dawns on you that this is more of a hobbit hole than a human-hole. Oh well.
+        
+         -else:Did you actually think you could all the sudden fit through this tiny hole because you’re now minus one hand?
+         
+         }
 
-You stuff one leg, and a little less than half a pelvis into the hole before it dawns on you that this is more of a hobbit hole than a human-hole. Oh well.
-
- -else:Did you actually think you could all the sudden fit through this tiny hole because you’re now minus one hand?
- 
- }
-
-->new_options
+    ->new_options
 
     +[Toss fish-like beast down the hole.]
     
@@ -125,7 +119,7 @@ You stuff one leg, and a little less than half a pelvis into the hole before it 
         ++[Climb down.]->climbdown
 
     +[Toss the crystal down the hole.]
-        
+        ~alter(rockaction, 1)
         You toss the glowing rock into the hole. You see a faint glow now radiating from the hole. Nothing else happens.
 
         ++[Climb down.]->climbdown
@@ -137,16 +131,17 @@ You stuff one leg, and a little less than half a pelvis into the hole before it 
 
     With a roll and  thud, you “climb” off the chunk of ship.
 
-{get("hands") == "0":
 
-    ->puzzle
-
--else:
+{rockaction == 1:
 
     *[Continue.]
     ->chunk_end
+-else:
 
+    ->puzzle
 }
+
+
 
 =leave
 
