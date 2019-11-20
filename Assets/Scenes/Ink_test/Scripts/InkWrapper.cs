@@ -208,7 +208,7 @@ public class InkWrapper : MonoBehaviour {
 			choice.onClick.AddListener(delegate{
 				StartStory(DefaultStory);
 				gameObject.GetComponent<InkWrapper>().canvas.SetActive(false);
-				GameObject.Find("Creature_Minigame_Background").SetActive(false);
+				//GameObject.Find("Creature_Minigame_Background").SetActive(false);
 			});
 		}
 	}
