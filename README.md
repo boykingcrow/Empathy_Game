@@ -1,2 +1,2 @@
-# Emapthy_Game
+# Empathy_Game
  
