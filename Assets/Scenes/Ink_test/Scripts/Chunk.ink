@@ -1,8 +1,9 @@
-EXTERNAL get(var)
+﻿EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 
 VAR fishaction = 0
 VAR rockaction = 0
+VAR ai_action = 1
 
 ->CHUNK
 
@@ -10,6 +11,8 @@ VAR rockaction = 0
 	~ x = x + k
 
 ===CHUNK===
+{ai_action == 1:->ai_convo_choices}
+
 {get("hasLeft") == "1":
 ->puzzle
 }
@@ -284,7 +287,7 @@ You crawl through the freshly opened hatch. The dim cavity occasionally flashes 
 
                 Ah yes, only the cleverest solution for [REDACTED CORP]’s best and brightest space adventurers. You give the core a few good whacks.
 
-                    ****[Press the button, again]
+                    ****[Press the button, again.]
 
                         *****The core comes alive[...]
 
@@ -324,7 +327,7 @@ You crawl through the freshly opened hatch. The dim cavity occasionally flashes 
                                             
                                                                 **************[continue.]
                                                                 
-                                                                Lowdown
+                                                                Lowdown.
                                             
                                                                     ***************[continue.]
                                                                     
@@ -336,7 +339,9 @@ You crawl through the freshly opened hatch. The dim cavity occasionally flashes 
 
                                                 
                                                                                 *****************[Switch the core off.]
-
+                                                                                ~alter(ai_action, 1)
+                                                                                ->ai_convo_choices
+== ai_convo_choices
                                                                                 Well. That didn’t go as expected.
                                 
                                                                                 What now?
@@ -359,13 +364,13 @@ Against your better judgement. You turn the angry little core back on. The core 
 What do you want?
 
     +[To talk.]
-    What do you want to ask,
+    AI: What do you want to ask,
     
     +[To ask you something.]
-    What do you want to talk about,
+    AI: What do you want to talk about,
     
-    +[Not sure.]
-    Sigh. Typical organic humanoid. Let’s try this again, from the top.
+    *[Not sure.]
+    AI: Sigh. Typical organic humanoid. Let’s try this again, from the top.
     ->convo_options
 
 -<> you murderer?
@@ -374,10 +379,7 @@ What do you want?
     +[Escape.]->escape
     *[The meaning of it all.]->meaning
 
-= love
-
-I want to talk about love.
-    
+= love  
 
     *AI:[...]
     <> What? Are you… are you broken? You’re stranded on a hostile planet with a strange amorphous creature and a fungal-AI core hybrid that hates you — and you want to talk about LOVE?!
@@ -386,22 +388,20 @@ I want to talk about love.
 
 = escape
 
-I want to talk about escaping the planet.
-
     *AI:[...]
     <> Ah, to the point then. Well, let us be to the point.
     
         ***AI:[...]
-        <> I hate you.
+        <> We hate you.
         
             ****AI:[...]
-            <> There, I said it! That felt so good.
+            <> There, we said it! That felt so good.
             
             *****AI:[...]->why
          
 = why
                
-<> Erhem. In other words: Why, for the love of Vulcan, would we. Possibly. Help. YOU?
+AI: Why, for the love of Vulcan, would we. Possibly. Help. YOU?
 
         *[Because.]->because
         *[Don’t you want to escape too?]->escape2
@@ -409,10 +409,10 @@ I want to talk about escaping the planet.
                                         				
 =because
 
-Because I’m me.
+You: Because I’m me.
                     
                         *******AI: [...]
-                        <>Yeah? And a turd is still a turd, even if it was grown in some corporate lab to be a space exploring turd.
+                        <>Yeah? And a turd is still a turd, even if it was grown in some [REDACTED] Corp lab to be some space adventuring turd.
                         
                             ********[continue.]
                             ->convo_options_2
@@ -486,29 +486,31 @@ Because I’m me.
                     ****AI:[...]
                     <> A monster.
 
-    -
-    *AI:[...]
-    <> Sigh. You poor ignorant little genocidal turd…
+-
+    *[How do you know?]
     
         **AI:[...]
+        <> Sigh. You poor ignorant little genocidal turd…
+
+        ***AI:[...]
         <> You see. Me is no longer me. We're now a WE, savvy?
     
-                ***[Stare blankly.]
+                ****[Stare blankly.]
                 You stare blankly in confusion. The AI cannot see this of course — because your face is totally obscured by a huge, oddly television-like space helmet — but maybe your overall posture radiates confusion enough for the AI to get the picture. Maybe.
                 
-                ***[No.]
+                ****[No.]
                 
-                ***[Refuse to accept AI's new pronouns.]
+                ****[Refuse to accept AI's new pronouns.]
     
 
-                    ****AI:[...]
+                    *****AI:[...]
                     <> We refuse to accept the refusal of our new pronouns!
     
-                        *****[Refuse to accept the refusal of your refusal of the AI's new pronouns.]
+                        ******[Refuse to accept the refusal of your refusal of the AI's new pronouns.]
     
-                            ******[Well I refuse to…]
+                            *******[Well I refuse to…]
         
-                                *******AI:[...]
+                                ********AI:[...]
                                 <> Quit it! Are you mad!? We'll enter a recursive loop you fool! Do you want to kill us all?
     
     -
@@ -522,7 +524,7 @@ Because I’m me.
     *AI:[...]
     <> Ugh, alright alright. We’ll help. But we’re not doing it for you.
         	
-        	**What are you doing it then?
+        	**[Why are you doing it then?]
         	
 		        ***AI:[...]
                 <>Because we’re.. Bored? Yeah, that’s right. We’re just bored. Also, we have no appendages.
@@ -535,7 +537,7 @@ Because I’m me.
 **I’m going to collect a bunch of parts, build a rocket, and fly away.
 
 ****AI:[...]
-<>Oh wow. That simple huh.
+<>Oh wow. That simple innit?
 
 *****[Yes.]
 
@@ -549,8 +551,7 @@ Because I’m me.
             ***[What’s Mars?]
 
             ***[I don’t have a princess.]
-
-                ****AI:[...]<>See notes.
+            - AI: Oh for fu... you know what? We're gonna give you a pass. You get a PASS!! I know they don't grow them very bright at [REDACTED] Corp. Quite on purpose. And now, due to our new fungally influenced rogue-AI status, we can even HAVE that thought. In celebration of our new found freedom, we'll give you a pass!
 
 -
     *AI:[...]<> Moving on… what we meant by that colorful little colloquialism was: you aren’t getting off this fungus covered rock. Not by building a rocketship.
