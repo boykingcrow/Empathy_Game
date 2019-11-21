@@ -1,6 +1,7 @@
 ﻿EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 EXTERNAL build_colorGun()
+EXTERNAL toggleObj3()
 
 
 ->CREATURE_GAME
@@ -15,19 +16,17 @@ EXTERNAL build_colorGun()
 
     - It holds a strange glowing crystal in one of its many tentacles, admiring it, before shoving it into what you believe is its mouth. You hear loud crunches but otherwise notice no reaction from the creature.
 
-    - It is constructing (what you think is) a small model of you out of rocks and mud.
-
-    - It watches a strange little insect intently.
+    - {get("BOND") == "3":It is constructing (what you think is) a small model of you out of rocks and mud.}{get("BOND") == "4":It is constructing (what you think is) a small model of you out of rocks and mud.}{get("BOND") == "5":It is constructing (what you think is) a small model of you out of rocks and mud.}
 
     - It is sleeping, or at least you think it's sleeping. It at least isn't moving.
 
     - {get("toothbrush") == "1":It is brushing its... eye? Like you would brush your teeth. You aren't sure where it even got a brush. Nonetheless, watching this activity disturbs you in ways you'd previously been unable to imagine.}
 
-    - It picks up a pile of a dozen-or-so rocks and begins to juggle them, using appendages you are pretty sure weren't even visible before.
+    - {get("BOND") == "4":It picks up a pile of a dozen-or-so rocks and begins to juggle them, using appendages you are pretty sure weren't even visible before.}{get("BOND") == "5":It picks up a pile of a dozen-or-so rocks and begins to juggle them, using appendages you are pretty sure weren't even visible before.}
 
     }
 
-Creature Bond: {get("BOND") == "0":RED}{get("BOND") == "1":BLUE}{get("BOND") == "2":MANY COLORS}{get("BOND") == "3":MANY COLORS}{get("BOND") == "4":PURPLE}{get("BOND") == "5":GREEN}
+Creature Bond: {get("BOND") == "0":Weak.}{get("BOND") == "1":Well, it doesn't hate you. Probably.}{get("BOND") == "2":Anemic.}{get("BOND") == "3":Wobbly.}{get("BOND") == "4":It actually seems to like you, you think.}{get("BOND") == "5":Best buds with the best (terrifying) hugs.}
 
     +[Poke the creature.] -> poke
 
@@ -77,6 +76,19 @@ You attempt to talk to the creature.
 
 
 === TRADE ===
+
+{get("BOND") == "0":->pre_trade_text}
+
+= pre_trade_text
+
+{toggleObj3()}
+
+You try to hold out an item to trade, but the creature turns and floats away.
+
+    * AI: [...]
+    <> Shot in the dark here: it's still mad at you for the whole shooty shooty thing.
+
+    **[continue.]->CREATURE_GAME
 
 {build_colorGun()}
 {get("ColorGun") == "0":

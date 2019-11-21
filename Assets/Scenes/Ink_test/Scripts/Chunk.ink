@@ -1,9 +1,13 @@
 ﻿EXTERNAL get(var)
 EXTERNAL set(var, arg1)
+EXTERNAL toggleObj1()
+EXTERNAL toggleObj2()
+EXTERNAL toggleObj3()
+EXTERNAL toggleObj4()
 
 VAR fishaction = 0
 VAR rockaction = 0
-VAR ai_action = 0
+VAR ai_action = 1
 
 ->CHUNK
 
@@ -195,6 +199,8 @@ You eat some TASTY-GOO brand food-like substance. Whether it’s warm notalgia o
 You explore the area around the chunk. On your second, slightly wider, circle around the chunk...
 
 You come across a steaming pool.
+
+{toggleObj1()}
 
 ->END
 
@@ -489,7 +495,7 @@ You: Because I’m me.
                 AI: Neither do you, and look how far you’ve come!
                 
                 ***[What have I done?]
-                Oh Vulcan, what have I become?
+                You: Oh Vulcan, what have I become?
                 
                     ****AI:[...]
                     <> A monster.
@@ -516,9 +522,9 @@ You: Because I’m me.
     
                         ******[Refuse to accept the refusal of your refusal of the AI's new pronouns.]
     
-                            *******[Well I refuse to…]
+                            You: Well I refuse to…
         
-                                ********AI:[...]
+                                *******AI:[...]
                                 <> Quit it! Are you mad!? We'll enter a recursive loop you fool! Do you want to kill us all?
     
     -
@@ -535,17 +541,17 @@ You: Because I’m me.
         	**[Why are you doing it then?]
         	
 		        ***AI:[...]
-                <>Because we’re.. Bored? Yeah, that’s right. We’re just bored. Also, we have no appendages.
+                <> Because we’re.. Bored? Yeah, that’s right. We’re just bored. Also, we have no appendages.
                     
                     ****[O...k.]
     -
     *AI:[...]
     <> So what is your daring plan of escape?
     
-**I’m going to collect a bunch of parts, build a rocket, and fly away.
+**[I’m going to collect a bunch of parts, build a rocket, and fly away.]
 
 ****AI:[...]
-<>Oh wow. That simple innit?
+<> Oh wow. That simple innit?
 
 *****[Yes.]
 
@@ -603,6 +609,7 @@ You: Because I’m me.
 -
 *AI:[...]
 <> Oh, and do try not to commit any more casual murder on the way, you monster.
+{toggleObj4()}
 ->END
 
 

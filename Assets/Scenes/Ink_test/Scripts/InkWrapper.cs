@@ -19,17 +19,52 @@ public class InkWrapper : MonoBehaviour {
 		
 		story = new Story (input.text);
 
-		story.BindExternalFunction ("toggleObj", () => {
+		//toggles gameobjects from within ink stories
+		story.BindExternalFunction ("toggleObj1", () => {
 
-		if(object1 != null)
-		{
-			
-			bool isActive = object1.activeSelf;
-			object1.SetActive(!isActive);
-		}
+			if(object1 != null)
+				{
+					
+					bool isActive = object1.activeSelf;
+					object1.SetActive(!isActive);
+				}
+
+		});
+
+		story.BindExternalFunction ("toggleObj2", () => {
+
+			if(object2 != null)
+				{
+					
+					bool isActive = object2.activeSelf;
+					object2.SetActive(!isActive);
+				}
 
 		});
 		
+		story.BindExternalFunction ("toggleObj3", () => {
+		
+			if(object3 != null)
+				{
+					
+					bool isActive = object3.activeSelf;
+					object3.SetActive(!isActive);
+				}
+
+		});
+
+		story.BindExternalFunction ("toggleObj4", () => {
+		
+			if(object4 != null)
+				{
+					
+					bool isActive = object4.activeSelf;
+					object4.SetActive(!isActive);
+				}
+
+		});
+		
+		//sets colorGun active once all crystals are traded for
 		story.BindExternalFunction ("build_colorGun", () => {
 		
         bool var1 = GameObject.Find("Player").GetComponent<Inventory>().crystalRED == "1";

@@ -119,6 +119,5 @@ Okay, let’s think this out. There are two colossal-ish problems to solve if yo
 Problem one, the various materials — formerly known as your ship — have been scattered over a strip of land approximately two miles in length. But that, in itself, is more of a time management issue than a good-and-proper problem. Which brings you to the realization that not all chunks are created equal. In other words, some debris are small, things you can pick up and carry. Some, are not. Unless you can deadlift 1.5 tons (hint: you can’t), this is quite an obstacle.
 
 *** [Problem two]
-
 Problem two, even if you had all the materials in one place, you are lacking the tools to put it all together and get it working. This can be divided into a set of smaller problems: Sub-problem A: You are pretty sure there was an arc welder — or was it a stir welder? — stored away somewhere. It is essential that you locate it. You know, to put it all together. Glue just won’t do. Sub-problem B: Even a perfectly whole-again ship is useless without a propulsion module. Sub-problem C: And you, in turn, will be useless (a.k.a. dead) without a life support module. Sub-problem D: Even if you were to make it out of orbit — without your trusty A.I., you’d end up immediately. Invariably. Ineffably. Lost. -> END
 

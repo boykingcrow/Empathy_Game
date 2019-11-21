@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
 {
     void Update()
     {
-        if (BOND == "1" && BONDtoggle)
+        if (BOND == "5" && BONDtoggle)
         {
             BONDtoggle = false;
             GameObject.Find("Creature").GetComponent<Wander>().enabled = false;
