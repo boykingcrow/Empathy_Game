@@ -831,7 +831,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 205267193}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6165c9d1bf416bc4ca9c4ff4da789c8a, type: 3}
   m_Name: 
@@ -1347,7 +1347,7 @@ MeshCollider:
   m_GameObject: {fileID: 444725449}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -1634,7 +1634,7 @@ MeshCollider:
   m_GameObject: {fileID: 630238327}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -3090,7 +3090,7 @@ MonoBehaviour:
   crystalYELLOW: 0
   crystalBLUE: 0
   ColorGun: 0
-  BOND: 0
+  BOND: 1
   hasLeft: 0
   interact: 0
 --- !u!1001 &1237030259
@@ -3346,7 +3346,7 @@ MeshCollider:
   m_GameObject: {fileID: 1380843209}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -4757,23 +4757,23 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1858210487
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1858210486}
-  m_LocalRotation: {x: -0.29646337, y: 0.6264091, z: -0.56197715, w: 0.45155603}
-  m_LocalPosition: {x: 0, y: 0, z: -1082.8}
+  m_LocalRotation: {x: -0.2655206, y: 0.29000226, z: -0.7359483, w: 0.55116034}
+  m_LocalPosition: {x: 0, y: 0, z: -1084.51}
   m_LocalScale: {x: 13.074995, y: 4.681605, z: 2.3867247}
   m_Children: []
   m_Father: {fileID: 1402241109}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 25.869001, y: 87.48801, z: -77.64101}
+  m_LocalEulerAnglesHint: {x: 7.7100005, y: 45.805, z: -103.079}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -806.38, y: 1120.12}
+  m_AnchoredPosition: {x: -807.48, y: 1120.12}
   m_SizeDelta: {x: 1.2, y: 1.398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1858210488
@@ -4809,8 +4809,8 @@ MonoBehaviour:
   canvas: {fileID: 1556175952}
   story: {fileID: 4900000, guid: 509c116e3164a924b8bfea5a392f86d3, type: 3}
   background: {fileID: 0}
---- !u!64 &1858210491
-MeshCollider:
+--- !u!65 &1858210491
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -4818,11 +4818,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.0000005, y: 1.0000006, z: 0.0000009536743}
+  m_Center: {x: 0.0000038146973, y: 0.00000166893, z: 0.00000047683716}
 --- !u!23 &1858210492
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5036,7 +5034,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1914569699}
   m_LocalRotation: {x: 0.054336775, y: 0.38202104, z: -0.022507029, w: 0.9222803}
-  m_LocalPosition: {x: 0, y: 0, z: -25.508564}
+  m_LocalPosition: {x: 0, y: 0, z: -26.28}
   m_LocalScale: {x: 0.03812562, y: 0.038125608, z: 0.038125604}
   m_Children:
   - {fileID: 1380843213}
@@ -5048,7 +5046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 6.7430005, y: 45.000004, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24.608562, y: 8.439426}
+  m_AnchoredPosition: {x: -25.53, y: 8.21}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2003454349
@@ -5194,7 +5192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2061711006
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5316,7 +5314,7 @@ MeshCollider:
   m_GameObject: {fileID: 2079687681}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14

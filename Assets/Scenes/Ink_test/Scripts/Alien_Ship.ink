@@ -171,5 +171,6 @@ You mull around. Kick around stones and bits of debris. Careful not to disturb a
          **[Hold on a...]
                                             
             ***AI:[...]<> Get to work! Empathy module 2!
-            {set ("hasLeft", 2)}            
+            {set ("hasLeft", 2)} 
+            {set ("BOND", 1)}            
             ->END

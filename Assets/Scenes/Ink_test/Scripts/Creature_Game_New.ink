@@ -26,9 +26,11 @@ EXTERNAL toggleObj3()
 
     }
 
-Creature Bond: {get("BOND") == "0":Weak.}{get("BOND") == "1":Well, it doesn't hate you. Probably.}{get("BOND") == "2":Anemic.}{get("BOND") == "3":Wobbly.}{get("BOND") == "4":It actually seems to like you, you think.}{get("BOND") == "5":Best buds with the best (terrifying) hugs.}
+Creature Bond: {get("BOND") == "null":What bond?.}{get("BOND") == "0":Weak.}{get("BOND") == "1":Well, it doesn't hate you. Probably.}{get("BOND") == "2":Anemic.}{get("BOND") == "3":Wobbly.}{get("BOND") == "4":It actually seems to like you, you think.}{get("BOND") == "5":Best buds with the best (terrifying) hugs.}
 
+    {poke < 2:
     +[Poke the creature.] -> poke
+    }
 
     +[Talk to the creature.] -> talk
 
@@ -36,7 +38,8 @@ Creature Bond: {get("BOND") == "0":Weak.}{get("BOND") == "1":Well, it doesn't ha
     
     +[Interact.]->INTERACT
 
-    +[Leave.]->DONE
+    +[Leave.]
+    ->END
 
 
 
@@ -48,7 +51,8 @@ You reach out and poke the creature.
         It lashes a tentacle at you.
             + [Dodge.] -> CREATURE_GAME 
     - else:
-            *[It smacks you.] ->CREATURE_GAME
+            It smacks you. 
+                *[continue.]->CREATURE_GAME
     }
 
 
@@ -77,7 +81,41 @@ You attempt to talk to the creature.
 
 === TRADE ===
 
-{get("BOND") == "0":->pre_trade_text}
+{get("BOND") == "0":
+
+->pre_trade_text
+
+-else:
+->trade_choices
+
+}
+
+= trade_choices
+
+{build_colorGun()}
+{get("ColorGun") == "0":
+
+What will you trade?
+
+    {get("goo") == "1":
+    *[TASTY GOO brand food-like substance.]-> goo
+    }
+    {get("image") == "1":
+    *[An image of creature’s family]-> image
+    }
+    {get("toothbrush") == "1":
+    *[A toothbrush]->toothbrush
+    }
+    {get("fish") == "1":
+    *[The small fish-like beast]->fish
+    }
+    {get("helmet") == "1":
+    *[A REDACTED Corp standard issue Space Helmet.]->helmet
+    }
+    
+-else:->AI_colorGun_convo
+
+}
 
 = pre_trade_text
 
@@ -89,23 +127,6 @@ You try to hold out an item to trade, but the creature turns and floats away.
     <> Shot in the dark here: it's still mad at you for the whole shooty shooty thing.
 
     **[continue.]->CREATURE_GAME
-
-{build_colorGun()}
-{get("ColorGun") == "0":
-
-What will you trade?
-
-    *[TASTY GOO brand food-like substance.]-> goo
-    *[An image of creature’s family]-> image
-    *[A toothbrush]->toothbrush
-    *[The small fish-like beast]->fish
-    *[A REDACTED Corp standard issue Space Helmet.]->helmet
-    
--else:->AI_colorGun_convo
-
-}
-
-
 
 =goo
 
@@ -437,7 +458,7 @@ You have no way to communicate with the creature.
                 You smash the grotesque non-food against your visor. The AI and, seemingly, even the creature find it hilarious.
 
             {set("BOND", "3")}
-            {get("BOND") == "1":+ BOND INCREASED}
+            {get("BOND") == "3":+ BOND INCREASED}
             {set("interact", "3")}
 
                 ***[continue.]->CREATURE_GAME
@@ -445,9 +466,11 @@ You have no way to communicate with the creature.
             **[Rub your stomach]
                 Nothing happens. ->color_puzzle3_end
             ++[Throw it on the ground.]
-            The creature turns RED and leaves. -> END
+            The creature turns RED and leaves. 
+            -> END
             **[Leave.]
-            You’ve had enough. You walk away. -> END
+            You’ve had enough. You walk away.
+             -> END
 
 ==DeadCritter_interact
 
@@ -490,7 +513,9 @@ You Color-gun washes the area in a deep BLUE glow. The creature turns to face yo
 
 The creature returns to its neutral state of many shifting colors. You can’t help but notice, there are now many more shades of BLUE and YELLOW amongst the creature’s usual emulsions.
 
-    +[Leave.]->END
+    +[Leave.]
+    ->END
+    
     +[Bury the body.]
 
     You have mostly your hands (your previously crafted janky shrapnel handaxe proves remarkably ineffective at digging, sadly) — but eventually you create a small hole. The creature notices what you’re doing and begins to help, lifting clod after clod of earth with both tentacle and strange gaseous telekinesis.
@@ -505,7 +530,7 @@ The creature returns to its neutral state of many shifting colors. You can’t h
         You leave, the creature lingers for a few fleeting moments and then follows.
 
 {set("BOND", "4")}
-{get("BOND") == "1":+ BOND INCREASED}
+{get("BOND") == "4":+ BOND INCREASED}
 {set("interact", "4")}
 
             ***[continue.]->CREATURE_GAME
@@ -518,7 +543,8 @@ The creature returns to its neutral state of many shifting colors. You can’t h
     
         +[Keep watching.]->color_prologue
         +[Use Color-gun to interact.]->color_puzzle5
-        +[Leave]->END
+        +[Leave]
+        ->END
 
     = color_prologue
 
@@ -579,9 +605,10 @@ The creature returns to its neutral state of many shifting colors. You can’t h
         Your Color-gun emits a dull PURPLE. In response the YELLOW fades from the creature’s form and is replaced by a similar PURPLE. And after a few moments, its neutral swirling mixture of color returns.
 
         {set("BOND", "5")}
-        {get("BOND") == "1":+ BOND FULLY INCREASED}
+        {get("BOND") == "5":+ BOND FULLY INCREASED}
         {set("interact", "5")}
 
-        *[continue.]->END
+        *[continue.]
+        ->END
 
 

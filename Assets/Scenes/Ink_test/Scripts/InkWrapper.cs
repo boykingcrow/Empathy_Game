@@ -19,6 +19,19 @@ public class InkWrapper : MonoBehaviour {
 		
 		story = new Story (input.text);
 
+		//exits creature game from within
+		/*story.BindExternalFunction ("exit_dis_gaem", () => {
+
+			if(GameObject.Find("Creature_Game") != null)
+				{
+					
+					bool isActive = GameObject.Find("Creature_Game").activeSelf;
+					GameObject.Find("Creature_Game").SetActive(!isActive);
+				}
+
+
+		});*/
+		
 		//toggles gameobjects from within ink stories
 		story.BindExternalFunction ("toggleObj1", () => {
 
@@ -254,7 +267,7 @@ public class InkWrapper : MonoBehaviour {
 			choice.onClick.AddListener(delegate{
 				StartStory(DefaultStory);
 				gameObject.GetComponent<InkWrapper>().canvas.SetActive(false);
-				//GameObject.Find("Creature_Minigame_Background").SetActive(false);
+				GameObject.Find("Creature_Minigame_Background").SetActive(false);
 			});
 		}
 	}
