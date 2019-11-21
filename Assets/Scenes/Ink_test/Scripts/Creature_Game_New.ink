@@ -111,7 +111,8 @@ What will you trade?
 After said smearing, the creature, seemingly satisfied with the trade, hands you a small crystal that glows YELLOW.
     {set("crystalYELLOW", 1)}
     {get("crystalYELLOW") == "1":+ Yellow crystal added to inventory.}
-    +[continue.]->CREATURE_GAME
+            
+            ***[continue.]->CREATURE_GAME
 
 = image
 
@@ -120,7 +121,8 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
     The creature hands you a small crystal that glows a dull BLUE and wanders away.
     {set("crystalBLUE", 1)}
     {get("crystalBLUE") == "1":+ Blue crystal added to inventory.}
-    +[continue.]->CREATURE_GAME
+
+    *[continue.]->CREATURE_GAME
 
 = toothbrush
     You offer the creature a toothbrush. 
@@ -129,12 +131,12 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
 
     *AI:[...] <> The critter obviously doesn’t know the proper usage of a bloody toothbrush… Show. It.
 
-        *[Pantomime brushing your teeth]
+        **[Pantomime brushing your teeth.]
         
         You pantomime brushing your teeth. This looks quite absurd. As you happen to have on a space helmet.
-        *[Pantomime cleaning something]
+        **[Pantomime cleaning something.]
         
-        You find some random piece of debris and exaggeratedly go about fake cleaning it, you feel as if you get the point across — but in all likelihood, to an outsider, you appear to be attacking a scrap of composite material with a small stick.
+        You find some random piece of debris and exaggeratedly go about fake cleaning it, you feel as if you get the point across -- but in all likelihood, to an outsider, you appear to be attacking a scrap of composite material with a small stick.
 
     -The creature takes the toothbrush from your hand and… just sort of stares at it (intently?) for a while before a flash of sudden color hints at an insight.
 
@@ -143,7 +145,8 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
     -Satisfied with the trade, the creature gives you another small crystal. This one emits a faint PURPLE glow.
     {set("crystalPURPLE", 1)}
     {get("crystalPURPLE") == "1":+ Purple crystal added to inventory.}
-    +[continue.]->CREATURE_GAME
+
+            ***[continue.]->CREATURE_GAME
 
     =fish
     Holding the vile thing by the tippiest tip of its tail, you present the small fish-like beast to the creature.
@@ -158,32 +161,42 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
     {set("crystalRED", 1)}
     {get("crystalRED") == "1":+ Red crystal added to inventory.}
     
-    ++[continue.]->CREATURE_GAME
+        **[continue.]->CREATURE_GAME
 
 = helmet
 
-    You hold out the extra [REDACTED] Corp standard issue space helmet to the creature. The helmet is identical to your own in every way, almost. It, however, is unfortunately mauve.
+    {helmet == 1:You hold out the extra [REDACTED] Corp standard issue space helmet to the creature. The helmet is identical to your own in every way, almost. It, however, is unfortunately mauve.}
 
-    *AI:[...]<>How gauche…
+    *AI:[...]<>
+    How gauche…
 
-    -The creature takes the helmet and inspects it. 
+    -The creature takes the helmet and inspects it.
 
-        *[Point to your own helmet.]
+    *[Point to your own helmet.]
+    You point to your own helmet.
+
+    The creature stares at you blankly.
+    ->helmet
+
+    +[Take off your helmet to show the creature how it works.]
+
+        ++AI:[...]<>...I would strongly advise against the thought you are currently having. Because, of course, you will die a horrible and agonizingly painful death.
         
-        You point to your own helmet.
-        
-        *[Take off your helmet to show the creature how it works.]
-        
-            **AI:[...]<>...I would strongly advise against the thought you are currently having. Because, of course, you will die a horrible and agonizingly painful death.
-        
-            **[“Decide” not to die a horrible and agonizingly painful death in order to instruct the creature on the proper use of space helmets and instead merely point to your own helmet]
+            +++[“Decide” not to die a horrible death]
+             You decide not to die a horrible and agonizingly painful death in order to instruct the creature on the proper use of space helmets and instead merely point to your own helmet.
+             
+                ++++[continue.]->helmet2
 
-    -The creature takes the helmet from you and carefully sits it on top of its own “head.” The helmet does not fit at all.
+= helmet2
 
-    The creature gives you another crystal. This one faintly glows GREEN.
-    {set("crystalGREEN", 1)}
-    {get("crystalGREEN") == "1":+ Green crystal added to inventory.}
-    ->CREATURE_GAME
+                The creature takes the helmet from you and carefully sits it on top of its own “head.” The helmet does not fit at all.
+
+                The creature gives you another crystal. This one faintly glows GREEN.
+                
+                {set("crystalGREEN", 1)}
+                {get("crystalGREEN") == "1":+ Green crystal added to inventory.}
+                    
+                    *[continue.]->CREATURE_GAME
     
 =AI_colorGun_convo
 

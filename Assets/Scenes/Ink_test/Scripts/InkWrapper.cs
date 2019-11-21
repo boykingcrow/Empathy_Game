@@ -19,12 +19,13 @@ public class InkWrapper : MonoBehaviour {
 		
 		story = new Story (input.text);
 
-		story.BindExternalFunction ("toggleShip", () => {
+		story.BindExternalFunction ("toggleObj", () => {
 
-		if(GameObject.Find("AlienShip") != null)
+		if(object1 != null)
 		{
 			
-			GameObject.Find("AlienShip").SetActive(true);
+			bool isActive = object1.activeSelf;
+			object1.SetActive(!isActive);
 		}
 
 		});
@@ -267,6 +268,38 @@ public class InkWrapper : MonoBehaviour {
 
 	[SerializeField]
 	public GameObject canvas;
+
+	[SerializeField]
+	public GameObject object1;
+
+	[SerializeField]
+	public GameObject object2;
+
+	[SerializeField]
+	public GameObject object3;
+
+	[SerializeField]
+	public GameObject object4;
+
+	[SerializeField]
+	public GameObject object5;
+
+	[SerializeField]
+	public GameObject object6;
+	
+	[SerializeField]
+	public GameObject object7;
+
+	[SerializeField]
+	public GameObject object8;
+
+	[SerializeField]
+	public GameObject object9;
+
+	[SerializeField]
+	public GameObject object10;
+
+
 
 	// UI Prefabs
 	[SerializeField]
