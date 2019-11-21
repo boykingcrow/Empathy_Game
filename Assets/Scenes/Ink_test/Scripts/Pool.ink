@@ -86,7 +86,7 @@ The crash obviously damaged you more than you thought. The front bits of your ne
 
 {get("crystalBLUE") == "1":+ BLUE Crystal added to inventory.}
 {get("fish") == "1":+ Small fish-like beast added to inventory.}
-{get("hands") == "1":+ Hand removed from body.}
+{get("hands") == "1":- Hand removed from body.}
 
 Your suit’s automatic ‘don’t die’ systems manage to seal the wound and  stem the massive bleeding, but you pass out anyway.
 

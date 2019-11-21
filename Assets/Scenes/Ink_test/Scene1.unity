@@ -579,7 +579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &197757097
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1860,7 +1860,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7dc0f67617795d941b1ca4fc919548af, type: 2}
+  - {fileID: 2100000, guid: bbb7a0d6fd973a740b69127a052c569a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1893,16 +1893,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 646422168}
-  m_LocalRotation: {x: 0.010645991, y: 0.38610286, z: -0.0028057562, w: 0.9223901}
-  m_LocalPosition: {x: 0, y: 0, z: -1068.3}
-  m_LocalScale: {x: 4.4304223, y: 1.8616804, z: 0.9716505}
+  m_LocalRotation: {x: -0.04084528, y: 0.12255688, z: 0.013303002, w: 0.99153143}
+  m_LocalPosition: {x: 0, y: 0, z: -1064.59}
+  m_LocalScale: {x: 6.064362, y: 1.8616804, z: 0.9716505}
   m_Children: []
   m_Father: {fileID: 1402241109}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 1.2490001, y: 45.429, z: 0.17500001}
+  m_LocalEulerAnglesHint: {x: -4.833, y: 14.053, z: 0.94100004}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -833.19037, y: 1115.41}
+  m_AnchoredPosition: {x: -832.4701, y: 1117.27}
   m_SizeDelta: {x: 1.098, y: 1.398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &705796178
@@ -2374,8 +2374,8 @@ GameObject:
   - component: {fileID: 947553674}
   - component: {fileID: 947553673}
   - component: {fileID: 947553677}
-  - component: {fileID: 947553671}
   - component: {fileID: 947553676}
+  - component: {fileID: 947553671}
   - component: {fileID: 947553670}
   m_Layer: 0
   m_Name: Pool
@@ -2413,7 +2413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd631dcea2ffc7d47894601aac8525ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToAppear: {fileID: 205267193}
+  objectToAppear: {fileID: 1858210486}
 --- !u!114 &947553671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2422,7 +2422,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 947553668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1176d66fd5565c4da249a88d643b29a, type: 3}
+  m_Script: {fileID: 11500000, guid: 92c0c2650249f7840a95be16afd9262e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1556175952}
@@ -3014,7 +3014,7 @@ MonoBehaviour:
   crystalBLUE: 0
   ColorGun: 0
   BOND: 0
-  hasLeft: 0
+  hasLeft: 2
   interact: 0
 --- !u!1001 &1237030259
 Prefab:
@@ -4559,6 +4559,7 @@ GameObject:
   - component: {fileID: 1858210491}
   - component: {fileID: 1858210490}
   - component: {fileID: 1858210489}
+  - component: {fileID: 1858210488}
   m_Layer: 0
   m_Name: AlienShip
   m_TagString: Untagged
@@ -4573,7 +4574,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1858210486}
   m_LocalRotation: {x: -0.10843798, y: 0.4563564, z: -0.626059, w: 0.6229207}
-  m_LocalPosition: {x: 0, y: 0, z: -1088.18}
+  m_LocalPosition: {x: 0, y: 0, z: -1082.8}
   m_LocalScale: {x: 13.074995, y: 4.681605, z: 2.3867247}
   m_Children: []
   m_Father: {fileID: 1402241109}
@@ -4581,9 +4582,21 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 25.869001, y: 51.514004, z: -77.64101}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -815.62, y: 1117.5168}
+  m_AnchoredPosition: {x: -808.65, y: 1120.24}
   m_SizeDelta: {x: 1.2, y: 1.398}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1858210488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858210486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd631dcea2ffc7d47894601aac8525ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToAppear: {fileID: 205267193}
 --- !u!222 &1858210489
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4634,7 +4647,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: fee90648a7610594a9f371a7bfe241a7, type: 2}
+  - {fileID: 2100000, guid: a1587db271829174ea82fc6a81f79cd7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

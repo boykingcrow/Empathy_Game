@@ -3,7 +3,7 @@ EXTERNAL set(var, arg1)
 
 VAR fishaction = 0
 VAR rockaction = 0
-VAR ai_action = 1
+VAR ai_action = 0
 
 ->CHUNK
 
@@ -11,6 +11,7 @@ VAR ai_action = 1
 	~ x = x + k
 
 ===CHUNK===
+
 {ai_action == 1:->ai_convo_choices}
 
 {get("hasLeft") == "1":
@@ -68,7 +69,11 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
 =look
 
-    You walk around the web covered husk, looking for anything even a tad useful. You see a small hole towards the top of the structure.->puzzle
+    You walk around the web covered husk, looking for anything even a tad useful. You see a small hole towards the top of the structure. You also stumble upon a remarkably undamaged [REDACTED] Corp standard issue space helmet.
+*[Pick up.]
+{set("helmet", 1)}
+{get("helmet") == "1":+ Space Helmet added to inventory.}
+->puzzle
 
 =climb
 

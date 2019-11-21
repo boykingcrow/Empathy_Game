@@ -2,6 +2,7 @@
 EXTERNAL set(var, arg1)
 
 VAR ask = 0
+VAR choice = 0
 
 ->CREATURE_SHIP
 
@@ -10,17 +11,25 @@ VAR ask = 0
 
 === CREATURE_SHIP ===
 
-{CREATURE_SHIP == 1: 
+{get("hasLeft") == "1": 
 
 You explore for hours until you come across wreckage that is decidedly alien. Oddly no fungus grows on or near the large onyx husk.
 
 As you walk closer you realize just how massive - and ancient - it is. It appears to you as the corpse of a fallen colossus that seems to have less flew through space than drifted(syn) through it.
+
 } 
 
-{CREATURE_SHIP > 1: You return to the large onyx husk.}
+{get("hasLeft") == "2": You return to the large onyx husk.}
 
-    *[Explore husk.]-> outside
-    *[Go into the remains.]-> ship_interior
+{get("hasLeft") == "1":
+
+*[Go into the remains.]-> ship_interior
+*[Explore husk.]-> outside
+
+-else:
+*[Explore husk.]-> outside
+
+}
 
 = outside
 
@@ -33,7 +42,7 @@ As you circle the perimeter of the ship, you notice a large gap in its obsidian 
     
     It looks like if you wanted to, you could pry the image from its place on the wall. What will you do?
 
-        **AI: [...] <> You just might want to swipe this, it could come in handy.
+        **AI:[...] <> You just might want to swipe this, it could come in handy.
 
         ***[Take the image.]
 
@@ -41,10 +50,11 @@ As you circle the perimeter of the ship, you notice a large gap in its obsidian 
 
         {set("image", "1")}
         {get("image") == "1": + Creature family portrait added to inventory.}
-
+        {set ("hasLeft", 2)}
             ****[continue.]-> CREATURE_SHIP
 
         ***[Leave.]
+        {set ("hasLeft", 2)}
         You leave the crevice.
         -> CREATURE_SHIP
 
@@ -52,14 +62,14 @@ As you circle the perimeter of the ship, you notice a large gap in its obsidian 
 
 You find a large gap in the monoliths side and walk into it. As you move deeper the light filtering in from the outside is devoured by the darkness that oozes from within.
 
-*AI: [...]<>Well this is might bloody spooky, innit?
+*AI:[...]<> Well this is might bloody spooky, innit?
 	
 	**[Use light.]
 	You pull out your broken plasma rifle and flick on its light.
         
         ***[continue.]
 
-You wander through the ancient ships labyrinthine halls. It is deathly quiet save for the sound of your footsteps and the whirring and beeping on the AI core's internal components.
+-You wander through the ancient ships labyrinthine halls. It is deathly quiet save for the sound of your footsteps and the whirring and beeping on the AI core's internal components.
 
 You soon find yourself in a large room. Its walls are covered in vine-like tubes of varying sizes. You touch one of them. It emits a faint purple glow. All of the tubes snake along towards a central point on the other side of the room. Color dances and bubbles forth from the circular crevice where they converge.
 
@@ -71,7 +81,7 @@ You soon find yourself in a large room. Its walls are covered in vine-like tubes
 You shove the AI into the crevice. Nothing happens.
 
 	****AI:[...]
-    <>Well, that was rather anticlimactic. Here, let me wiggle just so…
+    <> Well, that was rather anticlimactic. Here, let me wiggle just so…
 	
 		*****[continue.]
 
@@ -112,11 +122,35 @@ The AI is screaming. Two streams of constantly color morphing vertical plains st
         ->middlebit
 }
 
-= middlebit
-Need middle bit.
-->convoend
+== middlebit
+{choice == 3:->convoend}
+You sit and rest for a bit after your encounter.
 
-=convoend
+*[Take a nap.]->nap
+*[Eat.]->eat
+*[Mull around.]->mull
+
+=nap
+~alter(choice, 1)
+You try to nap, but the thought of fungus slowly growing over you with murderous intent keeps you awake.->middlebit
+
+=eat
+~alter(choice, 1)
+You eat some TASTY-GOO brand food-like substance.
+
+    *[Sing it with me now!]
+        **[I poop!] 
+            ***[You poop!]
+                ****[We all poop for TASTY-GOO...P!] ->middlebit
+
+=mull
+~alter(choice, 2)
+You mull around. Kick around stones and bits of debris. Careful not to disturb any fungal life so the AI core doesn't yell at you again. A decent kick sends a piece of debris hurtling into a steaming pool with a loud plop. It's surface boils over with the thrashing of many tiny angry fish-like beasts, and you notice, of all things, a toothbrush at your feet.
+{set("toothbrush", 1)}
+{get("toothbrush") == "1":+ Toothbrush added to inventory.}
+->middlebit
+
+== convoend
 
     *AI:[...]<> So, we need to chat, yeah?
     
@@ -127,25 +161,26 @@ Need middle bit.
 			    ****[What is it?]
                 ****[Go on.]
                 ****[Spit it out.]
--
-                    *****AI:[...]<> So… the thing is: We broke our empathy module in the crash.
-                        
-                        ******[So.]
-                        ******[Uh oh.]
-                        ******[Empathy wha?]
--
-                            *******AI:[...]<> The creature, its species, they communicate with feelings — if we’re going to convince it to help, we need to be able to talk to it.
-                                
-                                ********[Still not following.]
-                                
-                                    *********[What?]
-                                    What on earth are you going on about?
 
-                                        **********AI:[...]<> We’ve got all the colors. But we can’t translate them if we can’t match them with feelings. Savvy? Which we CAN’T. Without our empathy module.
+- AI: So… the thing is: We broke our empathy module in the crash.
+                        
+    *[So.]
+    *[Uh oh.]
+    *[Empathy wha?]
+
+-AI: The creature, its species, they communicate with feelings — if we’re going to convince it to help, we need to be able to talk to it.
+                                
+    *[Still not following.]
+                                
+    *[What?]
+    What on earth are you going on about?
+
+-AI: We’ve got all the colors. But we can’t translate them if we can’t match them with feelings. Savvy? Which we CAN’T. Without our empathy module.
                                                 
-                                                ***********AI:[...]<> Oh boy. I just had an abysmal idea! We’ll make YOU our empathy module! 
+    *AI:[...]<> Oh boy. I just had an abysmal idea! We’ll make YOU our empathy module! 
                                                 
-                                                    ************[Hold on a...]
+         **[Hold on a...]
                                             
-                                                        *************AI:[...]<> Get to work! Empathy module 2!
-                                                        ->END
+            ***AI:[...]<> Get to work! Empathy module 2!
+            {set ("hasLeft", 2)}            
+            ->END

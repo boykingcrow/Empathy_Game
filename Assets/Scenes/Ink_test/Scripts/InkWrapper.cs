@@ -19,6 +19,16 @@ public class InkWrapper : MonoBehaviour {
 		
 		story = new Story (input.text);
 
+		story.BindExternalFunction ("toggleShip", () => {
+
+		if(GameObject.Find("AlienShip") != null)
+		{
+			
+			GameObject.Find("AlienShip").SetActive(true);
+		}
+
+		});
+		
 		story.BindExternalFunction ("build_colorGun", () => {
 		
         bool var1 = GameObject.Find("Player").GetComponent<Inventory>().crystalRED == "1";
@@ -208,7 +218,7 @@ public class InkWrapper : MonoBehaviour {
 			choice.onClick.AddListener(delegate{
 				StartStory(DefaultStory);
 				gameObject.GetComponent<InkWrapper>().canvas.SetActive(false);
-				//GameObject.Find("Creature_Minigame_Background").SetActive(false);
+				GameObject.Find("Creature_Minigame_Background").SetActive(false);
 			});
 		}
 	}

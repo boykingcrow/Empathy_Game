@@ -1,4 +1,4 @@
-EXTERNAL get(var)
+﻿EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 EXTERNAL build_colorGun()
 
@@ -559,6 +559,6 @@ The creature returns to its neutral state of many shifting colors. You can’t h
         {get("BOND") == "1":+ BOND FULLY INCREASED}
         {set("interact", "5")}
 
-        *[continue.]->CREATURE_GAME
+        *[YOU WERN DER GERM MERT!!!.]->END
 
 
