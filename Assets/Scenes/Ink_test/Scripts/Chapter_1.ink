@@ -69,7 +69,7 @@ VAR outside = 0
     
     *[Shoot.]
     
-        That's right! The motto of any good space adventurer: SHOOT FIRST! You shoot wildly at the creature, filling its terrifying form full of holes — well, at least that's what you intended to do. 
+        That's right! The motto of any good space adventurer: SHOOT FIRST! You shoot wildly at the creature, filling its terrifying form full of holes -- well, at least that's what you intended to do. 
         
         In reality,
 
@@ -88,7 +88,7 @@ You drop the rifle. The creature stares at the smoking husk of a gun with an unb
     
     *[You arent' sure why...]
     
-    You aren’t sure why, but when the creature looked at you, you felt as if you were being studied, judged. Maybe you’re anthropomorphizing  — but this creature — it seems to be intelligent. It is unclear what this creature wants. If it wants. What it even is. 
+    You aren’t sure why, but when the creature looked at you, you felt as if you were being studied, judged. Maybe you’re anthropomorphizing -- but this creature -- it seems to be intelligent. It is unclear what this creature wants. If it wants. What it even is. 
     
     Questions linger in your mind. Was the gun damaged? Or was it something the creature did? 
     
@@ -100,7 +100,7 @@ You drop the rifle. The creature stares at the smoking husk of a gun with an unb
 
 * [Gather food/water.]
 
-Good desert island instincts, unfortunately, you are not on a desert island. You are on a seemingly unoccupied and most definitely hostile planet. Also, you have plenty of  TASTY-GOO brand liquid rations. I know, I know, they taste like used tires and dog farts (NOTE: come up with better comparisons) — but the fruits and veggies on this planet will make you explode, or something, probably.
+Good desert island instincts, unfortunately, you are not on a desert island. You are on a seemingly unoccupied and most definitely hostile planet. Also, you have plenty of  TASTY-GOO brand liquid rations. I know, I know, they taste like wet tires and dog farts — but the fruits and veggies on this planet will make you explode, or something, probably.
 
 -> priorities
 
@@ -120,5 +120,5 @@ Problem one, the various materials — formerly known as your ship — have been
 
 *** [Problem two]
 
-Problem two, even if you had all the materials in one place, you are lacking the tools to put it all together and get it working. This can be divided into a set of smaller problems: Sub-problem A: You are pretty sure there was an arc welder — or was it a stir welder? — stored away somewhere. It is essential that you locate it. You know, to put it all together. Glue just won’t do. Sub-problem B: Even a perfectly whole-again ship is useless without a propulsion module. Sub-problem C: And you, in turn, will be useless (a.k.a. dead) without a life support module. Sub-problem D: Even if you were to make it (insert better phrase than “out of orbit”) — without your trusty A.I., you’d end up immediately. Invariably. Ineffably. Lost. -> END
+Problem two, even if you had all the materials in one place, you are lacking the tools to put it all together and get it working. This can be divided into a set of smaller problems: Sub-problem A: You are pretty sure there was an arc welder — or was it a stir welder? — stored away somewhere. It is essential that you locate it. You know, to put it all together. Glue just won’t do. Sub-problem B: Even a perfectly whole-again ship is useless without a propulsion module. Sub-problem C: And you, in turn, will be useless (a.k.a. dead) without a life support module. Sub-problem D: Even if you were to make it out of orbit — without your trusty A.I., you’d end up immediately. Invariably. Ineffably. Lost. -> END
 

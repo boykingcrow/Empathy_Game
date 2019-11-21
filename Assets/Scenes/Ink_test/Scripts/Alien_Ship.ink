@@ -15,21 +15,14 @@ VAR choice = 0
 
 You explore for hours until you come across wreckage that is decidedly alien. Oddly no fungus grows on or near the large onyx husk.
 
-As you walk closer you realize just how massive - and ancient - it is. It appears to you as the corpse of a fallen colossus that seems to have less flew through space than drifted(syn) through it.
+As you walk closer you realize just how massive - and ancient - it is. It appears to you as the corpse of a fallen colossus that seems to have less flew through space than drifted through it.
 
 } 
 
 {get("hasLeft") == "2": You return to the large onyx husk.}
 
-{get("hasLeft") == "1":
-
-*[Go into the remains.]-> ship_interior
+*[Go into the remains.]->ship_interior
 *[Explore husk.]-> outside
-
--else:
-*[Explore husk.]-> outside
-
-}
 
 = outside
 
@@ -51,12 +44,8 @@ As you circle the perimeter of the ship, you notice a large gap in its obsidian 
         {set("image", "1")}
         {get("image") == "1": + Creature family portrait added to inventory.}
         {set ("hasLeft", 2)}
+            
             ****[continue.]-> CREATURE_SHIP
-
-        ***[Leave.]
-        {set ("hasLeft", 2)}
-        You leave the crevice.
-        -> CREATURE_SHIP
 
 =ship_interior
 

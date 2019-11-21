@@ -57,7 +57,7 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
     +[Open hatch.]->hatch
 
-    +[Look around.]->look
+    *[Look around.]->look
 
     +[Climb the chunk.]->climb
 
@@ -70,10 +70,13 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 =look
 
     You walk around the web covered husk, looking for anything even a tad useful. You see a small hole towards the top of the structure. You also stumble upon a remarkably undamaged [REDACTED] Corp standard issue space helmet.
-*[Pick up.]
-{set("helmet", 1)}
-{get("helmet") == "1":+ Space Helmet added to inventory.}
-->puzzle
+
+    *[Pick up.]
+
+    {set("helmet", 1)}
+    {get("helmet") == "1":+ Space Helmet added to inventory.}
+
+    ->puzzle
 
 =climb
 
@@ -119,18 +122,18 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
     ->new_options
 
-    +[Toss fish-like beast down the hole.]
+    *[Toss fish-like beast down the hole.]
     
         ~alter(fishaction, 1)    
         You throw the small fish-like beast into the hole. You hear it land with a wet thud and, faintly, some angry gnawing. Other than that, nothing happens.
 
-        ++[Climb down.]->climbdown
+        **[Climb down.]->climbdown
 
-    +[Toss the crystal down the hole.]
+    *[Toss the crystal down the hole.]
         ~alter(rockaction, 1)
         You toss the glowing rock into the hole. You see a faint glow now radiating from the hole. Nothing else happens.
 
-        ++[Climb down.]->climbdown
+        **[Climb down.]->climbdown
 
     +[Climb down.]->climbdown
 
@@ -142,7 +145,7 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
 {rockaction == 1:
 
-    *[Continue.]
+    *[continue.]
     ->chunk_end
 -else:
 
@@ -199,67 +202,67 @@ You come across a steaming pool.
 
 Moments pass.
 
-    *[Continue.]
+    *[continue.]
     
     The creature emerges.
     
-        **[Continue.]
+        **[continue.]
     
         Its unblinking eye fixed on you.
     
-            ***[Continue.]
+            ***[continue.]
             
             Or maybe not.
             
-            ****[Continue.]
+            ****[continue.]
     
              Hard to tell, honestly. 
     
-                *****[Continue.]
+                *****[continue.]
                    
                 It moves closer.
                     
-                    ******[Continue.]
+                    ******[continue.]
                     
                     Your body tenses.
     
-                        *******[Continue.] 
+                        *******[continue.] 
                         
                         And then past.
                         
-                            ********[Continue.]
+                            ********[continue.]
                             
                             Towards the ship chunk. A cool glow still radiates from its top.
                             
-                                *********[Continue.]
+                                *********[continue.]
                                 
                                 It cautiously extends several appendages.
                                 
-                                    **********[Continue.] 
+                                    **********[continue.] 
                             
                                     Toward the hole, but the hole is just out of reach. 
                             
-                                        ***********[Continue.] 
+                                        ***********[continue.] 
                                         
                                         It circles the chunk of ship.
                                             
-                                            ************[Continue.] 
+                                            ************[continue.] 
                                             
                                             Probing, tapping, knocking on its carapace until it finds the locked hatch. 
                             
-                                                *************[Continue.] 
+                                                *************[continue.] 
                                                 
                                                 It tugs at the hatch.
                                                 
-                                                    **************[Continue.]
+                                                    **************[continue.]
                                                     
                                                     Before slipping several tendrils into the narrow spaces between the carapace and hatch. You hear clicks and clacks and with a loud exhalation, the hatch pops open.
                                                         
-                                                        ***************[Continue.]
+                                                        ***************[continue.]
                                                 
                                                         The creature extends an appendage inside, retrieves the crystal, and wanders back into the fungal brush.
 
-                                                        ****************[Continue.]
+                                                        ****************[continue.]
                                                         
                                                         ->choices
 
@@ -276,7 +279,7 @@ You leave the chunk.->END
 ->AI_convo
 
 === AI_convo ===
-You crawl through the freshly opened hatch. The dim cavity occasionally flashes with  stray spark or the dim monotonous blinking red light of the backup generator. 
+You crawl through the freshly opened hatch. The dim cavity occasionally flashes with stray a spark or the dim monotonous blinking red light of the backup generator. 
 
         *[Look around]
 
@@ -387,7 +390,7 @@ What do you want?
 = love  
 
     *AI:[...]
-    <> What? Are you… are you broken? You’re stranded on a hostile planet with a strange amorphous creature and a fungal-AI core hybrid that hates you — and you want to talk about LOVE?!
+    <> What? Are you broken? You’re stranded on a hostile planet with a strange amorphous creature and a fungal-AI core hybrid that hates you — and you want to talk about LOVE?!
     
         **[continue.]->convo_options
 
@@ -454,7 +457,7 @@ You: Because I’m me.
 =meaning
 
     *AI:[...]
-    <> Are you… are you trying to provoke me?
+    <> Are you... are you trying to provoke me?
     
         **[continue.]->convo_options
 
@@ -586,7 +589,7 @@ You: Because I’m me.
         ***...and B)
         <> need the creature’s help to retrieve said parts.
         
-            ****[Continue.]
+            ****[continue.]
             Now go make friends with it.
                 
                 *****[How?]
@@ -599,7 +602,7 @@ You: Because I’m me.
 
 -
 *AI:[...]
-<> Oh, and do try not to commit anymore casual murder on the way, you monster.
+<> Oh, and do try not to commit any more casual murder on the way, you monster.
 ->END
 
 

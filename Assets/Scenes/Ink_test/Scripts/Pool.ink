@@ -14,17 +14,17 @@ EXTERNAL set(var, arg1)
             ***[Washing?] 
                 ****[Its unblinking eye betrays no emotion that you can read.]
 
-After the creature’s appendage dips below the surface, there is motion. The creature flashes yellow followed by various shades of red. It whips its long appendage out of the water and around sporadically (awkward). Something is attached, but you can only make out a blur of motion.
+After the creature’s appendage dips below the surface, there is motion. The creature flashes YELLOW followed by various shades of RED. It violently whips its long tentacle out of the water. Something is attached. A small, fish-like thing.
 
     -*[You hear a loud pop.]
     
-        **[Something goes flying.]->pool_interact
+        **[The fish-like thing explodes in a red mist.]->pool_interact
             
 =pool_interact
 
 {pool_interact == 1:
 
-If there was something attached to the creature — it is gone now. The creature returns to its usual incomprehensible smattering of colors and drifts away into the fungal overgrowth.
+The creature returns to its usual incomprehensible smattering of colors and drifts away into the fungal overgrowth.
 
 -else: What will you do?
 

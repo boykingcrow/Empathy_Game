@@ -3003,10 +3003,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hands: 0
   fish: 0
-  goo: 
-  helmet: 
-  image: 
-  toothbrush: 
+  goo: 0
+  helmet: 0
+  image: 0
+  toothbrush: 0
   crystalRED: 0
   crystalGREEN: 0
   crystalPURPLE: 0
@@ -3014,7 +3014,7 @@ MonoBehaviour:
   crystalBLUE: 0
   ColorGun: 0
   BOND: 0
-  hasLeft: 2
+  hasLeft: 0
   interact: 0
 --- !u!1001 &1237030259
 Prefab:
@@ -4566,7 +4566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1858210487
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5004,7 +5004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2061711006
 RectTransform:
   m_ObjectHideFlags: 0

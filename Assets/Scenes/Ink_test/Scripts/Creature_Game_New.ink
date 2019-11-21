@@ -111,16 +111,16 @@ What will you trade?
 After said smearing, the creature, seemingly satisfied with the trade, hands you a small crystal that glows YELLOW.
     {set("crystalYELLOW", 1)}
     {get("crystalYELLOW") == "1":+ Yellow crystal added to inventory.}
-    +[Continue.]->CREATURE_GAME
+    +[continue.]->CREATURE_GAME
 
 = image
 
-    You offer the creature the image you took from the alien ship. It gently wraps its tentacles around the object and pills it close, turning a procession of colors — each flowing into the next as food dye flows into water.
+    You offer the creature the image you took from the alien ship. It gently wraps its tentacles around the object and pulls it close, turning a procession of colors — each flowing into the next as food dye flows into water.
 
     The creature hands you a small crystal that glows a dull BLUE and wanders away.
     {set("crystalBLUE", 1)}
     {get("crystalBLUE") == "1":+ Blue crystal added to inventory.}
-    +[Continue.]->CREATURE_GAME
+    +[continue.]->CREATURE_GAME
 
 = toothbrush
     You offer the creature a toothbrush. 
@@ -143,7 +143,7 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
     -Satisfied with the trade, the creature gives you another small crystal. This one emits a faint PURPLE glow.
     {set("crystalPURPLE", 1)}
     {get("crystalPURPLE") == "1":+ Purple crystal added to inventory.}
-    +[Continue.]->CREATURE_GAME
+    +[continue.]->CREATURE_GAME
 
     =fish
     Holding the vile thing by the tippiest tip of its tail, you present the small fish-like beast to the creature.
@@ -152,13 +152,13 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
 
     *AI:[...]<>Perhaps this particular mix represents curiosity.
 
-    The creature tentatively takes the vile little monster from your hand and stares at it. It turns the fish-like beast this way and that. Viewing the thing from nearly every angle. Once satisfied, the creature wallops the vicious little beast at least half a dozen times on a rock — an act which seems to only further enrage the angry little thing. Mandibles snapping. Eyes full of bloodlust. The creature flushes red. And the tiny little beast explodes with a loud pop.
+    The creature tentatively takes the vile little monster from your hand and stares at it. It turns the fish-like beast this way and that. Viewing the thing from nearly every angle. Once satisfied, the creature wallops the vicious little beast at least half a dozen times on a rock — an act which seems to only further enrage the angry little thing. Mandibles snapping. Eyes full of bloodlust. The creature flushes RED. And the tiny little beast explodes with a loud pop.
 
     As you wipe viscera from your [REDACTED] Corp issued space helmet visor — the creature hands you a crystal that emits a faint RED glow.
     {set("crystalRED", 1)}
     {get("crystalRED") == "1":+ Red crystal added to inventory.}
     
-    ++[Continue.]->CREATURE_GAME
+    ++[continue.]->CREATURE_GAME
 
 = helmet
 
@@ -195,12 +195,10 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
         
         {get("ColorGun") == "1":+ Color-gun added to inventory.}
             
-            ***[Continue.]->CREATURE_GAME
+            ***[continue.]->CREATURE_GAME
 
 
 === INTERACT ===
-
-->food_interact
 
 {get("ColorGun") == "1":
 
@@ -220,7 +218,7 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
 
 You have no way to communicate with the creature.
 
-+[Continue.]->CREATURE_GAME
++[continue.]->CREATURE_GAME
 
 ==pool_interact
 
@@ -295,7 +293,7 @@ You have no way to communicate with the creature.
 
     A loud crack screams through the cave, reverberating through its depths like a great beast mad with rage.
 
-    *[The creature flushes an alarmed yellow at the sound of the storm.]->color_puzzle2
+    *[The creature flushes an alarmed YELLOW at the sound of the storm.]->color_puzzle2
 
     = color_puzzle2
 
@@ -303,7 +301,7 @@ You have no way to communicate with the creature.
 
         +Emit BLUE in response.->wrong
         +Emit PURPLE in response.
-        The bright yellow of the creature dims a bit.->color_puzzle2_2
+        The bright YELLOW of the creature dims a bit.->color_puzzle2_2
         +Emit GREEN in response.->wrong
         +Emit RED in response.->wrong
         +Emit YELLOW in response.->wrong
@@ -316,7 +314,7 @@ You have no way to communicate with the creature.
         -How will you respond?
         
         +PURPLE
-        The red dims and is replaced by a neutral mix of shifting colors. -> color_puzzle2_end
+        The RED dims and is replaced by a neutral mix of shifting colors. -> color_puzzle2_end
         +YELLOW->wrong
         +RED->wrong
         +BLUE->wrong
@@ -354,7 +352,7 @@ You have no way to communicate with the creature.
 
     =color_puzzle3
 
-        {color_puzzle3 == 0:The creature flashes a vibrant shade of green as you lift the strange object closer to inspect it.}
+        {color_puzzle3 == 0:The creature flashes a vibrant shade of GREEN as you lift the strange object closer to inspect it.}
 
         -How will you respond?
         
@@ -363,14 +361,14 @@ You have no way to communicate with the creature.
         ->color_puzzle3
         +Emit GREEN.->wrong2
         +Emit BLUE.
-        The creature turns a deep blue and floats away.
+        The creature turns a deep BLUE and floats away.
         ->END
         +Emit PURPLE.->wrong2
         +Emit RED.
-        The creature turns a bright red and floats away.
+        The creature turns a bright RED and floats away.
         ->END
         +Emit YELLOW.
-        The creature turns a deep blue and floats away.
+        The creature turns a deep BLUE and floats away.
         ->END
         +[Do nothing.]->color_puzzle3_2
 
@@ -388,16 +386,16 @@ You have no way to communicate with the creature.
         How will you respond?
         
         +Emit BLUE.
-            The creature turns a deep blue and floats away.
+            The creature turns a deep BLUE and floats away.
         ->END
         
         +Emit PURPLE.
         It’s RED glow fades, but just a bit.-> color_puzzle3_2
         +Emit RED.
-        The creature turns a bright red and floats away.
+        The creature turns a bright RED and floats away.
         ->END
         +Emit YELLOW.
-        The creature turns a bright red and floats away.
+        The creature turns a bright RED and floats away.
         ->END
         +Emit GREEN.
             You emit a bright GREEN with the Color-gun. The creature continues to wait expectantly.
@@ -455,7 +453,7 @@ Nothing happens.->color_puzzle4
 
 =color_puzzle4_2
 
-You Color-gun washes the area in a deep BLUE glow. The creature turns to face you. Its unblinking eye betrays nothing. It turns back to the fallen adventurer. Its deep blue is replaced by a dull YELLOW.
+You Color-gun washes the area in a deep BLUE glow. The creature turns to face you. Its unblinking eye betrays nothing. It turns back to the fallen adventurer. Its deep BLUE is replaced by a dull YELLOW.
 
 +Emit BLUE.->wrong3
 +Emit RED.->wrong3
@@ -465,7 +463,7 @@ You Color-gun washes the area in a deep BLUE glow. The creature turns to face yo
 
 =color_puzzle4_end
 
-The creature returns to its neutral state of many shifting colors. You can’t help but notice, there are now many more shades of blue and yellow amongst the creature’s usual emulsions.
+The creature returns to its neutral state of many shifting colors. You can’t help but notice, there are now many more shades of BLUE and YELLOW amongst the creature’s usual emulsions.
 
     +[Leave.]->END
     +[Bury the body.]
@@ -526,7 +524,7 @@ The creature returns to its neutral state of many shifting colors. You can’t h
 
         The creature’s body fades into a shade of deep BLUE.
         +[Emit GREEN]
-        It turns to you and a dull red begins to wash over it, but as soon as the red appears, it fades, and the creature resigns itself back to its dutiful procession.
+        It turns to you and a dull RED begins to wash over it, but as soon as the RED appears, it fades, and the creature resigns itself back to its dutiful procession.
         ->color_puzzle5_2
         +[Emit RED]->wrong4
         +[Emit YELLOW]->wrong4
@@ -540,7 +538,7 @@ The creature returns to its neutral state of many shifting colors. You can’t h
 
     = color_puzzle5_3
 
-        The BLUE of your Color-gun mixes with the BLUE of the creature’s form and for just a moment, you do not feel alone on this Vulcan forsaken rock. The deep blue fades into a neutral dance of colors and the creature turns to you. The image slips from its tentacle and falls to the floor.
+        The BLUE of your Color-gun mixes with the BLUE of the creature’s form and for just a moment, you do not feel alone on this Vulcan forsaken rock. The deep BLUE fades into a neutral dance of colors and the creature turns to you. The image slips from its tentacle and falls to the floor.
 
         As it stares at you, unblinking, a dull YELLOW spreads over its form.
         *AI:[...]It’s incredibly difficult to tell — it having a semi-corporeal form and all — but just, ever so, it appears appears to be trembling…
@@ -553,12 +551,12 @@ The creature returns to its neutral state of many shifting colors. You can’t h
 
     =color_puzzle5_end
 
-        Your Color-gun emits a dull PURPLE. In response the yellow fades from the creature’s form and is replaced by a similar purple. And after a few moments, its neutral swirling mixture of color returns.
+        Your Color-gun emits a dull PURPLE. In response the YELLOW fades from the creature’s form and is replaced by a similar PURPLE. And after a few moments, its neutral swirling mixture of color returns.
 
         {set("BOND", "5")}
         {get("BOND") == "1":+ BOND FULLY INCREASED}
         {set("interact", "5")}
 
-        *[YOU WERN DER GERM MERT!!!.]->END
+        *[continue.]->END
 
 
