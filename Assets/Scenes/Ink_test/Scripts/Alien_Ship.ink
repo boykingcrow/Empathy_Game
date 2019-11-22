@@ -4,6 +4,10 @@ EXTERNAL set(var, arg1)
 VAR ask = 0
 VAR choice = 0
 
+{get("hasLeft") == "3":
+->GETTIN_PARTS
+}
+
 ->CREATURE_SHIP
 
 === function alter(ref x, k) ===
@@ -99,7 +103,7 @@ The AI is screaming. Two streams of constantly color morphing vertical plains st
         
             ***[Leave.]
             You exit the innards of the onyx colossus back into the light of day.
-            ->creatureship_end
+            ****[continue.]->creatureship_end
 
 = creatureship_end
 
@@ -109,6 +113,9 @@ The AI is screaming. Two streams of constantly color morphing vertical plains st
 
         **AI:[...]<> No idea. It does feel like the colors are part of us now. Somewhere in our processor bits, amongst the fungus, wriggling and writhing. Our guess is we can translate the creature’s language if we can somehow tap into those colors.
         ->middlebit
+-else:
+->middlebit
+
 }
 
 == middlebit
@@ -174,3 +181,22 @@ You mull around. Kick around stones and bits of debris. Careful not to disturb a
             {set ("hasLeft", 2)} 
             {set ("BOND", 1)}            
             ->END
+
+
+=== GETTIN_PARTS ===
+You return to the large onyx husk.
+
+{get("BOND") == "2":
+
+*[Enter the ship.]->inside_ship
+*[Leave.]->END
+
+-else:
+*AI: [...]
+<> The creature didn't come with us... Go bond with it!
+**[Leave.]->END
+
+}
+
+=inside_ship
+->END

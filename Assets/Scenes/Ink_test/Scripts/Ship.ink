@@ -1,3 +1,5 @@
+INCLUDE CRASH.ink
+
 -> SHIP
 
 === SHIP ===
@@ -33,16 +35,16 @@ What will you do?
 
         Ah. Good choice. Brave is a synonym of audacious. Which is a synonym of foolhardy. Which is bad, after all. You are certainly no fool. Nor hardy. Why be a lion, when you can be an, er, pillbug. 
         
-            -> END
+            **[continue.]-> CRASH
 
     *[Press LAUNCH ESCAPE POD button.]
 
         Ah. Good show. Keen and clever effort, I dare say. There’s the slight problem of you launching the escape pod before climbing inside. But that’s really a secondary, or even tertiary addendum to how keen and clever you are for pressing that button. Real shame, not being inside the pod though. 
         
-            -> END
+            **[continue.]-> CRASH
 
     *[Stare blankly ahead awaiting your inevitable, and probably very painful, demise.]
 
         Hello? What are you staring at? Oh well, better to face  your inevitable demise with a square jaw and a resolute spirit. “Do not go gentle into that good night. . . Rage, rage against the…” Oh. Okay. You’ve fainted AND lost control of your bowels. 
         
-            -> END
+            **[continue.]-> CRASH

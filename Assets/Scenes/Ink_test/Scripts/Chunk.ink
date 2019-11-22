@@ -7,9 +7,15 @@ EXTERNAL toggleObj4()
 
 VAR fishaction = 0
 VAR rockaction = 0
-VAR ai_action = 1
+VAR ai_action = 0
 
+{get("hasLeft") == "3":
+->GETTIN_PARTS
+
+-else:
 ->CHUNK
+
+}
 
 === function alter(ref x, k) ===
 	~ x = x + k
@@ -356,12 +362,13 @@ You crawl through the freshly opened hatch. The dim cavity occasionally flashes 
                                                                                 ~alter(ai_action, 1)
                                                                                 ->ai_convo_choices
 == ai_convo_choices
-                                                                                Well. That didn’t go as expected.
-                                
-                                                                                What now?
 
-                                                                                        ******************[Turn it back on.]->poweron
-                                                                                        ******************[Leave]->END
+Well. That didn’t go as expected.
+                                
+What now?
+
+*[Turn it back on.]->poweron
+*[Leave]->END
                                         
 
 =poweron
@@ -610,6 +617,25 @@ You: Because I’m me.
 *AI:[...]
 <> Oh, and do try not to commit any more casual murder on the way, you monster.
 {toggleObj4()}
+->END
+
+=== GETTIN_PARTS ===
+The chunk is just as you left it. Partially covered with thick pastel purple webs.
+
+{get("BOND") == "1":
+
+*[Climb inside the hatch.]->inside_chunk
+*[Leave.]
+You leave the chunk.->END
+
+-else:
+The creature didn't come with you.
+*[Leave.]
+You leave the chunk.->END
+
+}
+
+=inside_chunk
 ->END
 
 

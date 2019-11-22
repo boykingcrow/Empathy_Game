@@ -18,19 +18,16 @@ public class InkWrapper : MonoBehaviour {
 	public void StartStory (TextAsset input) {
 		
 		story = new Story (input.text);
+		
+		//exits story from within
+		story.BindExternalFunction ("exit_dis_gaem", () => {
 
-		//exits creature game from within
-		/*story.BindExternalFunction ("exit_dis_gaem", () => {
-
-			if(GameObject.Find("Creature_Game") != null)
+			if(GameObject.Find("Canvas") != null)
 				{
-					
-					bool isActive = GameObject.Find("Creature_Game").activeSelf;
-					GameObject.Find("Creature_Game").SetActive(!isActive);
+					GameObject.Find("Canvas").SetActive(false);
 				}
 
-
-		});*/
+		});
 		
 		//toggles gameobjects from within ink stories
 		story.BindExternalFunction ("toggleObj1", () => {
@@ -70,7 +67,6 @@ public class InkWrapper : MonoBehaviour {
 		
 			if(object4 != null)
 				{
-					
 					bool isActive = object4.activeSelf;
 					object4.SetActive(!isActive);
 				}
@@ -80,16 +76,30 @@ public class InkWrapper : MonoBehaviour {
 		//sets colorGun active once all crystals are traded for
 		story.BindExternalFunction ("build_colorGun", () => {
 		
-        bool var1 = GameObject.Find("Player").GetComponent<Inventory>().crystalRED == "1";
-        bool var2 = GameObject.Find("Player").GetComponent<Inventory>().crystalGREEN == "1";
-	    bool var3 = GameObject.Find("Player").GetComponent<Inventory>().crystalPURPLE == "1";
-		bool var4 = GameObject.Find("Player").GetComponent<Inventory>().crystalYELLOW == "1";
-		bool var5 = GameObject.Find("Player").GetComponent<Inventory>().crystalBLUE == "1";
+			bool var1 = GameObject.Find("Player").GetComponent<Inventory>().crystalRED == "1";
+			bool var2 = GameObject.Find("Player").GetComponent<Inventory>().crystalGREEN == "1";
+			bool var3 = GameObject.Find("Player").GetComponent<Inventory>().crystalPURPLE == "1";
+			bool var4 = GameObject.Find("Player").GetComponent<Inventory>().crystalYELLOW == "1";
+			bool var5 = GameObject.Find("Player").GetComponent<Inventory>().crystalBLUE == "1";
 	        
             if (var1 && var2 && var3 &&  var4 && var5)
-			{
-				GameObject.Find("Player").GetComponent<Inventory>().ColorGun = "1";
-			}
+				{
+					GameObject.Find("Player").GetComponent<Inventory>().ColorGun = "1";
+				}
+		});
+
+		//sets BEACON active once all parts are retrieved
+		story.BindExternalFunction ("build_BEACON", () => {
+		
+			bool var1 = GameObject.Find("Player").GetComponent<Inventory>().comp_unit == "1";
+			bool var2 = GameObject.Find("Player").GetComponent<Inventory>().comms_relay == "1";
+			bool var3 = GameObject.Find("Player").GetComponent<Inventory>().antennae == "1";
+			bool var4 = GameObject.Find("Player").GetComponent<Inventory>().warp_coil == "1";
+	        
+            if (var1 && var2 && var3 &&  var4)
+				{
+					GameObject.Find("Player").GetComponent<Inventory>().BEACON_active = true;
+				}
 		});
 		
 		//Gets the variables from inventory.
@@ -318,6 +328,9 @@ public class InkWrapper : MonoBehaviour {
 	public GameObject canvas;
 
 	[SerializeField]
+	public GameObject image;
+	
+	[SerializeField]
 	public GameObject object1;
 
 	[SerializeField]
@@ -352,6 +365,9 @@ public class InkWrapper : MonoBehaviour {
 	// UI Prefabs
 	[SerializeField]
 	private Text textPrefab;
+
+		[SerializeField]
+	private Text textPrefab2;
 
 	[SerializeField]
 	private Button buttonPrefab;

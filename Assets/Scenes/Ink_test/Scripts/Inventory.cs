@@ -30,8 +30,14 @@ public class Inventory : MonoBehaviour
     public string ColorGun = "0";
     public string BOND = "0";
     public string hasLeft = "0";
-    public string interact ="0";
+    public string interact = "0";
+    public string comp_unit = "0";
+    public string comms_relay = "0";
+    public string antennae = "0";
+    public string warp_coil = "0";
+
 
     private bool BONDtoggle = true;
+    public bool BEACON_active = false;
 
 }

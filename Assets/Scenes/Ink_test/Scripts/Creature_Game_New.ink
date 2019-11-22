@@ -26,7 +26,7 @@ EXTERNAL toggleObj3()
 
     }
 
-Creature Bond: {get("BOND") == "null":What bond?.}{get("BOND") == "0":Weak.}{get("BOND") == "1":Well, it doesn't hate you. Probably.}{get("BOND") == "2":Anemic.}{get("BOND") == "3":Wobbly.}{get("BOND") == "4":It actually seems to like you, you think.}{get("BOND") == "5":Best buds with the best (terrifying) hugs.}
+Creature Bond: {get("BOND") == "0":What bond?}{get("BOND") == "1":Well, it doesn't hate you. Probably.}{get("BOND") == "2":Anemic.}{get("BOND") == "3":Wobbly.}{get("BOND") == "4":It actually seems to like you, you think.}{get("BOND") == "5":Best buds with the best (terrifying) hugs.}
 
     {poke < 2:
     +[Poke the creature.] -> poke
@@ -234,7 +234,7 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
 =AI_colorGun_convo
 
 *AI:[...]
-<> Congrats, murderer. You've traded the creature for all the crystals. We can jerry-rig your busted murder tool into a decidedly-un-murderous tool for communicating with the creature.
+<> Congrats, murderer. You've traded with the creature for all the crystals. We can jerry-rig your busted murder tool into a decidedly-un-murderous tool for communicating with the creature.
 
         **[Modify plasma rifle into Color-gun.]
         You've modified the [REDACTED] Corp. Standard issue plasma rifle into the Color-gun.
@@ -248,17 +248,16 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
 
 {get("ColorGun") == "1":
 
-->pool_interact
-
--else:->pre_colorGun_text
-
-}
-
+{get("interact") == "0":->pool_interact}
 {get("interact") == "1":->storm_interact}
 {get("interact") == "2":->food_interact}
 {get("interact") == "3":->DeadCritter_interact}
 {get("interact") == "4":->image_interact}
 {get("interact") == "5":->CREATURE_GAME}
+
+-else:->pre_colorGun_text
+
+}
 
 == pre_colorGun_text
 
