@@ -200,3 +200,7 @@ You return to the large onyx husk.
 
 =inside_ship
 ->END
+=comms_relay
+->END
+=ante
+->END

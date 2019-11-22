@@ -2,7 +2,7 @@
 
 === CallToAction ===
 
-You’d best get finding that welder, propulsion module, life support module, and A.I.
+You’d best get finding that welder, propulsion module, life support module, and AI.
 
 *  [Begin collecting ship debris.]
 
@@ -57,7 +57,7 @@ You pick up smaller debris in your immediate area and put them into a pile. So f
     *[Search for the welder.]
     *[Search for the propulsion.]
     *[Search for the life support.]
-    *[Search for the A.I.]
+    *[Search for the AI.]
 
 -Having already ransacked the largest and closest chunk of you ship, you gather your meager stash of things and start walking.
 

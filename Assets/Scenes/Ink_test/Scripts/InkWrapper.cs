@@ -52,23 +52,21 @@ public class InkWrapper : MonoBehaviour {
 
 		});
 		
-		story.BindExternalFunction ("toggleObj3", () => {
+		story.BindExternalFunction ("spawnObj3", () => {
 		
 			if(object3 != null)
 				{
 					
-					bool isActive = object3.activeSelf;
-					object3.SetActive(!isActive);
+					object3.SetActive(true);
 				}
 
 		});
 
-		story.BindExternalFunction ("toggleObj4", () => {
+		story.BindExternalFunction ("spawnObj5", () => {
 		
-			if(object4 != null)
+			if(object5 != null)
 				{
-					bool isActive = object4.activeSelf;
-					object4.SetActive(!isActive);
+					object5.SetActive(true);
 				}
 
 		});

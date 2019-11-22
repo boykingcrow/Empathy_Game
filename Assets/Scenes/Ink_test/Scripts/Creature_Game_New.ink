@@ -1,8 +1,12 @@
 ﻿EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 EXTERNAL build_colorGun()
-EXTERNAL toggleObj3()
+EXTERNAL spawnObj3()
+EXTERNAL spawnObj5()
 
+
+
+{spawnObj5()}
 
 ->CREATURE_GAME
 
@@ -119,7 +123,7 @@ What will you trade?
 
 = pre_trade_text
 
-{toggleObj3()}
+{spawnObj3()}
 
 You try to hold out an item to trade, but the creature turns and floats away.
 

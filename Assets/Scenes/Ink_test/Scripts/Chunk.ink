@@ -33,8 +33,8 @@ VAR ai_action = 0
     *Finally[...]
 
     -<> after mucking about in fungus for some time — you spot a promising candidate for the some-useful-stuff-might-be-in-here award. A hulking mass at least three times the size of the last ship chunk you ransacked. Oddly undamaged.
-
-    *[YOU’VE DISCOVERED SHIP CHUNK 2]->chunk1
+    *[continue.]
+    **[YOU’VE DISCOVERED SHIP CHUNK 2]->chunk1
 
 ==chunk1
 
@@ -67,7 +67,10 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
     +[Open hatch.]->hatch
 
-    *[Look around.]->look
+    {get("helmet") == "0":
+    +[Look around.]
+    ->look
+    }
 
     +[Climb the chunk.]->climb
 
@@ -75,7 +78,8 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
 =hatch
 
-    You try the handle to the hatch, but it doesn’t budge.->puzzle
+    You try the handle to the hatch, but it doesn’t budge.
+    *[continue.]->puzzle
 
 =look
 
@@ -86,13 +90,14 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
     {set("helmet", 1)}
     {get("helmet") == "1":+ Space Helmet added to inventory.}
 
+    **[continue.]
     ->puzzle
 
 =climb
 
 {climb > 1: You climb the chunk again.}
 
-{climb == 1:With several attempts, and several tumbles, you manage to get enough of a foothold to climb the structure.} 
+{climb == 1: With several attempts, and several tumbles, you manage to get enough of a foothold to climb the structure.} 
 
 <>{look == 1: You spot a small hole not too far from your feet.} 
 
@@ -130,20 +135,20 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
          
          }
 
-    ->new_options
+         [continue.]->new_options
 
     *[Toss fish-like beast down the hole.]
     
         ~alter(fishaction, 1)    
         You throw the small fish-like beast into the hole. You hear it land with a wet thud and, faintly, some angry gnawing. Other than that, nothing happens.
 
-        **[Climb down.]->climbdown
+        **[continue.]->new_options
 
     *[Toss the crystal down the hole.]
         ~alter(rockaction, 1)
         You toss the glowing rock into the hole. You see a faint glow now radiating from the hole. Nothing else happens.
 
-        **[Climb down.]->climbdown
+        **[continue.]->new_options
 
     +[Climb down.]->climbdown
 
@@ -159,7 +164,7 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
     ->chunk_end
 -else:
 
-    ->puzzle
+    *[continue.]->puzzle
 }
 
 
@@ -196,13 +201,15 @@ You take a nap. Difficult in even a slim space suit, but not impossible. When yo
 
 You eat some TASTY-GOO brand food-like substance. Whether it’s warm notalgia or pure cynical corporate driven sense-priming, a jingle fills your head like bubble gas.
 
-    *I poop! 
-        **<> You poop!
-            ***<> We all poop for TASTY-GOO...P! ->before_pool
+    *[I poop!] 
+        **[You poop!]
+            ***We all poop for TASTY-GOO...P!->before_pool
 
 =explore
 
 You explore the area around the chunk. On your second, slightly wider, circle around the chunk...
+
+*[continue.]
 
 You come across a steaming pool.
 
@@ -214,69 +221,41 @@ You come across a steaming pool.
 
 Moments pass.
 
-    *[continue.]
+    *[The creature emerges.]
     
-    The creature emerges.
+        **[Its unblinking eye fixed on you.]
     
-        **[continue.]
-    
-        Its unblinking eye fixed on you.
-    
-            ***[continue.]
+            ***[Or maybe not.]
             
-            Or maybe not.
-            
-            ****[continue.]
+                ****[Hard to tell, honestly. ]
     
-             Hard to tell, honestly. 
-    
-                *****[continue.]
-                   
-                It moves closer.
+                    *****[It drifts closer.]
                     
-                    ******[continue.]
-                    
-                    Your body tenses.
-    
-                        *******[continue.] 
+                        ******[Your body tenses.]
                         
-                        And then past.
-                        
-                            ********[continue.]
-                            
-                            Towards the ship chunk. A cool glow still radiates from its top.
-                            
-                                *********[continue.]
-                                
-                                It cautiously extends several appendages.
-                                
-                                    **********[continue.] 
-                            
-                                    Toward the hole, but the hole is just out of reach. 
-                            
-                                        ***********[continue.] 
-                                        
-                                        It circles the chunk of ship.
-                                            
-                                            ************[continue.] 
-                                            
-                                            Probing, tapping, knocking on its carapace until it finds the locked hatch. 
-                            
-                                                *************[continue.] 
-                                                
-                                                It tugs at the hatch.
-                                                
-                                                    **************[continue.]
-                                                    
-                                                    Before slipping several tendrils into the narrow spaces between the carapace and hatch. You hear clicks and clacks and with a loud exhalation, the hatch pops open.
-                                                        
-                                                        ***************[continue.]
-                                                
-                                                        The creature extends an appendage inside, retrieves the crystal, and wanders back into the fungal brush.
+                            *******[It moves past.] 
 
-                                                        ****************[continue.]
+                                ********[Towards the ship chunk. A cool glow still radiates from its top.]
+
+                                    *********[It cautiously extends several appendages.]
+                                
+                                        **********[Toward the hole, but the hole is just out of reach. ]
+                            
+                                            ***********[It circles the chunk of ship.]
+                                            
+                                                ************[Probing, tapping, knocking on its carapace until it finds the locked hatch.]
+
+                                                    *************It tugs at the hatch[.]
+                                                    
+                                                        **************[continue.]
+                                                    
+                                                        <> before slipping several tendrils into the narrow spaces between the carapace and hatch. You hear clicks and clacks and with a loud exhalation, the hatch pops open.
                                                         
-                                                        ->choices
+                                                            ***************[continue.]
+                                                
+                                                            The creature extends an appendage inside, retrieves the crystal, and wanders back into the fungal brush.
+
+                                                                ****************[continue.]->choices
 
     
 ==choices    
@@ -319,43 +298,29 @@ You crawl through the freshly opened hatch. The dim cavity occasionally flashes 
                             
                                     *******[continue.]
 
-                                    You ready yourself for heaps, gobs even, of praise. You are, after all, the hero. The savior of your A.I. companion, and eventually, the mission itself.
+                                    You ready yourself for heaps, gobs even, of praise. You are, after all, the hero. The savior of your AI companion, and eventually, the mission itself.
 
                                         ********[continue.]
                                 
                                         Its dulcet-toned synth voice rings out loud and clear:
                                 
-                                            *********[continue.]
-
-                                            YOU. 
+                                            *********[YOU.]
                                             
-                                                **********[continue.]
-                                                
-                                                PIECE. 
+                                                **********[PIECE.]  
                                             
-                                                    ***********[continue.]
-                                                    
-                                                    OF. 
+                                                    ***********[OF.]
                                             
-                                                        ************[continue.]
-                                                        
-                                                        EFFLUVIUM. 
+                                                        ************[EFFLUVIUM.]
                                             
-                                                            *************[continue.]
-                                                            
-                                                            You worthless. 
+                                                            *************[You worthless.]
                                             
-                                                                **************[continue.]
-                                                                
-                                                                Lowdown.
+                                                                **************[Lowdown.]
                                             
-                                                                    ***************[continue.]
-                                                                    
-                                                                    Sack of…
+                                                                    ***************[Sack of...]
                                             
                                                                         ****************[continue.]
                                                                         
-                                                                        Why, if I had appendages with which to do so, I would with glee and verve, strangle thee, and watch as the light fades from those fiendish, genocidal, watery orbs you call photoreceptors! 
+                                                                        AI: Why, if I had appendages with which to do so, I would with glee and verve, strangle thee, and watch as the light fades from those fiendish, genocidal, watery orbs you call photoreceptors! 
 
                                                 
                                                                                 *****************[Switch the core off.]
@@ -422,7 +387,7 @@ What do you want?
          
 = why
                
-AI: Why, for the love of Vulcan, would we. Possibly. Help. YOU?
+    <> Why, for the love of Vulcan, would we. Possibly. Help. YOU?
 
         *[Because.]->because
         *[Don’t you want to escape too?]->escape2
@@ -629,13 +594,15 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 You leave the chunk.->END
 
 -else:
-The creature didn't come with you.
-*[Leave.]
+*AI: [...]
+<> The creature didn't come with us... Go bond with it!
+**[Leave.]
 You leave the chunk.->END
 
 }
 
 =inside_chunk
+sdfsdfs
 ->END
 
 

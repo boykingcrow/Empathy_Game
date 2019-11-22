@@ -4,16 +4,34 @@ INCLUDE CRASH.ink
 
 === SHIP ===
 
-You wake up from a deep sleep that isn’t a sleep as much as a not there. Your head feels like it is full of fluid. Your head isn’t — filled with fluid — but your mouth and nose are. You gag. [REDACTED] CORP. says that it has notes of citrus and vanilla. You find no comfort in these flavor notes as you spew goopy liquid from your mouth and nose. [REDACTED] CORP.? You might be asking. You may struggle to remember what a CORP even is. Or who You even is. That’s okay. That is probably normal. These sorts of things tend to happen coming out of cryo-sleep.  Everything is okay. Probably. 
+You wake up from a deep sleep that isn’t a sleep as much as a not there. Your head feels like it is full of fluid. Your head isn’t — filled with fluid — but your mouth and nose are. You gag. 
 
-All that being said, we need to run a few tests. Just to make sure there wasn’t any brain damage. From the prolonged stasis. You understand. You filled out the health and safety waivers like all the other precocious little space explorers. Adventures aren’t really adventures without danger or potential brain damage, after all.
+*AI[...]
+<> [REDACTED] CORP. says that it has notes of citrus and vanilla. You find no comfort in these flavor notes as you spew goopy liquid from your mouth and nose. [REDACTED] CORP.? You might be asking. You may struggle to remember what a CORP. even is. Or who You even is. That’s okay. That is probably normal. These sorts of things tend to happen coming out of cryo-sleep.  Everything is okay. Probably. 
+
+**AI[...]
+<> All that being said, we need to run a few tests. Just to make sure there wasn’t any brain damage. From the prolonged stasis. You understand. You filled out the health and safety waivers like all the other precocious little space explorers. Adventures aren’t really adventures without danger or potential brain damage, after all.
 
 Just a few psychological measurements. Quick and painless. Just like a shot, minus the needle. Or the burning fluid. I kid. I kid. We have fun here, on the ship. You and I. [REDACTED] CORP. shelled out for my humor firmware update.
 
-*[Alright. On to the tests.] -> crash
+***AI[...]
+<> Alright. On to the tests. 
+****[continue.]-> tests
+
+= tests
+
+*[TESTING]
+**[TESTING]
+***[TESTING]
+-AI: Your handy definitely-a-holograph examiner will now administer a series of tests. No need to be alarmed. Please immediately stop playing the game now and turn to said examiner for further assistance.
+***[ALL DONE.]
+AI: Alright! That wasn't so bad, was it? I bet you didn't even notice the copious amounts of blood being drawn.
+****[continue.]->crash
+
+
 
 == crash
-{crash > 0: You’re probably a bit foggy still. So first, some house cleaning (not right phrase?). That is, I’m sure you have questions. And I, have answers. Probably.}
+{crash > 0: You’re probably a bit foggy still. So first, some house cleaning. That is, I’m sure you have questions. And I, have answers. Probably.}
 
     *[Probable Question 1: Who are you, mysterious voice?]
     
