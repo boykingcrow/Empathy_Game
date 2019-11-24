@@ -15,10 +15,12 @@ void OnMouseDown(){
 			{
 				GameObject.Find("SceneController").GetComponent<InkWrapper>().SetCanvas(canvas);
 				GameObject.Find("SceneController").GetComponent<InkWrapper>().StartStory(story);
+
 				bool isActive = canvas.activeSelf;
 				
 				canvas.SetActive(!isActive);
 			}
+
 		if(background != null) 
 		{
 			bool isActive = background.activeSelf;

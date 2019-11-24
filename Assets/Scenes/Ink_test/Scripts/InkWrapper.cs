@@ -20,16 +20,29 @@ public class InkWrapper : MonoBehaviour {
 		story = new Story (input.text);
 		
 		//exits story from within
-		story.BindExternalFunction ("exit_dis_gaem", () => {
+		story.BindExternalFunction ("killthebitch", () => {
 
-			if(GameObject.Find("Canvas") != null)
+			if(background1 != null)
 				{
-					GameObject.Find("Canvas").SetActive(false);
+					gameObject.GetComponent<InkWrapper>().background1.SetActive(false);
+					gameObject.GetComponent<InkWrapper>().canvas.SetActive(false);
 				}
 
 		});
 		
-		//toggles gameobjects from within ink stories
+		//toggles or spawns gameobjects from within ink stories
+		
+		story.BindExternalFunction ("spawnCRASH", () => {
+		
+			if(crash_image != null)
+				{
+					crash_image.SetActive(true);
+					gameObject.GetComponent<InkWrapper>().background1.SetActive(false);
+					gameObject.GetComponent<InkWrapper>().canvas.SetActive(false);
+				}
+
+		});
+		
 		story.BindExternalFunction ("toggleObj1", () => {
 
 			if(object1 != null)
@@ -58,6 +71,16 @@ public class InkWrapper : MonoBehaviour {
 				{
 					
 					object3.SetActive(true);
+				}
+
+		});
+
+		story.BindExternalFunction ("spawnObj4", () => {
+		
+			if(object4 != null)
+				{
+					
+					object4.SetActive(true);
 				}
 
 		});
@@ -275,7 +298,8 @@ public class InkWrapper : MonoBehaviour {
 			choice.onClick.AddListener(delegate{
 				StartStory(DefaultStory);
 				gameObject.GetComponent<InkWrapper>().canvas.SetActive(false);
-				GameObject.Find("Creature_Minigame_Background").SetActive(false);
+				gameObject.GetComponent<InkWrapper>().background1.SetActive(false);
+				gameObject.GetComponent<InkWrapper>().background2.SetActive(false);
 			});
 		}
 	}
@@ -326,7 +350,13 @@ public class InkWrapper : MonoBehaviour {
 	public GameObject canvas;
 
 	[SerializeField]
-	public GameObject image;
+	public GameObject background1;
+
+	[SerializeField]
+	public GameObject background2;
+
+	[SerializeField]
+	public GameObject crash_image;
 	
 	[SerializeField]
 	public GameObject object1;

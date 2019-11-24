@@ -1,6 +1,6 @@
-EXTERNAL exit_dis_gaem()
+EXTERNAL killthebitch()
 === CRASH ===
 
 *[CRASH]
-{exit_dis_gaem()}
+{killthebitch()}
 ->END

@@ -3,7 +3,8 @@ EXTERNAL set(var, arg1)
 EXTERNAL toggleObj1()
 EXTERNAL toggleObj2()
 EXTERNAL toggleObj3()
-EXTERNAL toggleObj4()
+EXTERNAL spawnObj4()
+EXTERNAL killthebitch()
 
 VAR fishaction = 0
 VAR rockaction = 0
@@ -13,13 +14,18 @@ VAR ai_action = 0
 ->GETTIN_PARTS
 
 -else:
-->CHUNK
+->test
 
 }
 
 === function alter(ref x, k) ===
 	~ x = x + k
 
+
+===test
+*[kill the bitch.]
+{killthebitch()}
+->END
 ===CHUNK===
 
 {ai_action == 1:->ai_convo_choices}
@@ -581,7 +587,7 @@ You: Because I’m me.
 -
 *AI:[...]
 <> Oh, and do try not to commit any more casual murder on the way, you monster.
-{toggleObj4()}
+{spawnObj4()}
 ->END
 
 === GETTIN_PARTS ===

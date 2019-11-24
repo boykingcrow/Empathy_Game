@@ -3,6 +3,7 @@ EXTERNAL set(var, arg1)
 EXTERNAL build_colorGun()
 EXTERNAL spawnObj3()
 EXTERNAL spawnObj5()
+EXTERNAL killthebitch()
 
 
 
@@ -43,6 +44,7 @@ Creature Bond: {get("BOND") == "0":What bond?}{get("BOND") == "1":Well, it doesn
     +[Interact.]->INTERACT
 
     +[Leave.]
+    {killthebitch()}
     ->END
 
 
@@ -473,6 +475,7 @@ You have no way to communicate with the creature.
             -> END
             **[Leave.]
             You’ve had enough. You walk away.
+            {killthebitch()}
              -> END
 
 ==DeadCritter_interact
@@ -486,6 +489,7 @@ A deep BLUE washes away all other colors painting the creature’s supernal form
 -What will you do?
 *[Leave.]
 	You leave the somber scene, and the creature with it.
+    {killthebitch()}
 ->END
 *[Use the Color-gun to interact.]->color_puzzle4
 
@@ -546,7 +550,8 @@ The creature returns to its neutral state of many shifting colors. You can’t h
     
         +[Keep watching.]->color_prologue
         +[Use Color-gun to interact.]->color_puzzle5
-        +[Leave]
+        +[Leave.]
+        {killthebitch()}
         ->END
 
     = color_prologue

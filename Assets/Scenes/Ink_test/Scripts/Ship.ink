@@ -1,4 +1,4 @@
-INCLUDE CRASH.ink
+EXTERNAL spawnCRASH()
 
 -> SHIP
 
@@ -7,16 +7,20 @@ INCLUDE CRASH.ink
 You wake up from a deep sleep that isn’t a sleep as much as a not there. Your head feels like it is full of fluid. Your head isn’t — filled with fluid — but your mouth and nose are. You gag. 
 
 *AI[...]
-<> [REDACTED] CORP. says that it has notes of citrus and vanilla. You find no comfort in these flavor notes as you spew goopy liquid from your mouth and nose. [REDACTED] CORP.? You might be asking. You may struggle to remember what a CORP. even is. Or who You even is. That’s okay. That is probably normal. These sorts of things tend to happen coming out of cryo-sleep.  Everything is okay. Probably. 
+<> [REDACTED] CORP. says that it has notes of citrus and vanilla. You find no comfort in these flavor notes as you spew goopy liquid from your mouth and nose. [REDACTED] CORP.? You might be asking. You may struggle to remember what a CORP. even is. Or who You even is. That’s okay. That is probably normal. These sorts of things tend to happen coming out of cryo-sleep.  Everything is okay. Probably.
 
-**AI[...]
+**[continue.]
+
+***AI[...]
 <> All that being said, we need to run a few tests. Just to make sure there wasn’t any brain damage. From the prolonged stasis. You understand. You filled out the health and safety waivers like all the other precocious little space explorers. Adventures aren’t really adventures without danger or potential brain damage, after all.
 
 Just a few psychological measurements. Quick and painless. Just like a shot, minus the needle. Or the burning fluid. I kid. I kid. We have fun here, on the ship. You and I. [REDACTED] CORP. shelled out for my humor firmware update.
 
-***AI[...]
+****[continue.]
+
+*****AI[...]
 <> Alright. On to the tests. 
-****[continue.]-> tests
+*******[continue.]-> tests
 
 = tests
 
@@ -41,7 +45,7 @@ AI: Alright! That wasn't so bad, was it? I bet you didn't even notice the copiou
     
         You — as you may have guessed — are in space. We have just exited near lightspeed. We are currently near the [insert] asteroid belt, hurtling towards [insert], a class [insert] star. “Why are we hurtling towards a star?” you may be asking. Good question! I’m sure you’ll get right on it, now that we’ve established that you are one hundred percent brain damage free. 
         
-            -> question
+            ***[continue.]-> question
 
 = question
 
@@ -53,16 +57,22 @@ What will you do?
 
         Ah. Good choice. Brave is a synonym of audacious. Which is a synonym of foolhardy. Which is bad, after all. You are certainly no fool. Nor hardy. Why be a lion, when you can be an, er, pillbug. 
         
-            **[continue.]-> CRASH
+            **[continue.]
+            {spawnCRASH()}
+            -> SHIP
 
     *[Press LAUNCH ESCAPE POD button.]
 
         Ah. Good show. Keen and clever effort, I dare say. There’s the slight problem of you launching the escape pod before climbing inside. But that’s really a secondary, or even tertiary addendum to how keen and clever you are for pressing that button. Real shame, not being inside the pod though. 
         
-            **[continue.]-> CRASH
+            **[continue.]
+            {spawnCRASH()}
+            -> SHIP
 
     *[Stare blankly ahead awaiting your inevitable, and probably very painful, demise.]
 
         Hello? What are you staring at? Oh well, better to face  your inevitable demise with a square jaw and a resolute spirit. “Do not go gentle into that good night. . . Rage, rage against the…” Oh. Okay. You’ve fainted AND lost control of your bowels. 
         
-            **[continue.]-> CRASH
+            **[continue.]
+            {spawnCRASH()}
+            -> SHIP
