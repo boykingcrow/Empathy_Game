@@ -7,6 +7,12 @@ public class PlayerController : MonoBehaviour {
 	public Camera cam;
 	public NavMeshAgent agent;
 
+    public float y = 40;
+    public float maxY = 90;
+    public float minY = -3;
+    public float x;
+    public float z;
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -25,5 +31,9 @@ public class PlayerController : MonoBehaviour {
                 }
             }
         }
+    
+        //y = Mathf.Clamp(y, minY, maxY);
+        transform.rotation = Quaternion.Euler (x, y, z);
+    
     }
 }

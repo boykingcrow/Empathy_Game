@@ -25,6 +25,7 @@ public class InkWrapper : MonoBehaviour {
 			if(background1 != null)
 				{
 					gameObject.GetComponent<InkWrapper>().background1.SetActive(false);
+					gameObject.GetComponent<InkWrapper>().background2.SetActive(false);
 					gameObject.GetComponent<InkWrapper>().canvas.SetActive(false);
 				}
 
@@ -34,11 +35,9 @@ public class InkWrapper : MonoBehaviour {
 		
 		story.BindExternalFunction ("spawnCRASH", () => {
 		
-			if(crash_image != null)
+			if(crash != null)
 				{
-					crash_image.SetActive(true);
-					gameObject.GetComponent<InkWrapper>().background1.SetActive(false);
-					gameObject.GetComponent<InkWrapper>().canvas.SetActive(false);
+					crash.SetActive(true);
 				}
 
 		});
@@ -356,7 +355,7 @@ public class InkWrapper : MonoBehaviour {
 	public GameObject background2;
 
 	[SerializeField]
-	public GameObject crash_image;
+	public GameObject crash;
 	
 	[SerializeField]
 	public GameObject object1;

@@ -14,18 +14,13 @@ VAR ai_action = 0
 ->GETTIN_PARTS
 
 -else:
-->test
+->CHUNK
 
 }
 
 === function alter(ref x, k) ===
 	~ x = x + k
 
-
-===test
-*[kill the bitch.]
-{killthebitch()}
-->END
 ===CHUNK===
 
 {ai_action == 1:->ai_convo_choices}
