@@ -1,11 +1,12 @@
 EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 EXTERNAL killthebitch()
+EXTERNAL spawnObj5()
 
 VAR ask = 0
 VAR choice = 0
 
-{get("hasLeft") == "3":
+{get("hasLeft") == "4":
 ->GETTIN_PARTS
 
 -else:
@@ -17,7 +18,7 @@ VAR choice = 0
 
 === CREATURE_SHIP ===
 
-{get("hasLeft") == "1": 
+{get("hasLeft") == "2": 
 
 You explore for hours until you come across wreckage that is decidedly alien. Oddly no fungus grows on or near the large onyx husk.
 
@@ -25,10 +26,15 @@ As you walk closer you realize just how massive - and ancient - it is. It appear
 
 } 
 
-{get("hasLeft") == "2": You return to the large onyx husk.}
+{get("hasLeft") == "3": You return to the large onyx husk.}
 
+
+{get("hasLeft") == "2":
 *[Go into the remains.]->ship_interior
+}
+{get("helmet") == "0":
 *[Explore husk.]-> outside
+}
 
 = outside
 
@@ -49,12 +55,12 @@ As you circle the perimeter of the ship, you notice a large gap in its obsidian 
 
         {set("image", "1")}
         {get("image") == "1": + Creature family portrait added to inventory.}
-        {set ("hasLeft", 2)}
+        {set ("hasLeft", 3)}
             
             ****[continue.]-> CREATURE_SHIP
 
 =ship_interior
-
+{set ("hasLeft", 3)}
 You find a large gap in the monoliths side and walk into it. As you move deeper the light filtering in from the outside is devoured by the darkness that oozes from within.
 
 *AI:[...]<> Well this is might bloody spooky, innit?
@@ -179,9 +185,9 @@ You mull around. Kick around stones and bits of debris. Careful not to disturb a
                                                 
          **[Hold on a...]
                                             
-            ***AI:[...]<> Get to work! Empathy module 2!
-            {set ("hasLeft", 2)} 
+            ***AI:[...]<> Get to work! Empathy module 2! 
             {set ("BOND", 1)}
+            {spawnObj5()}
             {killthebitch()}            
             ->convoend
 

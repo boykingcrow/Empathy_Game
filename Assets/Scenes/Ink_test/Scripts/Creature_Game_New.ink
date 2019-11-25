@@ -2,10 +2,7 @@ EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 EXTERNAL build_colorGun()
 EXTERNAL spawnObj3()
-EXTERNAL spawnObj5()
 EXTERNAL killthebitch()
-
-{spawnObj5()}
 
 ->CREATURE_GAME
 
@@ -95,6 +92,8 @@ You attempt to talk to the creature.
 
 === TRADE ===
 
+{spawnObj3()}
+
 {get("BOND") == "0":
 
 ->pre_trade_text
@@ -145,8 +144,6 @@ You try to hold out an item to trade, but the creature turns and floats away.
     **[continue.]->CREATURE_GAME
 
 =goo
-
-{spawnObj3()}
 
     You offer the creature TASTY GOO. it stares at you blankly.
         * [Show creature item’s use.]
@@ -266,7 +263,9 @@ The creature takes the helmet and inspects it.
         
         {get("ColorGun") == "1":+ Color-gun added to inventory.}
             
-            ***[continue.]->CREATURE_GAME
+            ***[continue.]
+            {set ("hasLeft", 4)} 
+            ->CREATURE_GAME
 
 
 === INTERACT ===

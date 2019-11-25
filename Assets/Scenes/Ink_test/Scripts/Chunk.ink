@@ -2,15 +2,14 @@ EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 EXTERNAL toggleObj1()
 EXTERNAL toggleObj2()
-EXTERNAL toggleObj3()
+EXTERNAL spawnObj3()
 EXTERNAL spawnObj4()
 EXTERNAL killthebitch()
 
 VAR fishaction = 0
 VAR rockaction = 0
-VAR ai_action = 1
 
-{get("hasLeft") == "3":
+{get("hasLeft") == "4":
 ->GETTIN_PARTS
 
 -else:
@@ -23,10 +22,20 @@ VAR ai_action = 1
 
 ===CHUNK===
 
-{ai_action == 1:->ai_convo_choices}
+{get("ai_action") == "1":
+->ai_convo_choices
+}
 
 {get("hasLeft") == "1":
 ->puzzle
+}
+
+{get("hasLeft") == "2":
+->after_puzzle
+}
+
+{get("hasLeft") == "3":
+->after_puzzle
 }
 
 {CHUNK == 1:Trouncing through, and over, glowing fungus with all the grace of a (very obese) elk — you walk for what seems like many miles (a few yards). You find a few big-ish pieces of your chip along the way.  Husks of their former selves, all burnt up or still smoldering.}
@@ -68,10 +77,7 @@ The wreckage is just as you left it. Partially covered with thick pastel purple 
 
     +[Open hatch.]->hatch
 
-    {get("helmet") == "0":
-    +[Look around.]
-    ->look
-    }
+    +[Look around.]->look
 
     +[Climb the wreck.]->climb
 
@@ -80,19 +86,27 @@ The wreckage is just as you left it. Partially covered with thick pastel purple 
 =hatch
 
     You try the handle to the hatch, but it doesn’t budge.
-    *[continue.]->puzzle
+    +[continue.]->puzzle
 
 =look
 
+    {get("helmet") == "1": 
+    
+    You walk around the web covered husk, looking for anything even a tad useful. You see a small hole towards the top of the structure. You see nothing else of use.
+    +[continue.]
+    ->puzzle
+    
+    -else:
     You walk around the web covered husk, looking for anything even a tad useful. You see a small hole towards the top of the structure. You also stumble upon a remarkably undamaged [REDACTED] Corp standard issue space helmet.
 
-    *[Pick up.]
+    +[Pick up.]
 
     {set("helmet", 1)}
     {get("helmet") == "1":+ Space Helmet added to inventory.}
 
-    **[continue.]
+    ++[continue.]
     ->puzzle
+    }
 
 =climb
 
@@ -125,7 +139,7 @@ The wreckage is just as you left it. Partially covered with thick pastel purple 
 }
 
 =new_options
-
+     
      +[Drop through the hole.]
             
         {get("hands") == "0":
@@ -133,10 +147,10 @@ The wreckage is just as you left it. Partially covered with thick pastel purple 
         You stuff one leg, and a little less than half a pelvis into the hole before it dawns on you that this is more of a hobbit hole than a human-hole. Oh well.
         
          -else:Did you actually think you could all the sudden fit through this tiny hole because you’re now minus one hand?
-         
-         }
 
-         **[continue.]->new_options
+         ++[continue.]->new_options
+         
+        }
 
     *[Toss fish-like beast down the hole.]
     
@@ -247,24 +261,18 @@ Moments pass.
 
                                                     *************It tugs at the hatch[.]
                                                     
-                                                        **************[continue.]
-                                                    
-                                                        <> before slipping several tendrils into the narrow spaces between the carapace and hatch. You hear clicks and clacks and with a loud exhalation, the hatch pops open.
+                                                      -  <> before slipping several tendrils into the narrow spaces between the carapace and hatch. You hear clicks and clacks and with a loud exhalation, the hatch pops open.
                                                         
-                                                            ***************[continue.]
+                                                            *[continue.]
                                                 
                                                             The creature extends an appendage inside, retrieves the crystal, and wanders back into the fungal brush.
 
-                                                                ****************[continue.]->choices
+                                                                **[continue.]->choices
 
     
 ==choices    
     
-    What now?
-    
 *[Climb inside the hatch.]->AI_convo
-*[Leave.]
-You leave the wreck.->END
 
 
 ->AI_convo
@@ -324,7 +332,7 @@ You crawl through the freshly opened hatch. The dim cavity occasionally flashes 
 
                                                 
                                                                                 *****************[Switch the core off.]
-                                                                                ~alter(ai_action, 1)
+                                        {set("ai_action", 1)}
                                                                                 ->ai_convo_choices
 == ai_convo_choices
 
@@ -333,7 +341,9 @@ Well. That didn’t go as expected.
 What now?
 
 *[Turn it back on.]->poweron
-*[Leave]->END
+*[Leave]
+{killthebitch()}
+->END
                                         
 
 =poweron
@@ -583,8 +593,16 @@ You: Because I’m me.
 -
 *AI:[...]
 <> Oh, and do try not to commit any more casual murder on the way, you monster.
+{set("ai_action", 0)}
+{set("hasLeft", 2)}
 {spawnObj4()}
 ->END
+
+===after_puzzle
+The wreckage is just as you left it. Partially covered with thick pastel purple webs.
+*[Leave.]
+{killthebitch()}
+->after_puzzle
 
 === GETTIN_PARTS ===
 {get("comp_unit") == "1":->got_part}

@@ -38,6 +38,7 @@ public class Inventory : MonoBehaviour
     public string antenna = "0";
     public string warp_coil = "0";
     public string BEACON = "0";
+    public string ai_action = "0";
 
 
     private bool BONDtoggle = true;

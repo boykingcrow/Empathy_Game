@@ -149,6 +149,10 @@ public class InkWrapper : MonoBehaviour {
 		
 		//Gets the variables from inventory.
 		story.BindExternalFunction ("get", (string var) => {
+			if (var == "ai_action")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().ai_action;
+			}
 			if (var == "hands")
 			{
 				return GameObject.Find("Player").GetComponent<Inventory>().hands;
@@ -242,6 +246,10 @@ public class InkWrapper : MonoBehaviour {
 
 		//Sets whether player has inventory item.
 		story.BindExternalFunction ("set", (string var, string setTo) => {
+			if (var == "ai_action") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().ai_action = setTo;
+			}
 			if (var == "hands") 
 			{
 				GameObject.Find("Player").GetComponent<Inventory>().hands = setTo;
