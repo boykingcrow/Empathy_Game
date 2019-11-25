@@ -1,3 +1,5 @@
+EXTERNAL killthebitch()
+
 ->CallToAction
 
 === CallToAction ===
@@ -61,4 +63,6 @@ You pick up smaller debris in your immediate area and put them into a pile. So f
 
 -Having already ransacked the largest and closest chunk of you ship, you gather your meager stash of things and start walking.
 
-->DONE
+*[continue.]
+{killthebitch()}
+->CallToAction

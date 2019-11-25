@@ -18,7 +18,7 @@ public class InkWrapper : MonoBehaviour {
 	public void StartStory (TextAsset input) {
 		
 		story = new Story (input.text);
-		
+
 		//exits story from within
 		story.BindExternalFunction ("killthebitch", () => {
 
@@ -92,6 +92,31 @@ public class InkWrapper : MonoBehaviour {
 				}
 
 		});
+
+		story.BindExternalFunction ("endgame", () => {
+		
+			if(object2 != null)
+				{
+					object2.SetActive(false);
+				}
+			if(object3 != null)
+				{
+					object3.SetActive(false);
+				}
+			if(object4 != null)
+				{
+					object4.SetActive(false);
+				}
+			if(object5 != null)
+				{
+					object5.SetActive(false);
+				}
+			if(object6 != null)
+				{
+					object6.SetActive(false);
+				}
+
+		});
 		
 		//sets colorGun active once all crystals are traded for
 		story.BindExternalFunction ("build_colorGun", () => {
@@ -113,12 +138,12 @@ public class InkWrapper : MonoBehaviour {
 		
 			bool var1 = GameObject.Find("Player").GetComponent<Inventory>().comp_unit == "1";
 			bool var2 = GameObject.Find("Player").GetComponent<Inventory>().comms_relay == "1";
-			bool var3 = GameObject.Find("Player").GetComponent<Inventory>().antennae == "1";
+			bool var3 = GameObject.Find("Player").GetComponent<Inventory>().antenna == "1";
 			bool var4 = GameObject.Find("Player").GetComponent<Inventory>().warp_coil == "1";
 	        
             if (var1 && var2 && var3 &&  var4)
 				{
-					GameObject.Find("Player").GetComponent<Inventory>().BEACON_active = true;
+					GameObject.Find("Player").GetComponent<Inventory>().BEACON = "1";
 				}
 		});
 		
@@ -172,10 +197,6 @@ public class InkWrapper : MonoBehaviour {
 			{
 				return GameObject.Find("Player").GetComponent<Inventory>().ColorGun;
 			}
-			if (var == "BOND")
-			{
-				return GameObject.Find("Player").GetComponent<Inventory>().BOND;
-			}
 			if (var == "hasLeft")
 			{
 				return GameObject.Find("Player").GetComponent<Inventory>().hasLeft;
@@ -183,6 +204,38 @@ public class InkWrapper : MonoBehaviour {
 			if (var == "interact")
 			{
 				return GameObject.Find("Player").GetComponent<Inventory>().interact;
+			}
+			if (var == "comp_unit")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().comp_unit;
+			}
+			if (var == "comms_relay")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().comms_relay;
+			}
+			if (var == "antenna")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().antenna;
+			}
+			if (var == "warp_coil")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().warp_coil;
+			}
+			if (var == "BEACON")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().BEACON;
+			}
+			if (var == "BOND")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().BOND;
+			}
+			if (var == "poke")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().poke;
+			}
+			if (var == "talk")
+			{
+				return GameObject.Find("Player").GetComponent<Inventory>().talk;
 			}
 			return "null";
 		});
@@ -241,10 +294,6 @@ public class InkWrapper : MonoBehaviour {
 			{
 				GameObject.Find("Player").GetComponent<Inventory>().ColorGun = setTo;
 			}
-			if (var == "BOND") 
-			{
-				GameObject.Find("Player").GetComponent<Inventory>().BOND = setTo;
-			}
 			if (var == "hasLeft") 
 			{
 				GameObject.Find("Player").GetComponent<Inventory>().hasLeft = setTo;
@@ -252,6 +301,34 @@ public class InkWrapper : MonoBehaviour {
 			if (var == "interact") 
 			{
 				GameObject.Find("Player").GetComponent<Inventory>().interact = setTo;
+			}
+			if (var == "comp_unit") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().comp_unit = setTo;
+			}
+			if (var == "comms_relay") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().comms_relay = setTo;
+			}
+			if (var == "antenna") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().antenna = setTo;
+			}
+			if (var == "warp_coil") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().warp_coil = setTo;
+			}
+			if (var == "BOND") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().BOND = setTo;
+			}
+			if (var == "poke") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().poke = setTo;
+			}
+			if (var == "talk") 
+			{
+				GameObject.Find("Player").GetComponent<Inventory>().talk = setTo;
 			}
 		});
 		

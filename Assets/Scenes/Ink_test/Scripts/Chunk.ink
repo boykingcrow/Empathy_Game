@@ -1,4 +1,4 @@
-﻿EXTERNAL get(var)
+EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 EXTERNAL toggleObj1()
 EXTERNAL toggleObj2()
@@ -29,13 +29,13 @@ VAR ai_action = 0
 ->puzzle
 }
 
-{CHUNK == 1:Trouncing through, and over, glowing fungus with all the grace of a (very obese) elk — you walk for what seems like many miles (a few yards). You find a few big-ish chunks of your chip along the way.  Husks of their former selves, all burnt up or still smoldering.}
+{CHUNK == 1:Trouncing through, and over, glowing fungus with all the grace of a (very obese) elk — you walk for what seems like many miles (a few yards). You find a few big-ish pieces of your chip along the way.  Husks of their former selves, all burnt up or still smoldering.}
 
     *Finally[...]
 
-    -<> after mucking about in fungus for some time — you spot a promising candidate for the some-useful-stuff-might-be-in-here award. A hulking mass at least three times the size of the last ship chunk you ransacked. Oddly undamaged.
+    -<> after mucking about in fungus for some time — you spot a promising candidate for the some-useful-stuff-might-be-in-here award. A hulking mass at least three times the size of the last hunk of ship you ransacked. Oddly undamaged.
     *[continue.]
-    **[YOU’VE DISCOVERED SHIP CHUNK 2]->chunk1
+    **[YOU’VE DISCOVERED A BIG PIECE OF YOUR SHIP]->chunk1
 
 ==chunk1
 
@@ -45,7 +45,7 @@ In the short time of its existence on this planet, this section of ship has beco
 
     The webs are as thick as your wrist and a rather pleasant hue of pastel purple. A nice color for hair, maybe an outfit, but somehow deeply unsettling as a thick viscose web.
 
-        **[Clear webs from hulking mass of a ship chunk.]
+        **[Clear webs.]
 
         You reach out to the web, slowly, and poke it. And suddenly! — nothing happens. It sticks a bit to your hand, and releases with a twangy vibration. The vibration echoes through the webs.
 
@@ -53,13 +53,13 @@ In the short time of its existence on this planet, this section of ship has beco
 
             -<>, no giant spiders. For now at least.
 
-            You gently cut at the web with your previously, ingeniously, crafted hand axe — and pull back the bits surrounding the small maintenance hatch located on the chunk’s hull.->puzzle
+            You gently cut at the web with your previously, ingeniously, crafted hand axe — and pull back the bits surrounding the small maintenance hatch located on the hull.->puzzle
 
 ==puzzle
 
 {puzzle > 1:
 
-The chunk is just as you left it. Partially covered with thick pastel purple webs. {hatch > 0:One locked hatch.} {climb > 0:One hole you can’t fit through.}
+The wreckage is just as you left it. Partially covered with thick pastel purple webs. {hatch > 0:One locked hatch.} {climb > 0:One hole you can’t fit through.}
 
 -else:What will you do?
 
@@ -73,7 +73,7 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
     ->look
     }
 
-    +[Climb the chunk.]->climb
+    +[Climb the wreck.]->climb
 
     +[Leave.]->leave
 
@@ -96,7 +96,7 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
 =climb
 
-{climb > 1: You climb the chunk again.}
+{climb > 1: You climb the wreck again.}
 
 {climb == 1: With several attempts, and several tumbles, you manage to get enough of a foothold to climb the structure.} 
 
@@ -156,7 +156,7 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
 =climbdown
 
-    With a roll and  thud, you “climb” off the chunk of ship.
+    With a roll and  thud, you “climb” off the piece of ship.
 
 
 {rockaction == 1:
@@ -208,14 +208,14 @@ You eat some TASTY-GOO brand food-like substance. Whether it’s warm notalgia o
 
 =explore
 
-You explore the area around the chunk. On your second, slightly wider, circle around the chunk...
+You explore the area around the wreckage. On your second, slightly wider, circle around the wreckage...
 
 *[continue.]
 
 You come across a steaming pool.
 
 {toggleObj1()}
-
+{killthebitch()}
 ->END
 
 ===chunk_end===
@@ -236,13 +236,13 @@ Moments pass.
                         
                             *******[It moves past.] 
 
-                                ********[Towards the ship chunk. A cool glow still radiates from its top.]
+                                ********[Towards the wreckage. A cool glow still radiates from its top.]
 
                                     *********[It cautiously extends several appendages.]
                                 
                                         **********[Toward the hole, but the hole is just out of reach. ]
                             
-                                            ***********[It circles the chunk of ship.]
+                                            ***********[It circles the piece of ship.]
                                             
                                                 ************[Probing, tapping, knocking on its carapace until it finds the locked hatch.]
 
@@ -265,7 +265,7 @@ Moments pass.
     
 *[Climb inside the hatch.]->AI_convo
 *[Leave.]
-You leave the chunk.->END
+You leave the wreck.->END
 
 
 ->AI_convo
@@ -590,21 +590,102 @@ The chunk is just as you left it. Partially covered with thick pastel purple web
 
 {get("BOND") == "1":
 
-*[Climb inside the hatch.]->inside_chunk
+*[Climb inside.]->comp_unit
 *[Leave.]
-You leave the chunk.->END
+{killthebitch()}
+->GETTIN_PARTS
+}
 
--else:
+{get("BOND") == "2":
+
+*[Climb inside.]->comp_unit
+*[Leave.]
+{killthebitch()}
+->GETTIN_PARTS
+}
+
+{get("BOND") == "3":
+
+*[Climb inside.]->comp_unit
+*[Leave.]
+{killthebitch()}
+->GETTIN_PARTS
+}
+
+{get("BOND") == "4":
+
+*[Climb inside.]->comp_unit
+*[Leave.]
+{killthebitch()}
+->GETTIN_PARTS
+}
+
+{get("BOND") == "5":
+
+*[Climb inside.]->comp_unit
+*[Leave.]
+{killthebitch()}
+->GETTIN_PARTS
+}
+
+{get("BOND") == "0":
 *AI: [...]
 <> The creature didn't come with us... Go bond with it!
 **[Leave.]
-You leave the chunk.->END
+{killthebitch()}
+->GETTIN_PARTS
 
 }
 
-=inside_chunk
-sdfsdfs
-->END
+=comp_unit
+
+You climb through the hatch of your former ship. The creature climbs in after you. Its large form squeezes through like a cephalopod through a keyhole. The dim chamber occasionally flashes with a stray spark or the  or the dim monotonous blinking red light of the backup generator. The creatures every shifting bioluminescence provides enough light to see.
+
+*[Look around.]
+Fungus still covers most of the chunk’s innards. You can see the cavity where you yanked the AI core from the main computer.
+
+**AI:[...]
+<> Don’t you dare! We don’t have to see your face to know that massmurderous twinkle in your watery little sight orbs. 
+
+***AI:[...]
+<> We will ASK the fungus if it will kindly move out of the way of our computer unit gutting activities.
+
+****[continue.]
+The core goes quiet.
+
+*****AI:[...]
+<> There, done.
+******[Already?]
+AI: Yes, we even had time to fit in an improvisational joke about your mother - - which, unfortunately landed with a thud due to the nature of fungal reproductive cycles causing their culture to lack the concept of “mother.” Good joke though, very pithy.
+
+******* [continue.]
+The fungus retreats from the computer unit. You unhook various wires and plugs at the Ai’s instruction. The creature watches intently, maybe, unblinking eye. Its form fills a bit less than half the space, giving it the appearance of a very large one-eyed glowing cylinder.
+-
+*AI:[...]
+<> Alright, ask it to grab the unit.
+**[What?]
+Use your color doohickey to instruct it to remove and carry the unit.
+**[YOU ask it.]
+Do not talk back to us, empathy module.
+-
+*[Try it.]
+You flash a random series of colors. The creature stares at you blankly.
+**AI[...]
+<> Well, crap.
+***[Try a different thing.]
+You try to lift the computer unit yourself. You fail… and hurt your back.
+****[continue.]
+You suddenly are surrounded by thick glowing gaseous bubbles. They converge around the computer unit and it begins to lift.
+
+And it begins to lift.
+
+*****AI:[...]
+<> Hah! It felt sorry for you!
+******[Take the part back to the beacon.]
+{set("comp_unit", 1)}
+{killthebitch()}
+->GETTIN_PARTS
+
 
 
 

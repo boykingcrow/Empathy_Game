@@ -8,9 +8,6 @@ public class Wander : MonoBehaviour {
     public Transform[] points;
     private int destPoint = 0;
     private NavMeshAgent agent;
-    public float y = 50;
-    public float x = 20;
-    public float z = 5;
 
 
         void Start () {
@@ -40,8 +37,6 @@ public class Wander : MonoBehaviour {
 
 
         void Update () {
-            
-            //transform.rotation = Quaternion.Euler (x, y, z);
             
             // Choose the next destination point when the agent gets
             // close to the current one.

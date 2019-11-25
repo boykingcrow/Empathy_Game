@@ -1,9 +1,19 @@
 EXTERNAL set(var, arg1)
 EXTERNAL get(var)
+EXTERNAL build_BEACON()
+EXTERNAL killthebitch()
+EXTERNAL endgame()
 
 {set ("hasLeft", 3)} 
 
+{build_BEACON()}
+
+{get("BEACON") == "1":
+->GAME_END
+
+-else:
 ->BEACON
+}
 === BEACON ===
 
 *AI:[...]
@@ -23,29 +33,27 @@ Don’t pretend to be in-the-know now, it’s unbecoming of a strapping young tu
 
 =convo2
 
-****[We’ll find a way.]
+*[We’ll find a way.]
 You: We’ll find a way, through science!
-	*****AI:[...]
+	**AI:[...]
     <> Oh! That’s adorable!
     ->convo2
-****[The creature can.]
+*[The creature can.]
+AI: What now? I know it’s got lots of appendages, unlike us, but they hardly look like forklifts.
 
--AI: What now? I know it’s got loud of appendages, unlike us, but they hardly look like forklifts.
-
-****[It does a thing.]
+**[It does a thing.]
 AI: Ohhh… It does a THING! How helpful.
-*****[It can make those angry fish-things explode.]
+***[It can make those angry fish-things explode.]
 AI: Well, we don’t see how that’s relevant to… wait. You don’t mean...
-*****[It makes bubbles.]
+***[It makes bubbles.]
 AI: Bubbles!? How in the… wait. What do these bubbles do?
-
--
-*[It lifts things. Big things. I’ve seen it.]
-**AI:[...]
+****[I think it has extremely powerful psionic capabilities.]
+-You: It lifts things. Big things. I've seen it.
+*AI:[...]
 <> YES! Yes! Oh lord yes!
-***AI:[...]
+**AI:[...]
 <> Honestly? Up until this point we were just stringing you along with false hopes of escape to torture you.
-****AI:[...]
+***AI:[...]
 <> But if the creature can do what you say it can, we might actually… maybe… supposedly... get off this stupid rock!->parts
 
 = parts
@@ -67,10 +75,13 @@ That is, the coil-y bits of a Warp Drive. They’ll be in the alien ship’s eng
 	***[No.]
 	***[Yes.]
 -Great! Now get out there and do your corporate overlords proud, scamp!
+{killthebitch()}
+->BEACON
+
+
+===GAME_END===
+{endgame()}
 ->END
-
-
-
 
 
 

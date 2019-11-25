@@ -8,10 +8,10 @@ public class Inventory : MonoBehaviour
 {
     void Update()
     {
-        if (BOND == "5" && BONDtoggle)
+        if (BOND == "4" && BONDtoggle)
         {
             BONDtoggle = false;
-            GameObject.Find("Creature").GetComponent<Wander>().enabled = false;
+            GameObject.Find("Creature").GetComponent<Wander>().enabled = true;
             GameObject.Find("Creature").GetComponent<Follow>().enabled = true;
         }
     }
@@ -22,6 +22,8 @@ public class Inventory : MonoBehaviour
     public string helmet = "0";
     public string image = "0";
     public string toothbrush = "0";
+    public string poke = "1";
+    public string talk = "1";
     public string crystalRED = "0";
     public string crystalGREEN = "0";
     public string crystalPURPLE = "0";
@@ -33,11 +35,11 @@ public class Inventory : MonoBehaviour
     public string interact = "0";
     public string comp_unit = "0";
     public string comms_relay = "0";
-    public string antennae = "0";
+    public string antenna = "0";
     public string warp_coil = "0";
+    public string BEACON = "0";
 
 
     private bool BONDtoggle = true;
-    public bool BEACON_active = false;
 
 }

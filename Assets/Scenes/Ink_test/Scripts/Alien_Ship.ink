@@ -1,14 +1,16 @@
-﻿EXTERNAL get(var)
+EXTERNAL get(var)
 EXTERNAL set(var, arg1)
+EXTERNAL killthebitch()
 
 VAR ask = 0
 VAR choice = 0
 
 {get("hasLeft") == "3":
 ->GETTIN_PARTS
-}
 
+-else:
 ->CREATURE_SHIP
+}
 
 === function alter(ref x, k) ===
 	~ x = x + k
@@ -82,7 +84,7 @@ You shove the AI into the crevice. Nothing happens.
 
 The AI is screaming. Two streams of constantly color morphing vertical plains stretch from either side of it into some infinite void behind you.
 
-*AI:[...]<> It goes on forever — and — OUR GOD — it’s full of stars!
+*AI:[...]<> It goes on forever -- and -- OUR GOD -- it’s full of stars!
 
 **The colors fade. 
 <> Your vision returns to normal. You retrieve the AI core from the crevice.
@@ -179,28 +181,95 @@ You mull around. Kick around stones and bits of debris. Careful not to disturb a
                                             
             ***AI:[...]<> Get to work! Empathy module 2!
             {set ("hasLeft", 2)} 
-            {set ("BOND", 1)}            
-            ->END
+            {set ("BOND", 1)}
+            {killthebitch()}            
+            ->convoend
 
 
 === GETTIN_PARTS ===
 You return to the large onyx husk.
 
+{get("BOND") == "1":
+    *AI: [...]
+    <> The creature didn't come with us... Go bond with it!
+    **[Leave.]
+{killthebitch()}
+->GETTIN_PARTS
+}
 {get("BOND") == "2":
-
-*[Enter the ship.]->inside_ship
-*[Leave.]->END
-
--else:
-*AI: [...]
-<> The creature didn't come with us... Go bond with it!
-**[Leave.]->END
-
+*[Enter the ship.]->comms_relay
++[Leave.]
+{killthebitch()}
+->GETTIN_PARTS
 }
 
-=inside_ship
-->END
+{get("BOND") == "3":
+*[Look for comms relay.]->comms_relay
+*[Look around for a metallic rod.]->antenna
++[Leave.]
+{killthebitch()}
+->GETTIN_PARTS
+}
+
+{get("BOND") == "4":
+*[Look for comms relay.]->comms_relay
+*[Look for warp coil.]->warp_coil
+*[Look around for a metallic rod.]->antenna
++[Leave.]
+{killthebitch()}
+->GETTIN_PARTS
+}
+
+{get("BOND") == "5":
+*[Enter the ship.]->comms_relay
+*[Look around for a metallic rod.]->antenna
++[Leave.]
+{killthebitch()}
+->GETTIN_PARTS
+}
+
 =comms_relay
+The alien monolith’s labyrinthine halls are still creepy and deathly silent, but the colorful glow radiated by the creature give them an almost cozy. Like an ancient inhuman homestead or chateau.
+
+The AI guides you back to the ship’s central room.
+
+*AI: [...]
+<> Alright, remember the “it’s full of stars!” mind altering computer gizmo? We’re going to need you to crawl right in there and start pulling things out until we tell you one is the communication relay.
+
+**[Ugh...]
+AI: Sigh…
+**[Is it safe?]
+We are one thousand percent certain it is safe. As long as you don’t accidentally interface with the ship’s computer. In which case your head will literally explode. Too much raw information for a squishy brain to possibly download. 
+
+-Good luck.
+
+*[Start gutting the alien computer.]
+You climb into the crevice and haphazardly begin to decouple and pull out various parts. You pile them in the center of the room. Some are too heavy. And some are larger than your entire body. The creature lifts those with its strange gaseous telekinesis.
+
+**AI: [...]
+<> That’s the one! At least, we’re pretty sure it is. Either that or some sort of impossibly advanced antimatter explosive.
+
+***[Take the “comms relay” to the beacon.]
+{set("comms_relay", 1)}
+{killthebitch()}
+->GETTIN_PARTS
+
+
+=antenna
+Conveniently, right outside of the alien ship an area is just teeming with large metal rods of all shapes and sizes. Like some kind of rod farm.
+
+*AI: [...]
+<> Honestly, we can retrofit any sufficiently large metallic rod into an antenna. Just point to one of these things so we can get back to beaconing.
+
+**[point to giant metal rod.]
+**[point to giant metal rod.]
+**[point to giant metal rod.]
+**[point to giant metal rod.]
+-You point to the giant metal rod. The creature gaseous lifts it.
+{set("antenna", 1)}
+{killthebitch()}
+->GETTIN_PARTS
+
+=warp_coil
 ->END
-=ante
-->END
+

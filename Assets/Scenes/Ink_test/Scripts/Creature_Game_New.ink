@@ -1,11 +1,9 @@
-﻿EXTERNAL get(var)
+EXTERNAL get(var)
 EXTERNAL set(var, arg1)
 EXTERNAL build_colorGun()
 EXTERNAL spawnObj3()
 EXTERNAL spawnObj5()
 EXTERNAL killthebitch()
-
-
 
 {spawnObj5()}
 
@@ -33,11 +31,12 @@ EXTERNAL killthebitch()
 
 Creature Bond: {get("BOND") == "0":What bond?}{get("BOND") == "1":Well, it doesn't hate you. Probably.}{get("BOND") == "2":Anemic.}{get("BOND") == "3":Wobbly.}{get("BOND") == "4":It actually seems to like you, you think.}{get("BOND") == "5":Best buds with the best (terrifying) hugs.}
 
-    {poke < 2:
+    {get("poke") == "0":
     +[Poke the creature.] -> poke
     }
-
+    {get("talk") == "0":
     +[Talk to the creature.] -> talk
+    }
 
     +[Trade.]->TRADE
     
@@ -52,10 +51,11 @@ Creature Bond: {get("BOND") == "0":What bond?}{get("BOND") == "1":Well, it doesn
 = poke
 
 You reach out and poke the creature.
-
     { poke > 1:
         It lashes a tentacle at you.
-            + [Dodge.] -> CREATURE_GAME 
+            + [Dodge.]
+             {set("poke", 1)}
+            -> CREATURE_GAME
     - else:
             It smacks you. 
                 *[continue.]->CREATURE_GAME
@@ -63,24 +63,32 @@ You reach out and poke the creature.
 
 
 = talk
+{talk > 4: 
+*AI:[...]
+<> ...It can't understand you. You ninny.
+ {set("talk", 1)}
+**[continue.]->CREATURE_GAME
+
+-else:
 
 You attempt to talk to the creature.
 
     * [Hey there little... er, cutie?] 
         It stares at you, unblinking.
-        ->CREATURE_GAME
+        **[continue.]->CREATURE_GAME
         
     * [Can you speak?]
         It stares at you, mute and unblinking. It probably can't speak.
-        ->CREATURE_GAME
+        **[continue.]->CREATURE_GAME
         
     * [I hate you. I hate this entire stupid planet.]
         It stares at you, unblinking. You feel bad for your outburst.
-        ->CREATURE_GAME
+        **[continue.]->CREATURE_GAME
         
     * [GRAHHHRGH!]
         The creature smacks you.
-        ->CREATURE_GAME
+        **[continue.]->CREATURE_GAME
+}
 
 
 
@@ -99,6 +107,10 @@ You attempt to talk to the creature.
 = trade_choices
 
 {build_colorGun()}
+{get("ColorGun") == "1": 
+You've traded everything you have.
+*[continue]->CREATURE_GAME
+}
 {get("ColorGun") == "0":
 
 What will you trade?
@@ -125,8 +137,6 @@ What will you trade?
 
 = pre_trade_text
 
-{spawnObj3()}
-
 You try to hold out an item to trade, but the creature turns and floats away.
 
     * AI: [...]
@@ -135,6 +145,8 @@ You try to hold out an item to trade, but the creature turns and floats away.
     **[continue.]->CREATURE_GAME
 
 =goo
+
+{spawnObj3()}
 
     You offer the creature TASTY GOO. it stares at you blankly.
         * [Show creature item’s use.]
@@ -150,6 +162,8 @@ You try to hold out an item to trade, but the creature turns and floats away.
 After said smearing, the creature, seemingly satisfied with the trade, hands you a small crystal that glows YELLOW.
     {set("crystalYELLOW", 1)}
     {get("crystalYELLOW") == "1":+ Yellow crystal added to inventory.}
+    {set("goo", 0)}
+    {get("goo") == "0":- TASTY GOO removed from inventory.}
             
             ***[continue.]->CREATURE_GAME
 
@@ -160,6 +174,8 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
     The creature hands you a small crystal that glows a dull BLUE and wanders away.
     {set("crystalBLUE", 1)}
     {get("crystalBLUE") == "1":+ Blue crystal added to inventory.}
+    {set("image", 0)}
+    {get("image") == "0":- Creature family portrait removed from inventory.}
 
     *[continue.]->CREATURE_GAME
 
@@ -184,6 +200,8 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
     -Satisfied with the trade, the creature gives you another small crystal. This one emits a faint PURPLE glow.
     {set("crystalPURPLE", 1)}
     {get("crystalPURPLE") == "1":+ Purple crystal added to inventory.}
+    {set("toothbrush", 0)}
+    {get("toothbrush") == "0":- Toothbrush removed from inventory.}
 
             ***[continue.]->CREATURE_GAME
 
@@ -199,23 +217,18 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
     As you wipe viscera from your [REDACTED] Corp issued space helmet visor — the creature hands you a crystal that emits a faint RED glow.
     {set("crystalRED", 1)}
     {get("crystalRED") == "1":+ Red crystal added to inventory.}
+    {set("fish", 0)}
+    {get("fish") == "0":- Small fish-like beast removed from the world.}
     
         **[continue.]->CREATURE_GAME
 
 = helmet
 
-    {helmet == 1:You hold out the extra [REDACTED] Corp standard issue space helmet to the creature. The helmet is identical to your own in every way, almost. It, however, is unfortunately mauve.}
+You hold out the extra [REDACTED] Corp standard issue space helmet to the creature. The helmet is identical to your own in every way, almost. It, however, is unfortunately mauve.
 
-    *AI:[...]<>
-    How gauche…
+    {helmet == 1:AI: How gauche...}
 
-    -The creature takes the helmet and inspects it.
-
-    *[Point to your own helmet.]
-    You point to your own helmet.
-
-    The creature stares at you blankly.
-    ->helmet
+The creature takes the helmet and inspects it.
 
     +[Take off your helmet to show the creature how it works.]
 
@@ -225,6 +238,10 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
              You decide not to die a horrible and agonizingly painful death in order to instruct the creature on the proper use of space helmets and instead merely point to your own helmet.
              
                 ++++[continue.]->helmet2
+                
+     *[Point to your own helmet.]
+        You point to your own helmet. The creature stares at you blankly.
+        ->helmet
 
 = helmet2
 
@@ -234,6 +251,8 @@ After said smearing, the creature, seemingly satisfied with the trade, hands you
                 
                 {set("crystalGREEN", 1)}
                 {get("crystalGREEN") == "1":+ Green crystal added to inventory.}
+                {set("helmet", 0)}
+                {get("helmet") == "0":- [REDACTED] CORP helmet removed from inventory.}
                     
                     *[continue.]->CREATURE_GAME
     
