@@ -8,7 +8,7 @@ EXTERNAL killthebitch()
 
 VAR fishaction = 0
 VAR rockaction = 0
-VAR ai_action = 0
+VAR ai_action = 1
 
 {get("hasLeft") == "3":
 ->GETTIN_PARTS
@@ -136,13 +136,12 @@ The wreckage is just as you left it. Partially covered with thick pastel purple 
          
          }
 
-         [continue.]->new_options
+         **[continue.]->new_options
 
     *[Toss fish-like beast down the hole.]
     
         ~alter(fishaction, 1)    
         You throw the small fish-like beast into the hole. You hear it land with a wet thud and, faintly, some angry gnawing. Other than that, nothing happens.
-
         **[continue.]->new_options
 
     *[Toss the crystal down the hole.]
@@ -212,7 +211,7 @@ You explore the area around the wreckage. On your second, slightly wider, circle
 
 *[continue.]
 
-You come across a steaming pool.
+**[You come across a steaming pool.]
 
 {toggleObj1()}
 {killthebitch()}
@@ -552,7 +551,7 @@ You: Because I’m me.
                 ****[PANIC]
                 ****[Respond calmly.]
                 
--WE’RE ALL GOING TO DIE! ARGHFLRGLR’LYEH!
+-You: WE’RE ALL GOING TO DIE! ARGHFLRGLR’LYEH!
 
     *AI:[...]<> Oh calm down, we weren’t finished. You baby. We said OUR ship. But our ship isn’t the only ship on the planet, is it?
     
@@ -578,6 +577,8 @@ You: Because I’m me.
                     
                         *******AI:[...]
                         <> First thing's first, we need to find that ship and learn more about our colorful cohort.
+                        
+                        {get("comp_unit") == "0":+ AI acquired.}
 
 -
 *AI:[...]
@@ -586,6 +587,8 @@ You: Because I’m me.
 ->END
 
 === GETTIN_PARTS ===
+{get("comp_unit") == "1":->got_part}
+
 The chunk is just as you left it. Partially covered with thick pastel purple webs.
 
 {get("BOND") == "1":
@@ -666,26 +669,32 @@ The fungus retreats from the computer unit. You unhook various wires and plugs a
 **[What?]
 Use your color doohickey to instruct it to remove and carry the unit.
 **[YOU ask it.]
-Do not talk back to us, empathy module.
+AI: Do not talk back to us, empathy module.
 -
 *[Try it.]
 You flash a random series of colors. The creature stares at you blankly.
-**AI[...]
+**AI:[...]
 <> Well, crap.
-***[Try a different thing.]
+***[Try something else.]
 You try to lift the computer unit yourself. You fail… and hurt your back.
 ****[continue.]
-You suddenly are surrounded by thick glowing gaseous bubbles. They converge around the computer unit and it begins to lift.
+You suddenly are surrounded by thick glowing gaseous bubbles. They converge around the computer unit.
 
-And it begins to lift.
-
-*****AI:[...]
-<> Hah! It felt sorry for you!
-******[Take the part back to the beacon.]
+*****[And it begins to lift.]
 {set("comp_unit", 1)}
+{get("comp_unit") == "1": + Computer unit acquired.}
+
+******AI:[...]
+<> Hah! It felt sorry for you!
+*******[Take the part back to the beacon.]
 {killthebitch()}
 ->GETTIN_PARTS
 
+=got_part
+You've already gutted everything from the wreckage.
+*[Leave.]
+{killthebitch()}
+->GETTIN_PARTS
 
 
 

@@ -1,5 +1,6 @@
 EXTERNAL get(var)
 EXTERNAL set(var, arg1)
+EXTERNAL killthebitch()
 
 ->POOL
 
@@ -29,8 +30,6 @@ The creature returns to its usual incomprehensible smattering of colors and drif
 -else: What will you do?
 
 }
-    
-    +[Go back.]-> go_back
     *[Look around.]->look
     *[Investigate steaming pool.] ->investigate
     
@@ -42,7 +41,7 @@ The creature returns to its usual incomprehensible smattering of colors and drif
 
         You walk up to the pool and peer into its surface, you see movement just beneath. And even more beneath the beneath, you see a glowing rock. It’s a near duplicate of the one you watched the creature lift a ship chunk to get at earlier. Explains why the creature reached into the pool..
 
-        **[Reach into the pool.]
+        ++[Reach into the pool.]
 
 {investigate > 1:
 
@@ -54,8 +53,8 @@ The creature returns to its usual incomprehensible smattering of colors and drif
         
 -else: You, like most (if not all) humans have had hollow mountains chock full of profoundly idiotic ideas. But this, might be the biggest of them all.
 
-            ***[Chicken out and leave.] ->go_back
-            ***[Do it anyway.]
+            +++[Chicken out and leave.] ->investigate
+            +++[Do it anyway.]
             {set("hands", 1)}
             {set("fish", 1)}
             {set("crystalBLUE", 1)}
@@ -63,12 +62,12 @@ The creature returns to its usual incomprehensible smattering of colors and drif
 
     Okay. O. K. sure, why not? What the worst that can happen? A melted or maimed arm? Maybe your suit literally fused with your arm? Deadly toxins? Flesh eating, suit eating microorganisms? Or most likely, assuredly even, some beasty — just waiting — to take a big ol’ bite!?
 
-                ****[Yep, still going to do it]
+                ++++[Yep, still going to do it]
                 {set("hands", 1)}
                 {set("fish", 1)}
                 {set("crystalBLUE", 1)}
                 ->conclusion
-                ****[Chicken out and leave.]->go_back
+                ++++[Chicken out and leave.]->investigate
                 
 }
 
@@ -95,4 +94,5 @@ You wake up, hours later, and sort of half walk, half crawl back to your makeshi
                 *****[Go back to the chunk of ship.]->go_back
 
 =go_back
- You walk back to the large husk of ship debris.->END
+ {killthebitch()}
+ ->END

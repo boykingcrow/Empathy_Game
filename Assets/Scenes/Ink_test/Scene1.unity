@@ -907,7 +907,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0, g: 0.9137255, b: 0.7238772, a: 1}
-  m_Intensity: 15
+  m_Intensity: 20
   m_Range: 124.41988
   m_SpotAngle: 75.60086
   m_CookieSize: 10
@@ -2220,7 +2220,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.9137255, g: 0, b: 0.043809462, a: 1}
-  m_Intensity: 2
+  m_Intensity: 2.5
   m_Range: 124.41988
   m_SpotAngle: 75.60086
   m_CookieSize: 10
@@ -2480,7 +2480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &896957740
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2507,7 +2507,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 896957739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c0c2650249f7840a95be16afd9262e, type: 3}
+  m_Script: {fileID: 11500000, guid: a1176d66fd5565c4da249a88d643b29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1556175952}
@@ -2758,7 +2758,6 @@ GameObject:
   - component: {fileID: 947553673}
   - component: {fileID: 947553677}
   - component: {fileID: 947553676}
-  - component: {fileID: 947553671}
   - component: {fileID: 947553670}
   m_Layer: 0
   m_Name: Pool
@@ -2786,18 +2785,6 @@ RectTransform:
   m_SizeDelta: {x: 1.098, y: 1.398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &947553670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 947553668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd631dcea2ffc7d47894601aac8525ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToAppear: {fileID: 1858210486}
---- !u!114 &947553671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3389,27 +3376,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbec7f0e3521b94683c0d47c778e756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hands: 0
-  fish: 0
-  goo: 0
-  helmet: 0
-  image: 0
-  toothbrush: 0
-  poke: 0
-  talk: 0
+  hands: 1
+  fish: 1
+  goo: 1
+  helmet: 1
+  image: 1
+  toothbrush: 1
+  poke: 1
+  talk: 1
   crystalRED: 0
   crystalGREEN: 0
   crystalPURPLE: 0
   crystalYELLOW: 0
   crystalBLUE: 0
   ColorGun: 0
-  BOND: 5
-  hasLeft: 3
+  BOND: 1
+  hasLeft: 2
   interact: 0
-  comp_unit: 1
-  comms_relay: 1
-  antenna: 1
-  warp_coil: 1
+  comp_unit: 0
+  comms_relay: 0
+  antenna: 0
+  warp_coil: 0
   BEACON: 0
 --- !u!1001 &1237030259
 Prefab:
@@ -4396,7 +4383,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.53525317, g: 0.4481132, b: 1, a: 1}
-  m_Intensity: 15
+  m_Intensity: 20
   m_Range: 101.29411
   m_SpotAngle: 70.411415
   m_CookieSize: 10
@@ -5621,7 +5608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2061711006
 RectTransform:
   m_ObjectHideFlags: 0
