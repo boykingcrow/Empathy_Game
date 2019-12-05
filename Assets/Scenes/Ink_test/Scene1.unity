@@ -682,7 +682,6 @@ GameObject:
   - component: {fileID: 205267199}
   - component: {fileID: 205267198}
   - component: {fileID: 205267197}
-  - component: {fileID: 205267201}
   - component: {fileID: 205267196}
   - component: {fileID: 205267195}
   - component: {fileID: 205267202}
@@ -773,7 +772,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 205267193}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.49999994
   m_Height: 0.99999994
   m_Direction: 1
@@ -811,20 +810,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1112826208}
   movementSpeed: 2
---- !u!64 &205267201
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 205267193}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &205267202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3251,6 +3236,7 @@ GameObject:
   - component: {fileID: 1112826209}
   - component: {fileID: 1112826213}
   - component: {fileID: 1112826215}
+  - component: {fileID: 1112826216}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3376,29 +3362,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbec7f0e3521b94683c0d47c778e756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hands: 0
+  hands: 2
   fish: 0
   goo: 1
   helmet: 0
   image: 0
   toothbrush: 0
-  poke: 0
-  talk: 0
   crystalRED: 0
   crystalGREEN: 0
   crystalPURPLE: 0
   crystalYELLOW: 0
   crystalBLUE: 0
   ColorGun: 0
-  BOND: 0
-  hasLeft: 0
-  interact: 0
   comp_unit: 0
   comms_relay: 0
   antenna: 0
   warp_coil: 0
-  BEACON: 1
+--- !u!114 &1112826216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1112826208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c18c402a9f20c849a4c8e547309f2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BOND: 0
+  poke: 0
+  talk: 0
+  hasLeft: 0
+  interact: 0
+  pool_explored: 0
   ai_action: 0
+  rockaction: 0
+  fishaction: 0
+  BEACON: 0
 --- !u!1001 &1237030259
 Prefab:
   m_ObjectHideFlags: 0
@@ -3853,7 +3853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1435836744
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4253,7 +4253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1556175953
 MonoBehaviour:
   m_ObjectHideFlags: 0

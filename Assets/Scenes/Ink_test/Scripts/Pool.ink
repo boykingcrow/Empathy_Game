@@ -53,7 +53,7 @@ The creature returns to its usual incomprehensible smattering of colors and drif
         
 -else: You, like most (if not all) humans have had hollow mountains chock full of profoundly idiotic ideas. But this, might be the biggest of them all.
 
-            +++[Chicken out and leave.] ->investigate
+            
             +++[Do it anyway.]
             {set("hands", 1)}
             {set("fish", 1)}
@@ -67,7 +67,7 @@ The creature returns to its usual incomprehensible smattering of colors and drif
                 {set("fish", 1)}
                 {set("crystalBLUE", 1)}
                 ->conclusion
-                ++++[Chicken out and leave.]->investigate
+                
                 
 }
 
@@ -87,12 +87,17 @@ The crash obviously damaged you more than you thought. The front bits of your ne
 {get("fish") == "1":+ Small fish-like beast added to inventory.}
 {get("hands") == "1":- Hand removed from body.}
 
+*[continue.]
+
 Your suit’s automatic ‘don’t die’ systems manage to seal the wound and  stem the massive bleeding, but you pass out anyway.
+
+**[continue.]
 
 You wake up, hours later, and sort of half walk, half crawl back to your makeshift camp.
 
-                *****[Go back to the chunk of ship.]->go_back
+                ***[Go back to the chunk of ship.]->go_back
 
 =go_back
+{set ("pool_explored", 1)}
  {killthebitch()}
- ->END
+ ->conclusion

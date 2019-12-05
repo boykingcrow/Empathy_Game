@@ -238,7 +238,7 @@ The creature takes the helmet and inspects it.
                 
      *[Point to your own helmet.]
         You point to your own helmet. The creature stares at you blankly.
-        ->helmet
+        **[continue.]->helmet
 
 = helmet2
 
@@ -296,7 +296,7 @@ You have no way to communicate with the creature.
     {pool_interact == 1:
 
         *AI:[...]
-        <>Obligatory snarky comment.
+        <>*BEEP* OBLIGATORY SNARKY COMMENT *BEEP*
         **[continue]->pool_interact
 
     }
@@ -378,7 +378,7 @@ You have no way to communicate with the creature.
     = color_puzzle2_2
 
         Another loud howl from the great beast of the storm. The creature washes with a sharp RED.
-        *AI:[...]<>No need for fight or flight lad. Is but a storm.
+        *AI:[...]<> No need for fight or flight lad. Is but a storm.
 
         -How will you respond?
         
@@ -409,7 +409,7 @@ You have no way to communicate with the creature.
         The creature approaches you. 
         It has something in one of its tentacles. At a glance the object is completely unidentifiable. The only clear thing is its sheer grotesqueness.
 
-        *AI[...]<> FUNNY COMMENT
+        *AI:[...]<> *BEEP* OBLIGATORY FUNNY COMMENT *BEEP*
 
         The creature hands you the object. You guess from the rapid and erratic shifts of the creatures colors that it is probably either excited, or terrified.
 
@@ -417,7 +417,7 @@ You have no way to communicate with the creature.
 
         -*[Stare in puzzlement.]
 
-            **AI:[...]<>Oh for Vulcan’s sake, it wants you to eat the thing! Whatever that disgusting little object even is. 12 credits says it makes you explode.->color_puzzle3
+            **AI:[...]<> Oh for Vulcan’s sake, it wants you to eat the thing! Whatever that disgusting little object even is. 12 credits says it makes you explode.->color_puzzle3
 
     =color_puzzle3
 
@@ -474,7 +474,7 @@ You have no way to communicate with the creature.
 
         The creature continues to stare at you with unblinking eyes.
 
-        * AI:[...]<>This is agony! (insert clever thing) Just do something!
+        * AI:[...]<> This is agony! Stop being a bloody ninny and do something!
 
             ++[Smash the grotesque non-food against your visor.]
                 
@@ -502,7 +502,7 @@ You find the creature floating beside an object you can’t quite make out from 
 
 A deep BLUE washes away all other colors painting the creature’s supernal form.
 
-*AI:[...]<>The cosmos is full of intrepid adventurers. Looks like this one didn’t make it out so lucky. A day late. A companion short. Best we move on and leave it alone.
+*AI:[...]<> The cosmos is full of intrepid adventurers. Looks like this one didn’t make it out so lucky. A day late. A companion short. Best we move on and leave it alone.
 
 -What will you do?
 *[Leave.]
@@ -513,11 +513,11 @@ A deep BLUE washes away all other colors painting the creature’s supernal form
 
 =color_puzzle4
 
-+Emit BLUE.->color_puzzle4_2
-+Emit GREEN.->wrong3
-+EmitRED.->wrong3
-+Emit YELLOW.->wrong3
-+EmitPURPLE.->wrong3
++[Emit BLUE.]->color_puzzle4_2
++[Emit GREEN.]->wrong3
++[Emit RED.]->wrong3
++[Emit YELLOW.]->wrong3
++[Emit PURPLE.]->wrong3
 
 = wrong3
 
@@ -528,11 +528,11 @@ Nothing happens.->color_puzzle4
 
 You Color-gun washes the area in a deep BLUE glow. The creature turns to face you. Its unblinking eye betrays nothing. It turns back to the fallen adventurer. Its deep BLUE is replaced by a dull YELLOW.
 
-+Emit BLUE.->wrong3
-+Emit RED.->wrong3
-+Emit PURPLE.->color_puzzle4_end
-+Emit GREEN.->wrong3
-+Emit YELLOW.->wrong3
++[Emit BLUE.]->wrong3
++[Emit RED.]->wrong3
++[Emit PURPLE.]->color_puzzle4_end
++[Emit GREEN.]->wrong3
++[Emit YELLOW.]->wrong3
 
 =color_puzzle4_end
 
@@ -577,18 +577,18 @@ The creature returns to its neutral state of many shifting colors. You can’t h
         After GREEN, its body flushes a deep BLUE, then an alarming YELLOW soon replaced by a vivid RED that quickly fades back into a deep BLUE.
         +[Keep watching]
         It repeats its cycle of emotion, almost dutifully.->color_prologue
-        +[Use Color-gun to interact]->color_puzzle5
+        +[Use Color-gun to interact.]->color_puzzle5
         +[Leave.]->CREATURE_GAME
 
     = color_puzzle5
 
     What will you emit in response to its vivid GREEN?
 
-        +[GREEN]->color_puzzle5_2
-        +[BLUE]->wrong4
-        +[YELLOW]->wrong4
-        +[RED]->wrong4
-        +[PURPLE]->wrong4
+        +[GREEN.]->color_puzzle5_2
+        +[BLUE.]->wrong4
+        +[YELLOW.]->wrong4
+        +[RED.]->wrong4
+        +[PURPLE.]->wrong4
 
     = wrong4
 
@@ -600,13 +600,13 @@ The creature returns to its neutral state of many shifting colors. You can’t h
         {color_puzzle5_2 == 0:Your Color-gun emits a GREEN glow, similar to the creatures own. This catches its attention and it turns to you, but only for a moment. The image enrapts it once again.}
 
         The creature’s body fades into a shade of deep BLUE.
-        +[Emit GREEN]
+        +[Emit GREEN.]
         It turns to you and a dull RED begins to wash over it, but as soon as the RED appears, it fades, and the creature resigns itself back to its dutiful procession.
         ->color_puzzle5_2
-        +[Emit RED]->wrong4
-        +[Emit YELLOW]->wrong4
-        +[Emit PURPLE]->wrong4
-        +[Emit BLUE]->color_puzzle5_3
+        +[Emit RED.]->wrong4
+        +[Emit YELLOW.]->wrong4
+        +[Emit PURPLE.]->wrong4
+        +[Emit BLUE.]->color_puzzle5_3
 
     = wrong5
 
@@ -618,13 +618,13 @@ The creature returns to its neutral state of many shifting colors. You can’t h
         The BLUE of your Color-gun mixes with the BLUE of the creature’s form and for just a moment, you do not feel alone on this Vulcan forsaken rock. The deep BLUE fades into a neutral dance of colors and the creature turns to you. The image slips from its tentacle and falls to the floor.
 
         As it stares at you, unblinking, a dull YELLOW spreads over its form.
-        *AI:[...]It’s incredibly difficult to tell — it having a semi-corporeal form and all — but just, ever so, it appears appears to be trembling…
+        *AI:[...]<> It’s incredibly difficult to tell — it having a semi-corporeal form and all — but just, ever so, it appears appears to be trembling…
 
-        ++Emit BLUE in response.->wrong5
-        ++Emit GREEN->wrong5
-        ++EmitYELLOW->wrong5
-        ++Emit PURPLE->color_puzzle5_end
-        ++Emit RED->wrong5
+        ++[Emit BLUE.]->wrong5
+        ++[Emit GREEN.]->wrong5
+        ++[Emit YELLOW.]->wrong5
+        ++[Emit PURPLE.]->color_puzzle5_end
+        ++[Emit RED.]->wrong5
 
     =color_puzzle5_end
 

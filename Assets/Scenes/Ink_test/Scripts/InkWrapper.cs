@@ -143,15 +143,27 @@ public class InkWrapper : MonoBehaviour {
 	        
             if (var1 && var2 && var3 &&  var4)
 				{
-					GameObject.Find("Player").GetComponent<Inventory>().BEACON = "1";
+					GameObject.Find("Player").GetComponent<Actions>().BEACON = "1";
 				}
 		});
 		
 		//Gets the variables from inventory.
 		story.BindExternalFunction ("get", (string var) => {
+			if (var == "pool_explored")
+			{
+				return GameObject.Find("Player").GetComponent<Actions>().pool_explored;
+			}
 			if (var == "ai_action")
 			{
-				return GameObject.Find("Player").GetComponent<Inventory>().ai_action;
+				return GameObject.Find("Player").GetComponent<Actions>().ai_action;
+			}
+			if (var == "rockaction")
+			{
+				return GameObject.Find("Player").GetComponent<Actions>().rockaction;
+			}
+			if (var == "fishaction")
+			{
+				return GameObject.Find("Player").GetComponent<Actions>().fishaction;
 			}
 			if (var == "hands")
 			{
@@ -203,11 +215,11 @@ public class InkWrapper : MonoBehaviour {
 			}
 			if (var == "hasLeft")
 			{
-				return GameObject.Find("Player").GetComponent<Inventory>().hasLeft;
+				return GameObject.Find("Player").GetComponent<Actions>().hasLeft;
 			}
 			if (var == "interact")
 			{
-				return GameObject.Find("Player").GetComponent<Inventory>().interact;
+				return GameObject.Find("Player").GetComponent<Actions>().interact;
 			}
 			if (var == "comp_unit")
 			{
@@ -227,28 +239,40 @@ public class InkWrapper : MonoBehaviour {
 			}
 			if (var == "BEACON")
 			{
-				return GameObject.Find("Player").GetComponent<Inventory>().BEACON;
+				return GameObject.Find("Player").GetComponent<Actions>().BEACON;
 			}
 			if (var == "BOND")
 			{
-				return GameObject.Find("Player").GetComponent<Inventory>().BOND;
+				return GameObject.Find("Player").GetComponent<Actions>().BOND;
 			}
 			if (var == "poke")
 			{
-				return GameObject.Find("Player").GetComponent<Inventory>().poke;
+				return GameObject.Find("Player").GetComponent<Actions>().poke;
 			}
 			if (var == "talk")
 			{
-				return GameObject.Find("Player").GetComponent<Inventory>().talk;
+				return GameObject.Find("Player").GetComponent<Actions>().talk;
 			}
 			return "null";
 		});
 
 		//Sets whether player has inventory item.
 		story.BindExternalFunction ("set", (string var, string setTo) => {
+			if (var == "pool_explored") 
+			{
+				GameObject.Find("Player").GetComponent<Actions>().pool_explored = setTo;
+			}
 			if (var == "ai_action") 
 			{
-				GameObject.Find("Player").GetComponent<Inventory>().ai_action = setTo;
+				GameObject.Find("Player").GetComponent<Actions>().ai_action = setTo;
+			}
+			if (var == "rockaction") 
+			{
+				GameObject.Find("Player").GetComponent<Actions>().rockaction = setTo;
+			}
+			if (var == "fishaction") 
+			{
+				GameObject.Find("Player").GetComponent<Actions>().fishaction = setTo;
 			}
 			if (var == "hands") 
 			{
@@ -304,11 +328,11 @@ public class InkWrapper : MonoBehaviour {
 			}
 			if (var == "hasLeft") 
 			{
-				GameObject.Find("Player").GetComponent<Inventory>().hasLeft = setTo;
+				GameObject.Find("Player").GetComponent<Actions>().hasLeft = setTo;
 			}
 			if (var == "interact") 
 			{
-				GameObject.Find("Player").GetComponent<Inventory>().interact = setTo;
+				GameObject.Find("Player").GetComponent<Actions>().interact = setTo;
 			}
 			if (var == "comp_unit") 
 			{
@@ -328,15 +352,15 @@ public class InkWrapper : MonoBehaviour {
 			}
 			if (var == "BOND") 
 			{
-				GameObject.Find("Player").GetComponent<Inventory>().BOND = setTo;
+				GameObject.Find("Player").GetComponent<Actions>().BOND = setTo;
 			}
 			if (var == "poke") 
 			{
-				GameObject.Find("Player").GetComponent<Inventory>().poke = setTo;
+				GameObject.Find("Player").GetComponent<Actions>().poke = setTo;
 			}
 			if (var == "talk") 
 			{
-				GameObject.Find("Player").GetComponent<Inventory>().talk = setTo;
+				GameObject.Find("Player").GetComponent<Actions>().talk = setTo;
 			}
 		});
 		

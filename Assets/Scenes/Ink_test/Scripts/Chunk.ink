@@ -66,13 +66,7 @@ In the short time of its existence on this planet, this section of ship has beco
 
 ==puzzle
 
-{puzzle > 1:
-
-The wreckage is just as you left it. Partially covered with thick pastel purple webs. {hatch > 0:One locked hatch.} {climb > 0:One hole you can’t fit through.}
-
--else:What will you do?
-
-}
+The wreckage is just as you left it. Partially covered with thick pastel purple webs.
 
 
     +[Open hatch.]->hatch
@@ -120,7 +114,7 @@ The wreckage is just as you left it. Partially covered with thick pastel purple 
 
         That's a hole alright.
 
-        {get("fish") == "1":
+        {get("pool_explored") == "1":
         
         ->new_options
 
@@ -130,11 +124,9 @@ The wreckage is just as you left it. Partially covered with thick pastel purple 
         
         You stuff one leg, and a little less than half a pelvis into the hole before it dawns on you that this is more of a hobbit hole than a human-hole. Oh well.
 
-            ++ [Climb down.] 
-                ->climbdown
+            ++ [Climb down.] ->climbdown
 	
-	+ [Climb down.] 
-                ->climbdown
+	+ [Climb down.]->climbdown
 
 }
 
@@ -142,7 +134,7 @@ The wreckage is just as you left it. Partially covered with thick pastel purple 
      
      +[Drop through the hole.]
             
-        {get("hands") == "0":
+        {get("hands") == "2":
         
         You stuff one leg, and a little less than half a pelvis into the hole before it dawns on you that this is more of a hobbit hole than a human-hole. Oh well.
         
@@ -153,13 +145,12 @@ The wreckage is just as you left it. Partially covered with thick pastel purple 
         }
 
     *[Toss fish-like beast down the hole.]
-    
-        ~alter(fishaction, 1)    
+        {set ("fishaction", 1)}    
         You throw the small fish-like beast into the hole. You hear it land with a wet thud and, faintly, some angry gnawing. Other than that, nothing happens.
         **[continue.]->new_options
 
     *[Toss the crystal down the hole.]
-        ~alter(rockaction, 1)
+        {set ("rockaction", 1)}
         You toss the glowing rock into the hole. You see a faint glow now radiating from the hole. Nothing else happens.
 
         **[continue.]->new_options
@@ -168,18 +159,20 @@ The wreckage is just as you left it. Partially covered with thick pastel purple 
 
 
 =climbdown
+    
+With a roll and  thud, you “climb” off the piece of ship.
 
-    With a roll and  thud, you “climb” off the piece of ship.
 
+    {get("rockaction") == "0":
 
-{rockaction == 1:
-
-    *[continue.]
-    ->chunk_end
+        +[continue.]->puzzle
 -else:
+    {get("rockaction") == "1":
 
-    *[continue.]->puzzle
-}
+        +[continue.]->chunk_end
+    }
+    }
+
 
 
 
@@ -187,13 +180,18 @@ The wreckage is just as you left it. Partially covered with thick pastel purple 
 
 {set ("hasLeft", 1)}
 
-{get("hands") == "0":
+{get("rockaction") == "1":
 
-    ->before_pool
+->chunk_end
 
 -else:
+{get("pool_explored") == "0":->before_pool}
 
-    ->chunk_end
+{get("pool_explored") == "1":
+
+{killthebitch()}
+
+}
 
 }
 
@@ -280,17 +278,17 @@ Moments pass.
 === AI_convo ===
 You crawl through the freshly opened hatch. The dim cavity occasionally flashes with stray a spark or the dim monotonous blinking red light of the backup generator. 
 
-        *[Look around]
+        *[Look around.]
 
         You pull out your busted standard issue [REDACTED CORP] plasma rifle and use its not-so-busted light to look around. {fishaction == 1: A small fish-like beast angrily flops around in the corner.} Fungus has covered a large portion of the chunks innards. 
 
         If you squint, you can make out the outline of your A.I. core. With some luck, you can get it to turn on. You clear away some of the fungus and find an on button.
             
-            **[Press the button]
+            **[Press the button.]
 
             Nothing happens.
 
-                ***[Whack it]
+                ***[Whack it.]
 
                 Ah yes, only the cleverest solution for [REDACTED CORP]’s best and brightest space adventurers. You give the core a few good whacks.
 
@@ -312,19 +310,19 @@ You crawl through the freshly opened hatch. The dim cavity occasionally flashes 
                                 
                                         Its dulcet-toned synth voice rings out loud and clear:
                                 
-                                            *********[YOU.]
+                                            *********[AI: YOU.]
                                             
-                                                **********[PIECE.]  
+                                                **********[AI: PIECE.]  
                                             
-                                                    ***********[OF.]
+                                                    ***********[AI: OF.]
                                             
-                                                        ************[EFFLUVIUM.]
+                                                        ************[AI: EFFLUVIUM.]
                                             
-                                                            *************[You worthless.]
+                                                            *************[AI: You worthless.]
                                             
-                                                                **************[Lowdown.]
+                                                                **************[AI: Lowdown.]
                                             
-                                                                    ***************[Sack of...]
+                                                                    ***************[AI: Sack of...]
                                             
                                                                         ****************[continue.]
                                                                         
@@ -341,7 +339,7 @@ Well. That didn’t go as expected.
 What now?
 
 *[Turn it back on.]->poweron
-*[Leave]
+*[Leave.]
 {killthebitch()}
 ->END
                                         
@@ -357,7 +355,7 @@ Against your better judgement. You turn the angry little core back on. The core 
 
 = convo_options
 
-What do you want?
+AI: What do you want?
 
     +[To talk.]
     AI: What do you want to ask,

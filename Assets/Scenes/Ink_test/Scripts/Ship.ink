@@ -47,11 +47,11 @@ AI: Alright! That wasn't so bad, was it? I bet you didn't even notice the copiou
 
     *[Probable Question 1: Who are you, mysterious voice?]
     
-        I, am you AI companion. I was designed to keep you company. Previous explorers, lacking such illustrious companions, had a tendency to go pants-on-head mad. It is in the [REDACTED] CORP.’s best interest if you do not take up fecal matter finger painting or consume your own feet. 
+        AI: I, am you AI companion. I was designed to keep you company. Previous explorers, lacking such illustrious companions, had a tendency to go pants-on-head mad. It is in the [REDACTED] CORP.’s best interest if you do not take up fecal matter finger painting or consume your own feet. 
 
     **[Probable Question 2: Where am I?]
     
-        You — as you may have guessed — are in space. We have just exited near lightspeed. We are currently near the [insert] asteroid belt, hurtling towards [insert], a class [insert] star. “Why are we hurtling towards a star?” you may be asking. Good question! I’m sure you’ll get right on it, now that we’ve established that you are one hundred percent brain damage free. 
+        AI: You — as you may have guessed — are in space. We have just exited near lightspeed. We are currently near the [REDACTED] asteroid belt, hurtling towards [REDACTED], a class [REDACTED] star. “Why are we hurtling towards a star?” you may be asking. Good question! I’m sure you’ll get right on it, now that we’ve established that you are one hundred percent brain damage free. 
         
             ***[continue.]-> question
 

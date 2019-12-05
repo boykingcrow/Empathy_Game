@@ -4,7 +4,7 @@ EXTERNAL build_BEACON()
 EXTERNAL killthebitch()
 EXTERNAL endgame()
 
-->end_game
+
 {build_BEACON()}
 
 {get("BEACON") == "1":
@@ -14,6 +14,10 @@ EXTERNAL endgame()
 ->BEACON
 }
 === BEACON ===
+
+{get("hasLeft") == "5":
+->notbuilt
+}
 
 *AI:[...]
 <> Alright, this is the perfect spot for a distress beacon.
@@ -31,7 +35,7 @@ Don’t pretend to be in-the-know now, it’s unbecoming of a strapping young tu
 ->convo2
 
 =convo2
-
+{set("hasLeft", 5)}
 *[We’ll find a way.]
 You: We’ll find a way, through science!
 	**AI:[...]
@@ -77,6 +81,12 @@ That is, the coil-y bits of a Warp Drive. They’ll be in the alien ship’s eng
 {killthebitch()}
 ->BEACON
 
+= notbuilt
+
+You return to the site where you'll construct the distress beacon.
+*[Leave.]
+{killthebitch()}
+->notbuilt
 
 ===GAME_END===
 It takes a few weeks to build the beacon. Your supply of TASTY GOO rations dwindles to dangerous levels and you can feel your formerly robust space adventurer suit begin to fray -- just a bit -- at the seams.
@@ -85,7 +95,7 @@ It takes a few weeks to build the beacon. Your supply of TASTY GOO rations dwind
 
 -At some point, the AI grows tired of ridiculing you. Just kidding, the AI can’t grow tired -- it’s a computer.
 
-The creature follows you around mostly, observing your various, to it, likely bizarre behaviors and rituals with its unmoving eye. You can’t shake the feeling, after all this time - - that there’s a childlike, almost babyish, quality to the creature. You quickly put it out of your mind. Thoughts of what an infant like that could some day become invoke some kind of primordial panic that seems to make every cell in your body shudder.
+The creature follows you around mostly, observing your various, to it, likely bizarre behaviors and rituals with its unmoving eye. You can’t shake the feeling, after all this time -- that there’s a childlike, almost babyish, quality to the creature. You quickly put it out of your mind. Thoughts of what an infant like that could some day become invoke some kind of primordial panic that seems to make every cell in your body shudder.
 *[continue]
 
 -Regardless, the creature is your friend.
@@ -203,30 +213,40 @@ AI:...
 ->end_game
 
 ===end_game
-The AI uses your color to emotion input to interface with the beacon and grows quiet. Hundreds of colors flash through its facial display and the beacon begins to emit a low hum.
+
+The AI uses your emotional color inputs to interface with the beacon and grows quiet. Hundreds of colors flash through its facial display and the beacon begins to emit a low hum.
 
 The creature floats over and begins to... Writhe? Dance? You aren't sure. But it is flashing various shades of GREEN.
 
-*[Time passes.]
+	*[Time passes.]
 
-The AI continues its steady silent display of colors, its silence unnerves you for some reason. 
+	The AI continues its steady silent display of colors, its silence unnerves you for some reason. 
 
-**[You nod off.]
+		**[You nod off.]
 
-When you awake the sky is full of clouds that don't resemble any you've ever seen. You're high up. Being carried by... you can't see. The clouds obscure the forms that writhe around your body. 
+		When you awake the sky is full of clouds that don't resemble any you've ever seen. You're high up. Being carried by... you can't see. The clouds obscure the forms that writhe around your body. 
 
-You look around for the creature, for the AI core. You spot the core's flashing color display not far off.
-***[Something taps your shoulder.]
-It's the creature. Still flashing many brilliant shades of GREEN. It's being carried upwards as well.
+			***[continue.]
 
-These clouds. They remind you of the creature's abilities. 
+			You look around for the creature, for the AI core. You spot the core's flashing color display not far off.
 
-You look up to see huge forms moving in the distance, somewhere behind those gaseous telekenetic clouds. You may not have been rescued by [REDACTED] Corp, but at least you've been rescued.
+				****[Something taps your shoulder.]
+				It's the creature. Still flashing many brilliant shades of GREEN. It's being carried upwards as well.
 
-****[THE END.]
-{killthebitch()}
-{endgame()}
-->BEACON
+					*****[continue.]
+
+					These clouds. They remind you of the creature's abilities. 
+
+						******[continue.]
+
+						You look up to see huge forms moving in the distance, somewhere behind those gaseous telekenetic clouds. You may not have been rescued by [REDACTED] Corp, but at least you've been rescued.
+
+							*******[continue.]
+
+								********[THE END.]
+								{killthebitch()}
+								{endgame()}
+								->BEACON
 
 
 

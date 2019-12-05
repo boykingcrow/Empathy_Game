@@ -24,15 +24,14 @@ You explore for hours until you come across wreckage that is decidedly alien. Od
 
 As you walk closer you realize just how massive - and ancient - it is. It appears to you as the corpse of a fallen colossus that seems to have less flew through space than drifted through it.
 
+-else:
+You return to the large onyx husk.
 } 
-
-{get("hasLeft") == "3": You return to the large onyx husk.}
-
 
 {get("hasLeft") == "2":
 *[Go into the remains.]->ship_interior
 }
-{get("helmet") == "0":
+{get("image") == "0":
 *[Explore husk.]-> outside
 }
 
@@ -55,7 +54,6 @@ As you circle the perimeter of the ship, you notice a large gap in its obsidian 
 
         {set("image", "1")}
         {get("image") == "1": + Creature family portrait added to inventory.}
-        {set ("hasLeft", 3)}
             
             ****[continue.]-> CREATURE_SHIP
 
@@ -127,7 +125,7 @@ The AI is screaming. Two streams of constantly color morphing vertical planes st
 }
 
 == middlebit
-{choice == 3:->convoend}
+{choice > 2:->convoend}
 You sit and rest for a bit after your encounter.
 
 *[Take a nap.]->nap
@@ -155,7 +153,8 @@ You mull around. Kick around stones and bits of debris. Careful not to disturb a
 ->middlebit
 
 == convoend
-
+{set ("BOND", 1)}
+{spawnObj5()}
     *AI:[...]<> So, we need to chat, yeah?
     
 	    **[What is it?]
@@ -185,9 +184,7 @@ You mull around. Kick around stones and bits of debris. Careful not to disturb a
                                                 
          **[Hold on a...]
                                             
-            ***AI:[...]<> Get to work! Empathy module 2! 
-            {set ("BOND", 1)}
-            {spawnObj5()}
+            ***AI:[...]<> Get to work! Empathy module 2!
             {killthebitch()}            
             ->convoend
 
