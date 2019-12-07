@@ -38,7 +38,7 @@ You pick up smaller debris in your immediate area and put them into a pile. So f
 
     *[But does not give.] 
 
--The creature flashes bright pink. It paces — or whatever the floating organism’s equivalent of pacing is — for a moment before turning to the ship-chunk and... 
+-The creature flashes a swirl of colors. It paces — or whatever the floating organism’s equivalent of pacing is — for a moment before turning to the ship-chunk and... 
 
     *[Staring at it.]
 

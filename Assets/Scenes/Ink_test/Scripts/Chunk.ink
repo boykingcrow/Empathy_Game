@@ -9,7 +9,7 @@ EXTERNAL killthebitch()
 VAR fishaction = 0
 VAR rockaction = 0
 
-{get("hasLeft") == "4":
+{get("hasLeft") == "5":
 ->GETTIN_PARTS
 
 -else:
@@ -21,6 +21,10 @@ VAR rockaction = 0
 	~ x = x + k
 
 ===CHUNK===
+{get("BOND") == "2":->GETTIN_PARTS}
+{get("BOND") == "3":->GETTIN_PARTS}
+{get("BOND") == "4":->GETTIN_PARTS}
+{get("BOND") == "5":->GETTIN_PARTS}
 
 {get("ai_action") == "1":
 ->ai_convo_choices

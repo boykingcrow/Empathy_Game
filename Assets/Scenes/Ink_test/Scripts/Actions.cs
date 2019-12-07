@@ -14,6 +14,13 @@ public class Actions : MonoBehaviour
             GameObject.Find("Creature").GetComponent<Wander>().enabled = true;
             GameObject.Find("Creature").GetComponent<Follow>().enabled = true;
         }
+        if (BOND == "5" && BONDtoggle)
+        {
+            BONDtoggle = false;
+            GameObject.Find("Creature").GetComponent<Wander>().enabled = true;
+            GameObject.Find("Creature").GetComponent<Follow>().enabled = true;
+        }
+
     }
 
     public string BOND = "0";

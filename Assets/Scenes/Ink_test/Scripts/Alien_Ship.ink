@@ -6,7 +6,7 @@ EXTERNAL spawnObj5()
 VAR ask = 0
 VAR choice = 0
 
-{get("hasLeft") == "4":
+{get("BOND") == "2":
 ->GETTIN_PARTS
 
 -else:
@@ -17,6 +17,9 @@ VAR choice = 0
 	~ x = x + k
 
 === CREATURE_SHIP ===
+{get("BOND") == "3":->GETTIN_PARTS}
+{get("BOND") == "4":->GETTIN_PARTS}
+{get("BOND") == "5":->GETTIN_PARTS}
 
 {get("hasLeft") == "2": 
 
@@ -312,7 +315,7 @@ Conveniently, right outside of the alien ship an area is just teeming with large
 You make your way into the bowels of the alien ship. You arrive in a room that the AI says “looks a bit engine-room-y, probably.”
 
 *On the far end[…] 
-<> of the room an imposing outer sphere surrounds a series of nested smaller pheres, each with a slightly different shape.
+<> of the room an imposing outer sphere surrounds a series of nested smaller spheres, each with a slightly different shape.
 **AI:[...]
 <> Alright, get in there and find the coil-y bits, please. Just be quick about it. The warp core is possibly still IMMENSELY radioactive - - and we don’t want you growing any extra heads or various other fleshy parts.
 ***AI:[...]

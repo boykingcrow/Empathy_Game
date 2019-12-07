@@ -319,11 +319,11 @@ You have no way to communicate with the creature.
 
         What color will you emit from the ColorGun?
 
-        +[RED]->wrong
-        +[GREEN]->wrong
-        +[BLUE]->wrong
-        +[PURPLE]->color_puzzle1_2
-        +[YELLOW]->wrong
+        +[RED.]->wrong
+        +[GREEN.]->wrong
+        +[BLUE.]->wrong
+        +[PURPLE.]->color_puzzle1_2
+        +[YELLOW.]->wrong
 
     = wrong
 
@@ -335,11 +335,11 @@ You have no way to communicate with the creature.
 
         Its body washes with a deep BLUE.
 
-        +[Emit YELLOW] ->wrong
-        +[Emit PURPLE] ->wrong
-        +[Emit BLUE]->wrong
-        +[Emit RED]->wrong
-        +[Emit GREEN]->color_puzzle1_end
+        +[Emit YELLOW.] ->wrong
+        +[Emit PURPLE.] ->wrong
+        +[Emit BLUE.]->wrong
+        +[Emit RED.]->wrong
+        +[Emit GREEN.]->color_puzzle1_end
 
     = color_puzzle1_end
 
@@ -368,12 +368,12 @@ You have no way to communicate with the creature.
 
         The creature flushes an alarming YELLOW at the sound of the storm.
 
-        +Emit BLUE in response.->wrong
-        +Emit PURPLE in response.
+        +[Emit BLUE in response.]->wrong
+        +[Emit PURPLE in response.]
         The bright YELLOW of the creature dims a bit.->color_puzzle2_2
-        +Emit GREEN in response.->wrong
-        +Emit RED in response.->wrong
-        +Emit YELLOW in response.->wrong
+        +[Emit GREEN in response.]->wrong
+        +[Emit RED in response.]->wrong
+        +[Emit YELLOW in response.]->wrong
 
     = color_puzzle2_2
 
@@ -382,12 +382,12 @@ You have no way to communicate with the creature.
 
         -How will you respond?
         
-        +PURPLE
+        +[PURPLE.]
         The RED dims and is replaced by a neutral mix of shifting colors. -> color_puzzle2_end
-        +YELLOW->wrong
-        +RED->wrong
-        +BLUE->wrong
-        +GREEN->wrong
+        +[YELLOW.]->wrong
+        +[RED.]->wrong
+        +[BLUE.]->wrong
+        +[GREEN.]->wrong
 
     = color_puzzle2_end
 
@@ -428,15 +428,15 @@ You have no way to communicate with the creature.
         +[Inspect the object.]
         You aren’t sure whether or not it’s a trick of the light, but every so often — you swear — you can see it twitch.
         ->color_puzzle3
-        +Emit GREEN.->wrong2
-        +Emit BLUE.
+        +[Emit GREEN.]->wrong2
+        +[Emit BLUE.]
         The creature turns a deep BLUE and floats away.
         ->END
-        +Emit PURPLE.->wrong2
-        +Emit RED.
+        +[Emit PURPLE.]->wrong2
+        +[Emit RED.]
         The creature turns a bright RED and floats away.
         ->END
-        +Emit YELLOW.
+        +[Emit YELLOW.]
         The creature turns a deep BLUE and floats away.
         ->END
         +[Do nothing.]->color_puzzle3_2
@@ -454,19 +454,19 @@ You have no way to communicate with the creature.
 
         How will you respond?
         
-        +Emit BLUE.
+        +[Emit BLUE.]
             The creature turns a deep BLUE and floats away.
         ->END
         
-        +Emit PURPLE.
+        +[Emit PURPLE.]
         It’s RED glow fades, but just a bit.-> color_puzzle3_2
-        +Emit RED.
+        +[Emit RED.]
         The creature turns a bright RED and floats away.
         ->END
-        +Emit YELLOW.
+        +[Emit YELLOW.]
         The creature turns a bright RED and floats away.
         ->END
-        +Emit GREEN.
+        +[Emit GREEN.]
             You emit a bright GREEN with the Color-gun. The creature continues to wait expectantly.
         ->color_puzzle3_end
 

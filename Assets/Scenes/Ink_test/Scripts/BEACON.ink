@@ -13,6 +13,7 @@ EXTERNAL endgame()
 -else:
 ->BEACON
 }
+
 === BEACON ===
 
 {get("hasLeft") == "5":
@@ -47,7 +48,7 @@ AI: What now? I know it’s got lots of appendages, unlike us, but they hardly l
 **[It does a thing.]
 AI: Ohhh… It does a THING! How helpful.
 ***[It can make those angry fish-things explode.]
-AI: Well, we don’t see how that’s relevant to… wait. You don’t mean...
+AI: Well, we don’t see how that’s relevant to... wait. You don’t mean...
 ***[It makes bubbles.]
 AI: Bubbles!? How in the… wait. What do these bubbles do?
 ****[I think it has extremely powerful psionic capabilities.]
